@@ -121,8 +121,8 @@ const structuredData = {
 export default function Page() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeMenuTab, setActiveMenuTab] = useState("");
-  const [openAccordion, setOpenAccordion] = useState("");
+  const [activeMenuTab, setActiveMenuTab] = useState(menuCategories[0]?.id ?? "");
+  const [openAccordion, setOpenAccordion] = useState(menuCategories[0]?.id ?? "");
   const [musicPlayerOpen, setMusicPlayerOpen] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [musicPlaying, setMusicPlaying] = useState(false);
@@ -645,12 +645,20 @@ export default function Page() {
 
       <section id="full-menu" className={styles.menuSection}>
         <div className={styles.sectionIntro}>
-          <p className={styles.sectionEyebrow}>Pełne menu</p>
-          <h2 className={styles.sectionTitle}>Karta menu TORRA</h2>
+          <p className={styles.sectionEyebrow}>Menu TORRA</p>
+          <h2 className={styles.sectionTitle}>Wybierz smak i zamów telefonicznie</h2>
           <p className={styles.sectionText}>
-            Produkcyjna karta oparta na plikach źródłowych TORRA. Znajdziesz tu pizzę,
-            pizzę sycylijską, insalate, panuozzo, desery oraz caffè i napoje.
+            Pizza 31,5 cm i 45 cm, pizza sycylijska, panuozzo, insalate,
+            desery, kawa i napoje. Ceny widzisz od razu, więc decyzja ma być szybka.
           </p>
+          <div className={styles.menuSalesActions}>
+            <a href={phoneHref} className={styles.primaryButton} aria-label="Zadzwoń do TORRA i złóż zamówienie">
+              Zadzwoń i zamów
+            </a>
+            <a href="#eventy" className={styles.secondaryButton} aria-label="Zapytaj TORRA o event lub catering">
+              Zapytaj o event / catering
+            </a>
+          </div>
         </div>
 
         <div className={styles.menuShell}>
@@ -664,9 +672,7 @@ export default function Page() {
                 className={`${styles.menuTab} ${
                   activeMenuTab === category.id ? styles.menuTabActive : ""
                 }`}
-                onClick={() =>
-                  setActiveMenuTab((current) => (current === category.id ? "" : category.id))
-                }
+                onClick={() => setActiveMenuTab(category.id)}
               >
                 {category.title}
               </button>

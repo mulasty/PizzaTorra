@@ -866,6 +866,12 @@
   gap: 18px;
 }
 
+.menuSalesActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .menuTabs {
   display: flex;
   flex-wrap: wrap;
@@ -1010,6 +1016,7 @@
   display: grid;
   gap: 10px;
   padding: 24px;
+  min-width: 0;
 }
 
 .menuItemTopRow {
@@ -1017,10 +1024,23 @@
   align-items: start;
   justify-content: space-between;
   gap: 16px;
+  min-width: 0;
+}
+
+.menuItemTopRow h3 {
+  min-width: 0;
 }
 
 .menuItemTopRow strong {
+  flex-shrink: 0;
   text-align: right;
+  white-space: nowrap;
+}
+
+.menuItemBadge {
+  position: static;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .menuItemCard::before {
@@ -1075,6 +1095,7 @@
   display: grid;
   gap: 8px;
   padding: 0;
+  min-width: 0;
 }
 
 .menuAccordionCard h3 {
@@ -2188,6 +2209,15 @@
     font-size: 20px;
   }
 
+  .menuSalesActions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .menuSalesActions a {
+    width: 100%;
+  }
+
   .pdfRow {
     align-items: stretch;
   }
@@ -2241,6 +2271,10 @@
   .sectionTitle,
   .eventCard h3 {
     max-width: 9ch;
+  }
+
+  .menuSection .sectionTitle {
+    max-width: 11ch;
   }
 
   .heroText {

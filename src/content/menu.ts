@@ -76,17 +76,18 @@ export const featuredMenuItems: FeaturedMenuItem[] = [
 export const menuCategories: MenuCategory[] = [
   {
     id: "pizza",
-    title: "Pizza",
+    title: "Pizza 31,5 cm / 45 cm",
     description:
       "Włoskie ciasto według receptury TORRA. Każdą pizzę zamówisz w dwóch rozmiarach.",
     badge: "31,5 cm / 45 cm",
     items: [
-      { name: "Margherita", details: "sos pomidorowy, ser, oregano", price: "24 zł / 33 zł" },
+      { name: "Margherita", details: "sos pomidorowy, ser, oregano", price: "24 zł / 33 zł", badge: "Wege" },
       { name: "Salame Italiano", details: "sos pomidorowy, ser, salami, oregano", price: "33 zł / 46 zł" },
       {
         name: "Ragazzi della Torra",
         details: "sos pomidorowy, ser, bakłażan, cukinia, mozzarella, parmezan, oregano",
         price: "33 zł / 46 zł",
+        badge: "Polecamy",
       },
       { name: "Tonno del Mare", details: "sos pomidorowy, ser, tuńczyk, oregano", price: "33 zł / 45 zł" },
       { name: "Vesuvio", details: "sos pomidorowy, ser, szynka, oregano", price: "34 zł / 44 zł" },
@@ -96,18 +97,20 @@ export const menuCategories: MenuCategory[] = [
         name: "Caprese",
         details: "sos pomidorowy, ser, pomidorki koktajlowe, mozzarella w plastrach, parmezan, bazylia, oregano",
         price: "31 zł / 42 zł",
+        badge: "Wege",
       },
       {
         name: "Rustica della Nonna",
         details: "sos pomidorowy, ser, szynka, boczek, papryka, kabanos, kukurydza, cebula, oregano",
         price: "37 zł / 54 zł",
       },
-      { name: "Spinaci", details: "sos pomidorowy, ser, szpinak, ser feta, oregano", price: "34 zł / 46 zł" },
+      { name: "Spinaci", details: "sos pomidorowy, ser, szpinak, ser feta, oregano", price: "34 zł / 46 zł", badge: "Wege" },
       { name: "Hawaii", details: "sos pomidorowy, ser, szynka, ananas, oregano", price: "34 zł / 45 zł" },
       {
         name: "Vegetariana Libera",
         details: "sos pomidorowy, ser, 5 składników do wyboru",
         price: "33 zł / 46 zł",
+        badge: "Wege",
       },
       {
         name: "Toscana",
@@ -123,6 +126,7 @@ export const menuCategories: MenuCategory[] = [
         name: "Quattro Formaggi Classica",
         details: "sos pomidorowy, ser, mozzarella, feta, ser pleśniowy, parmezan",
         price: "33 zł / 48 zł",
+        badge: "Wege",
       },
       {
         name: "Calzone Forno",
@@ -133,6 +137,7 @@ export const menuCategories: MenuCategory[] = [
         name: "Greca",
         details: "sos pomidorowy, ser, oliwki, papryka, feta, bazylia, pomidor, oliwa, oregano",
         price: "34 zł / 45 zł",
+        badge: "Wege",
       },
       {
         name: "Diavola Torra",
@@ -143,6 +148,7 @@ export const menuCategories: MenuCategory[] = [
         name: "Parma Italiano",
         details: "sos pomidorowy, ser, szynka parmeńska, parmezan, rukola, pomidorki koktajlowe, mozzarella w plastrach, oregano",
         price: "38 zł / 55 zł",
+        badge: "Polecamy",
       },
     ],
   },
@@ -153,10 +159,10 @@ export const menuCategories: MenuCategory[] = [
       "Chrupiące ciasto w dużym formacie do dzielenia lub na kawałki do szybkiego lunchu.",
     badge: "60 × 60 cm / kawałki 15 × 15 cm",
     items: [
-      { name: "Margherita Sicilia", price: "7 zł" },
-      { name: "Caprese Sicilia", price: "10 zł" },
+      { name: "Margherita Sicilia", price: "7 zł", badge: "Wege" },
+      { name: "Caprese Sicilia", price: "10 zł", badge: "Wege" },
       { name: "Salame Sicilia", price: "10 zł" },
-      { name: "Capricciosa Sicilia", price: "12 zł" },
+      { name: "Capricciosa Sicilia", price: "12 zł", badge: "Polecamy" },
       { name: "Prosciutto Parma Sicilia", price: "14 zł" },
     ],
   },
@@ -174,6 +180,7 @@ export const menuCategories: MenuCategory[] = [
         name: "Greca",
         details: "mix sałat, oliwki czarne, pomidorki koktajlowe, ser feta, pizza brot",
         price: "39 zł",
+        badge: "Wege",
       },
       {
         name: "Tonno Misto",
@@ -201,6 +208,7 @@ export const menuCategories: MenuCategory[] = [
         name: "Caprese Vega",
         details: "pesto, burrata, sałata, parmezan, pomidorki koktajlowe",
         price: "39 zł",
+        badge: "Wege",
       },
       {
         name: "Philadelphia",
@@ -222,25 +230,27 @@ export const menuCategories: MenuCategory[] = [
     ],
   },
   {
-    id: "napoje-caffe",
-    title: "Napoje / Caffè",
-    description: "Kawa, herbata i zimne napoje do pizzy, lunchu, cateringu i spotkań w TORRA.",
+    id: "kawa",
+    title: "Kawa",
+    description: "Caffè do pizzy, deseru albo spokojnego spotkania w TORRA.",
+    items: [
+      { name: "Kawa czarna americano", price: "8 zł" },
+      { name: "Kawa Latte", price: "9 zł", badge: "Polecamy" },
+      { name: "Espresso", price: "8 zł" },
+      { name: "Espresso doppio", price: "10 zł" },
+      { name: "Cappuccino", price: "9 zł" },
+    ],
+  },
+  {
+    id: "napoje",
+    title: "Napoje",
+    description: "Herbaty, zimne napoje, woda i lemoniady do lunchu, pizzy i spotkań.",
     sections: [
-      {
-        title: "Caffè",
-        items: [
-          { name: "Kawa czarna americano", price: "8 zł" },
-          { name: "Kawa Latte", price: "9 zł" },
-          { name: "Espresso", price: "8 zł" },
-          { name: "Espresso doppio", price: "10 zł" },
-          { name: "Cappuccino", price: "9 zł" },
-        ],
-      },
       {
         title: "Herbaty",
         items: [
           { name: "Herbata do wyboru", details: "czarna, owocowa, zielona", price: "12 zł" },
-          { name: "Herbata szefa kuchni", price: "18 zł" },
+          { name: "Herbata szefa kuchni", price: "18 zł", badge: "Polecamy" },
         ],
       },
       {
