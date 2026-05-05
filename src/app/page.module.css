@@ -152,20 +152,61 @@
 .whySection,
 .hitsSection,
 .menuSection,
-.coffeeSection,
+.promoSection,
 .gallerySection,
 .reasonsSection,
-.reviewsSection,
+.eventSection,
 .contactSection,
+.reviewBannerSection,
 .footer {
   padding-inline: clamp(16px, 5vw, 72px);
 }
 
+.promoSection,
+.menuSection,
+.reasonsSection,
+.eventSection,
+.contactSection,
+.reviewBannerSection {
+  position: relative;
+}
+
+.promoSection::before,
+.menuSection::before,
+.reasonsSection::before,
+.eventSection::before,
+.contactSection::before,
+.reviewBannerSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: clamp(16px, 5vw, 72px);
+  right: clamp(16px, 5vw, 72px);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(31, 45, 31, 0.12),
+    rgba(179, 107, 79, 0.16),
+    transparent
+  );
+}
+
+.promoSection,
+.eventSection {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.16));
+}
+
+.menuSection,
+.contactSection {
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.48), rgba(255, 255, 255, 0.2));
+}
+
 .hero {
   --hero-top-space: clamp(28px, 4vw, 56px);
-  --hero-bottom-space: clamp(42px, 6vw, 84px);
+  --hero-bottom-space: clamp(212px, 24vh, 268px);
   position: relative;
-  height: calc(100dvh + 24px);
+  height: 100dvh;
   min-height: 100svh;
   display: grid;
   align-items: center;
@@ -183,7 +224,7 @@
   grid-template-columns: minmax(0, 1fr);
   gap: 0;
   align-items: center;
-  min-height: calc(100dvh + 24px - var(--hero-top-space) - var(--hero-bottom-space));
+  min-height: calc(100dvh - var(--hero-top-space) - var(--hero-bottom-space));
   width: 100%;
 }
 
@@ -194,7 +235,24 @@
   align-content: center;
   gap: 18px;
   min-height: 100%;
-  max-width: min(620px, 100%);
+  max-width: min(760px, 100%);
+}
+
+.heroLogo {
+  width: clamp(184px, 20vw, 300px);
+  height: auto;
+  display: block;
+  justify-self: start;
+  margin-bottom: 6px;
+  filter: brightness(0) invert(1) drop-shadow(0 12px 28px rgba(0, 0, 0, 0.22));
+  opacity: 0.96;
+}
+
+.heroIntro {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
 }
 
 .heroLabel,
@@ -217,8 +275,8 @@
 }
 
 .heroTitle {
-  font-size: clamp(50px, 8vw, 110px);
-  max-width: 8ch;
+  font-size: clamp(54px, 8vw, 112px);
+  max-width: 10ch;
   text-shadow: 0 8px 36px rgba(0, 0, 0, 0.34);
 }
 
@@ -227,30 +285,53 @@
 }
 
 .sectionTitle {
-  font-size: clamp(42px, 5.2vw, 68px);
-  max-width: 11ch;
+  font-size: clamp(42px, 5vw, 68px);
+  max-width: 14ch;
 }
 
 .heroText,
 .sectionText {
   margin: 0;
-  max-width: 62ch;
+  max-width: 68ch;
   color: var(--muted);
-  line-height: 1.78;
-  font-size: 17px;
+  line-height: 1.75;
+  font-size: clamp(17px, 1.35vw, 19px);
 }
 
 .hero .heroText {
-  max-width: 34ch;
+  max-width: 42ch;
   color: rgba(255, 255, 255, 0.9);
   text-shadow: 0 4px 22px rgba(0, 0, 0, 0.32);
-  font-size: 19px;
-  line-height: 1.6;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.58;
 }
 
 .hero .heroLabel {
   color: #f3b08d;
   text-shadow: 0 3px 18px rgba(0, 0, 0, 0.34);
+}
+
+.heroFlag {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 76px;
+  height: 24px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.heroFlagStripeGreen {
+  background: #1f8a4c;
+}
+
+.heroFlagStripeWhite {
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.heroFlagStripeRed {
+  background: #c83b34;
 }
 
 .heroActions {
@@ -280,7 +361,7 @@
 
 .heroMediaFrame {
   position: absolute;
-  inset: -72px calc(-1 * clamp(16px, 5vw, 72px)) 0;
+  inset: -72px calc(-1 * clamp(16px, 5vw, 72px)) -28px;
   min-height: 100%;
   border-radius: 0;
   overflow: hidden;
@@ -294,46 +375,37 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(1.34) saturate(1.08);
 }
 
 .heroMediaOverlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(10, 7, 5, 0.78) 0%, rgba(10, 7, 5, 0.54) 42%, rgba(10, 7, 5, 0.24) 100%),
-    linear-gradient(180deg, rgba(10, 7, 5, 0.1), rgba(10, 7, 5, 0.62)),
-    radial-gradient(circle at 24% 22%, rgba(255, 245, 235, 0.18), transparent 28%);
-}
-
-.heroSeal {
-  position: absolute;
-  top: clamp(22px, 4vw, 44px);
-  right: clamp(16px, 5vw, 72px);
-  width: clamp(104px, 10vw, 148px);
-  border-radius: 50%;
-  overflow: hidden;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 12px 26px rgba(16, 12, 8, 0.18);
-  background: rgba(255, 255, 255, 0.82);
-}
-
-.heroSealImage {
-  width: 100%;
-  height: auto;
-  display: block;
+    linear-gradient(90deg, rgba(10, 7, 5, 0.42) 0%, rgba(10, 7, 5, 0.24) 42%, rgba(10, 7, 5, 0.08) 100%),
+    linear-gradient(180deg, rgba(10, 7, 5, 0.01), rgba(10, 7, 5, 0.24)),
+    radial-gradient(circle at 24% 22%, rgba(255, 245, 235, 0.28), transparent 32%);
 }
 
 .quickActionsSection {
-  margin-top: -24px;
+  margin-top: clamp(-112px, -8vw, -76px);
   padding-top: 0;
   position: relative;
   z-index: 3;
+}
+
+.quickActionsWrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  gap: 14px;
+  align-items: start;
 }
 
 .quickActionsTrack {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
+  width: 100%;
 }
 
 .quickActionCard {
@@ -345,14 +417,14 @@
   column-gap: 14px;
   row-gap: 4px;
   align-items: center;
-  padding: 18px 20px;
+  padding: 16px 18px;
   border-radius: 22px;
   border: 1px solid rgba(67, 51, 40, 0.1);
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.84);
   color: var(--text);
   text-decoration: none;
-  box-shadow: 0 10px 24px rgba(16, 12, 8, 0.04);
-  backdrop-filter: blur(8px);
+  box-shadow: 0 16px 34px rgba(16, 12, 8, 0.16);
+  backdrop-filter: blur(14px);
 }
 
 .quickActionIcon {
@@ -436,10 +508,10 @@
 .whySection,
 .hitsSection,
 .menuSection,
-.coffeeSection,
+.promoSection,
 .gallerySection,
 .reasonsSection,
-.reviewsSection,
+.eventSection,
 .contactSection,
 .footer {
   padding-top: clamp(72px, 10vw, 112px);
@@ -447,20 +519,101 @@
 
 .whyGrid,
 .reasonsGrid,
-.reviewsGrid,
-.coffeeGrid {
+.eventGrid,
+.promoGrid {
   display: grid;
   gap: 18px;
 }
 
 .whyGrid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.musicShowcase {
+  display: grid;
+  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.musicStoryCard,
+.musicEmbedCard {
+  border: 1px solid rgba(243, 213, 141, 0.14);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at top right, rgba(200, 59, 52, 0.08), transparent 24%),
+    radial-gradient(circle at bottom left, rgba(31, 138, 76, 0.08), transparent 22%),
+    linear-gradient(180deg, rgba(19, 14, 11, 0.96), rgba(11, 9, 8, 0.98));
+  box-shadow: 0 24px 60px rgba(10, 8, 6, 0.3);
+}
+
+.musicStoryCard {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  padding: 28px;
+  overflow: hidden;
+}
+
+.musicStoryCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(243, 213, 141, 0.05), transparent 40%),
+    radial-gradient(circle at top right, rgba(200, 59, 52, 0.12), transparent 26%),
+    radial-gradient(circle at bottom left, rgba(31, 138, 76, 0.12), transparent 24%);
+  pointer-events: none;
+}
+
+.musicStoryCard > * {
+  position: relative;
+  z-index: 1;
+}
+
+.musicStoryBadge {
+  margin: 0;
+  color: #f3a37f;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.musicStoryTitle {
+  margin: 0;
+  color: #fff7ed;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 500;
+  line-height: 0.98;
+}
+
+.musicStoryText {
+  margin: 0;
+  color: rgba(255, 247, 237, 0.82);
+  font-size: 17px;
+  line-height: 1.72;
+}
+
+.musicEmbedCard {
+  overflow: hidden;
+  padding: 12px;
+}
+
+.musicEmbed {
+  width: 100%;
+  min-height: 420px;
+  border: 0;
+  border-radius: 22px;
+  display: block;
 }
 
 .featureCard,
 .reasonCard,
-.reviewCard,
-.coffeeCard,
+.eventCard,
+.promoCard,
 .menuItemCard,
 .contactCard {
   border: 1px solid var(--line);
@@ -471,8 +624,61 @@
 }
 
 .featureCard {
+  position: relative;
+  overflow: hidden;
   padding: 26px;
   backdrop-filter: blur(6px);
+}
+
+.whyGrid .featureCard:nth-child(1) {
+  border-color: rgba(31, 138, 76, 0.38);
+  background:
+    linear-gradient(180deg, rgba(35, 124, 73, 0.96), rgba(27, 98, 57, 0.98));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 22px 52px rgba(16, 12, 8, 0.08);
+}
+
+.whyGrid .featureCard:nth-child(2) {
+  border-color: rgba(31, 45, 31, 0.14);
+  background:
+    linear-gradient(180deg, rgba(255, 252, 248, 1), rgba(248, 243, 235, 0.98));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.66),
+    0 22px 52px rgba(16, 12, 8, 0.06);
+}
+
+.whyGrid .featureCard:nth-child(3) {
+  border-color: rgba(180, 63, 56, 0.34);
+  background:
+    linear-gradient(180deg, rgba(187, 74, 66, 0.96), rgba(163, 58, 51, 0.98));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 22px 52px rgba(16, 12, 8, 0.08);
+}
+
+.whyGrid .featureCard:nth-child(1) .featureIcon,
+.whyGrid .featureCard:nth-child(1) h3 {
+  color: #fff7ed;
+}
+
+.whyGrid .featureCard:nth-child(2) .featureIcon,
+.whyGrid .featureCard:nth-child(2) h3 {
+  color: #171512;
+}
+
+.whyGrid .featureCard:nth-child(3) .featureIcon,
+.whyGrid .featureCard:nth-child(3) h3 {
+  color: #fff7ed;
+}
+
+.whyGrid .featureCard:nth-child(1) p:last-child,
+.whyGrid .featureCard:nth-child(3) p:last-child {
+  color: rgba(255, 247, 237, 0.92);
+}
+
+.whyGrid .featureCard:nth-child(2) p:last-child {
+  color: #383129;
 }
 
 .featureIcon {
@@ -487,10 +693,10 @@
 .featureCard h3,
 .hitBody h3,
 .menuItemCard h3,
-.coffeeCard h3,
+.promoCard h3,
+.eventCard h3,
 .reasonCard h3,
 .contactCard h3,
-.reviewCard blockquote,
 .menuPanelTitleBlock h3,
 .menuAccordionCard h3 {
   font-family: var(--font-display), Georgia, serif;
@@ -508,10 +714,9 @@
 .featureCard p:last-child,
 .reasonCard p,
 .contactCard p,
-.reviewCard span,
-.reviewCard blockquote,
+.promoCard p,
+.eventCard p,
 .menuItemCard p,
-.coffeeCard p,
 .hitBody p,
 .menuAccordionCard p {
   color: var(--muted);
@@ -581,7 +786,7 @@
 
 .hitBody h3,
 .menuItemCard h3,
-.coffeeCard h3 {
+.promoCard h3 {
   margin: 0;
   font-size: 34px;
   font-weight: 500;
@@ -590,7 +795,7 @@
 
 .hitBody strong,
 .menuItemCard strong,
-.coffeeCard strong,
+.promoCard strong,
 .menuAccordionCard strong {
   color: var(--olive);
   font-size: 14px;
@@ -637,6 +842,24 @@
   padding: 24px;
 }
 
+.menuPlaceholder {
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+  padding: clamp(12px, 1.8vw, 18px);
+  border-radius: 32px;
+  border: 1px dashed rgba(31, 45, 31, 0.18);
+  background: rgba(255, 255, 255, 0.54);
+}
+
+.menuPlaceholderImage {
+  width: min(100%, 940px);
+  height: auto;
+  display: block;
+  border-radius: 24px;
+  box-shadow: 0 18px 44px rgba(16, 12, 8, 0.08);
+}
+
 .menuPanelHeader {
   display: flex;
   align-items: end;
@@ -650,6 +873,19 @@
 .menuPanelTitleBlock {
   display: grid;
   gap: 6px;
+}
+
+.menuCategoryBadge {
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 45, 31, 0.12);
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--olive);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .menuPanelLabel {
@@ -680,11 +916,54 @@
   gap: 16px;
 }
 
+.menuPanelContent {
+  display: grid;
+  gap: 22px;
+}
+
+.menuSubsection,
+.menuSubsectionCompact {
+  display: grid;
+  gap: 14px;
+}
+
+.menuSubsectionHeader {
+  display: grid;
+  gap: 6px;
+}
+
+.menuSubsectionHeader h4 {
+  margin: 0;
+  color: var(--olive);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.menuSubsectionHeader p,
+.menuAccordionDescription {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
 .menuItemCard {
   position: relative;
   display: grid;
   gap: 10px;
   padding: 24px;
+}
+
+.menuItemTopRow {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.menuItemTopRow strong {
+  text-align: right;
 }
 
 .menuItemCard::before {
@@ -726,13 +1005,19 @@
 }
 
 .menuAccordionPanelOpen {
-  max-height: 1200px;
+  max-height: 4000px;
+}
+
+.menuAccordionContent {
+  display: grid;
+  gap: 14px;
+  padding: 0 20px 18px;
 }
 
 .menuAccordionCard {
   display: grid;
   gap: 8px;
-  padding: 0 20px 18px;
+  padding: 0;
 }
 
 .menuAccordionCard h3 {
@@ -743,6 +1028,11 @@
 
 .menuAccordionCard p {
   margin: 0;
+}
+
+.menuSubsectionCompactList {
+  display: grid;
+  gap: 18px;
 }
 
 .pdfRow {
@@ -758,21 +1048,227 @@
   font-size: 14px;
 }
 
-.coffeeGrid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.promoSlider {
+  display: grid;
+  gap: 18px;
+  width: min(100%, 1240px);
+  margin-inline: auto;
 }
 
-.coffeeCard {
+.promoSliderViewport {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  border-radius: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.84), transparent 32%),
+    linear-gradient(145deg, rgba(255, 252, 248, 0.96), rgba(244, 234, 222, 0.82));
+  box-shadow: 0 34px 90px rgba(16, 12, 8, 0.1);
+  padding: clamp(12px, 1.8vw, 20px);
+  isolation: isolate;
+}
+
+.promoSliderViewport::before,
+.promoSliderViewport::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.promoSliderViewport::before {
+  inset: -14% auto auto -10%;
+  width: 42%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.58), transparent 68%);
+  filter: blur(12px);
+  opacity: 0.72;
+  z-index: 0;
+}
+
+.promoSliderViewport::after {
+  inset: 8px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  z-index: 0;
+}
+
+.promoSlide {
+  position: absolute;
+  inset: clamp(12px, 1.8vw, 20px);
+  margin: 0;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  background: linear-gradient(180deg, rgba(255, 253, 250, 0.98), rgba(246, 238, 228, 0.94));
+  box-shadow: 0 22px 54px rgba(16, 12, 8, 0.1);
+  opacity: 0;
+  transform: translate3d(0, 24px, 0) scale(0.97) rotateX(4deg);
+  filter: blur(10px) saturate(0.92);
+  pointer-events: none;
+  transition:
+    opacity 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 560ms ease,
+    box-shadow 280ms ease;
+  transform-origin: center center;
+}
+
+.promoSlide::before,
+.promoSlide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.promoSlide::before {
+  background: linear-gradient(
+    112deg,
+    rgba(255, 255, 255, 0.24) 0%,
+    rgba(255, 255, 255, 0.08) 18%,
+    transparent 36%,
+    transparent 64%,
+    rgba(255, 255, 255, 0.12) 100%
+  );
+  opacity: 0.48;
+  transition: opacity 320ms ease;
+}
+
+.promoSlide::after {
+  background: linear-gradient(180deg, transparent 66%, rgba(10, 7, 5, 0.1) 100%);
+}
+
+.promoSlideActive {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1) rotateX(0);
+  filter: blur(0) saturate(1);
+  pointer-events: auto;
+}
+
+.promoSliderViewport:hover .promoSlideActive {
+  transform: translate3d(0, -4px, 0) scale(1.012);
+  box-shadow: 0 34px 84px rgba(16, 12, 8, 0.18);
+}
+
+.promoSliderViewport:hover .promoSlideActive::before {
+  opacity: 0.8;
+}
+
+.promoVisualImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  transform: scale(1);
+  transform-origin: center center;
+  filter: saturate(1) contrast(1.01);
+  transition:
+    transform 980ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 560ms ease;
+}
+
+.promoSliderViewport:hover .promoSlideActive .promoVisualImage {
+  transform: scale(1.026);
+  filter: saturate(1.06) contrast(1.03);
+}
+
+.promoSliderFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.promoSliderControls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 45, 31, 0.08);
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 18px 36px rgba(16, 12, 8, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.promoSliderButton {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 45, 31, 0.14);
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--olive);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(16, 12, 8, 0.08);
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.promoSliderButton:hover {
+  transform: translateY(-2px) scale(1.04);
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 18px 34px rgba(16, 12, 8, 0.12);
+}
+
+.promoSliderDots {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.promoSliderDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 0;
+  padding: 0;
+  background: rgba(31, 45, 31, 0.18);
+  cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.34);
+  transition: width 180ms ease, background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.promoSliderDot:hover {
+  transform: scale(1.08);
+  box-shadow: inset 0 0 0 1px rgba(31, 45, 31, 0.12);
+}
+
+.promoSliderDotActive {
+  width: 38px;
+  background: linear-gradient(90deg, #1f8a4c, #f5e7d5 50%, #c83b34);
+  box-shadow: 0 8px 20px rgba(16, 12, 8, 0.12);
+}
+
+.promoCard,
+.eventCard {
   position: relative;
   display: grid;
-  gap: 10px;
-  padding: 22px;
+  gap: 12px;
+  padding: 24px;
 }
 
-.coffeeAccent {
-  width: 42px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--olive), var(--terracotta));
+.promoEyebrow {
+  margin: 0;
+  color: var(--terracotta);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.cardActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.eventGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .galleryLayout {
@@ -829,7 +1325,7 @@
 }
 
 .reasonCard,
-.reviewCard {
+.eventCard {
   padding: 24px;
 }
 
@@ -855,31 +1351,11 @@
   text-transform: uppercase;
 }
 
-.reviewsGrid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.reviewStars {
-  margin: 0 0 12px;
-  color: var(--terracotta);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-.reviewCardTitle {
-  margin: 0 0 10px;
-  font-family: var(--font-display), Georgia, serif;
-  font-size: 30px;
-  font-weight: 500;
-  line-height: 0.98;
-}
-
-.reviewCard p:last-child {
+.eventCard h3 {
   margin: 0;
-  color: var(--muted);
-  line-height: 1.7;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.1;
 }
 
 .contactGrid {
@@ -919,23 +1395,6 @@
   gap: 12px;
 }
 
-.socialsRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.socialChip {
-  padding: 8px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(31, 45, 31, 0.12);
-  background: rgba(255, 255, 255, 0.76);
-  color: var(--olive);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .mapCard {
   min-height: 480px;
   overflow: hidden;
@@ -949,6 +1408,28 @@
   width: 100%;
   min-height: 480px;
   border: 0;
+}
+
+.reviewBannerSection {
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.48), rgba(255, 255, 255, 0.28));
+}
+
+.reviewBannerCard {
+  width: min(100%, 1220px);
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow);
+  padding: clamp(10px, 1.4vw, 16px);
+}
+
+.reviewBannerImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 22px;
 }
 
 .footer {
@@ -998,11 +1479,11 @@
 }
 
 .musicPlayer {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 70;
-  width: min(360px, calc(100vw - 32px));
+  position: relative;
+  right: auto;
+  bottom: auto;
+  z-index: 3;
+  width: 100%;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 24px;
@@ -1010,6 +1491,10 @@
   color: #fff;
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
   backdrop-filter: blur(18px);
+}
+
+.quickActionPlayer {
+  align-self: stretch;
 }
 
 .musicFlag {
@@ -1281,8 +1766,8 @@
 
 .featureCard:hover,
 .reasonCard:hover,
-.reviewCard:hover,
-.coffeeCard:hover,
+.eventCard:hover,
+.promoCard:hover,
 .menuItemCard:hover,
 .contactCard:hover,
 .hitCard:hover,
@@ -1306,9 +1791,12 @@
   }
 
   .hitsGrid,
-  .coffeeGrid,
-  .reviewsGrid {
+  .eventGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .promoSlider {
+    width: min(100%, 1040px);
   }
 
   .whyGrid,
@@ -1321,11 +1809,28 @@
     flex-direction: column;
     align-items: start;
   }
+
+  .musicShowcase {
+    grid-template-columns: 1fr;
+  }
+
+  .quickActionsWrap {
+    grid-template-columns: 1fr;
+  }
+
+  .quickActionsTrack {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .musicPlayer {
+    width: 100%;
+  }
 }
 
 @media (max-width: 900px) {
   .menuTabs,
-  .menuPanel {
+  .menuPanel,
+  .menuPlaceholder {
     display: none;
   }
 
@@ -1337,10 +1842,10 @@
 
   .heroGrid,
   .hitsGrid,
-  .coffeeGrid,
+  .promoGrid,
   .whyGrid,
   .reasonsGrid,
-  .reviewsGrid,
+  .eventGrid,
   .menuCategoryGrid,
   .contactGrid {
     grid-template-columns: 1fr;
@@ -1348,6 +1853,10 @@
 
   .quickActionsTrack {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quickActionsSection {
+    margin-top: -68px;
   }
 
   .quickActionCard {
@@ -1359,9 +1868,7 @@
   }
 
   .musicPlayer {
-    right: 12px;
-    bottom: 90px;
-    width: min(300px, calc(100vw - 44px));
+    width: 100%;
   }
 
   .musicPlayerOpen .musicPanel {
@@ -1378,24 +1885,25 @@
 
   .hero {
     --hero-top-space: 28px;
-    --hero-bottom-space: 122px;
+    --hero-bottom-space: 228px;
     height: 100dvh;
     min-height: 100svh;
     align-items: end;
   }
 
   .quickActionsSection {
-    margin-top: 0;
+    margin-top: -36px;
   }
 
   .heroTitle {
-    max-width: 6.8ch;
-    font-size: clamp(34px, 12.8vw, 52px);
-    line-height: 0.9;
+    max-width: 8.4ch;
+    font-size: clamp(38px, 11.8vw, 58px);
+    line-height: 0.92;
   }
 
   .heroCopy {
     gap: 14px;
+    max-width: 100%;
   }
 
   .heroLabel {
@@ -1405,8 +1913,9 @@
 
   .heroText,
   .sectionText {
-    font-size: 15px;
-    line-height: 1.65;
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.68;
   }
 
   .heroMediaFrame {
@@ -1433,7 +1942,7 @@
   }
 
   .sectionTitle,
-  .reviewCard blockquote {
+  .eventCard h3 {
     font-size: clamp(32px, 9vw, 42px);
   }
 
@@ -1443,8 +1952,21 @@
   .contactCard h3,
   .hitBody h3,
   .menuItemCard h3,
-  .coffeeCard h3 {
+  .promoCard h3 {
     font-size: 24px;
+  }
+
+  .musicStoryCard {
+    padding: 22px;
+  }
+
+  .musicStoryText {
+    font-size: 16px;
+    line-height: 1.68;
+  }
+
+  .musicEmbed {
+    min-height: 280px;
   }
 
   .galleryAside {
@@ -1461,13 +1983,26 @@
     min-height: 320px;
   }
 
+  .promoVisualImage {
+    object-position: center;
+  }
+
+  .promoSliderFooter {
+    justify-content: center;
+  }
+
+  .promoSliderButton {
+    width: 42px;
+    height: 42px;
+    font-size: 24px;
+  }
+
   .gallerySmall .galleryImage {
     min-height: 156px;
   }
 
   .musicPlayer {
-    bottom: 90px;
-    width: min(272px, calc(100vw - 44px));
+    width: 100%;
     border-radius: 20px;
   }
 
@@ -1512,10 +2047,23 @@
     font-size: 11px;
   }
 
+  .menuItemTopRow {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .menuItemTopRow strong {
+    text-align: left;
+  }
+
+  .cardActions {
+    display: grid;
+  }
+
   .featureCard,
   .reasonCard,
-  .reviewCard,
-  .coffeeCard,
+  .eventCard,
+  .promoCard,
   .menuItemCard,
   .contactCard {
     border-radius: 24px;
@@ -1523,8 +2071,8 @@
 
   .featureCard,
   .reasonCard,
-  .reviewCard,
-  .coffeeCard,
+  .eventCard,
+  .promoCard,
   .menuItemCard,
   .contactCard,
   .hitBody {
@@ -1580,7 +2128,7 @@
   }
 
   .sectionTitle,
-  .reviewCardTitle {
+  .eventCard h3 {
     max-width: 9ch;
   }
 
@@ -1590,7 +2138,7 @@
 
   .contactButtons {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .contactButtons a {
@@ -1605,8 +2153,8 @@
 @media (prefers-reduced-motion: reduce) {
   .featureCard,
   .reasonCard,
-  .reviewCard,
-  .coffeeCard,
+  .eventCard,
+  .promoCard,
   .menuItemCard,
   .contactCard,
   .hitCard,
@@ -1614,6 +2162,10 @@
   .gallerySmall,
   .hitImage,
   .galleryImage,
+  .promoSlide,
+  .promoVisualImage,
+  .promoSliderButton,
+  .promoSliderDot,
   .headerCallButton,
   .primaryButton,
   .secondaryButton,
