@@ -29,16 +29,17 @@ const address = fullAddress;
 const heroVideoSrc = siteConfig.heroVideo;
 const googleMapsUrl = siteConfig.google.googleMapsUrl;
 const googleReviewUrl = siteConfig.google.googleReviewUrl;
+const heroHoursDisplay = siteConfig.openingHours.value.map((item) => item.label);
 const contactNotes = [
   siteConfig.address.venue,
   ...siteConfig.openingHours.value.map((item) => item.label),
 ];
 
 const quickActions = [
-  { icon: "🍕", label: "Menu", note: "Pełna karta TORRA", href: "#full-menu" },
-  { icon: "☎", label: "Zadzwoń", note: "Zamówienia telefoniczne", href: phoneHref },
-  { icon: "📍", label: "Trasa", note: "Google Maps", href: mapLink },
-  { icon: "🎉", label: "Eventy", note: "Catering i rezerwacje", href: "#eventy" },
+  { icon: "☎", label: phoneDisplay, note: "Zadzwoń i zamów", href: phoneHref },
+  { icon: "🍕", label: "Menu", note: "Pizza 31,5 / 45 cm", href: "#full-menu" },
+  { icon: "📍", label: "Trasa", note: "Feniks Hala Targowa", href: mapLink },
+  { icon: "⏱", label: "Godziny", note: "pn-pt 11-21 • sob-nd 12-24", href: "#kontakt" },
 ];
 
 const brandPillars = [
@@ -354,28 +355,40 @@ export default function Page() {
               </span>
             </div>
             <h1 className={styles.heroTitle}>
-              <span>TORRA</span>
-              <span>włoski smak</span>
+              <span>Włoska pizza</span>
               <span>w Ostrołęce</span>
             </h1>
             <p className={styles.heroText}>
-              Chrupiące ciasto według włoskiej receptury, pizza sycylijska,
-              caffè i włoska musica w samym sercu Ostrołęki.
+              Chrupiące ciasto według włoskiej receptury, caffè i klimat TORRA
+              w Feniks Hala Targowa. Zamów telefonicznie albo wpadnij po włoski
+              smak w samym sercu Ostrołęki.
             </p>
 
+            <a href={phoneHref} className={styles.heroPhoneLink} aria-label={`Zadzwoń do TORRA: ${phoneDisplay}`}>
+              <span>Zadzwoń i zamów</span>
+              <strong>{phoneDisplay}</strong>
+            </a>
+
+            <div className={styles.heroInfoStrip} aria-label="Lokalizacja i godziny otwarcia TORRA">
+              <span>Ostrołęka • Feniks Hala Targowa</span>
+              {heroHoursDisplay.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+
             <div className={styles.heroActions}>
-              <a href="#full-menu" className={styles.primaryButton} aria-label="Zobacz menu TORRA">
-                Zobacz menu
-              </a>
-              <a href={phoneHref} className={styles.secondaryButton} aria-label="Zadzwoń do TORRA">
+              <a href={phoneHref} className={styles.primaryButton} aria-label="Zadzwoń do TORRA i złóż zamówienie">
                 Zadzwoń teraz
+              </a>
+              <a href="#full-menu" className={styles.secondaryButton} aria-label="Zobacz menu TORRA">
+                Zobacz menu
               </a>
               <a
                 href={mapLink}
                 className={styles.ghostButton}
                 aria-label="Otwórz dojazd do TORRA w Google Maps"
               >
-                Jak dojechać
+                Wyznacz trasę
               </a>
             </div>
           </div>

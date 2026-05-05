@@ -225,6 +225,7 @@
   gap: 0;
   align-items: center;
   min-height: calc(100dvh - var(--hero-top-space) - var(--hero-bottom-space));
+  min-width: 0;
   width: 100%;
 }
 
@@ -235,7 +236,7 @@
   align-content: center;
   gap: 18px;
   min-height: 100%;
-  max-width: min(760px, 100%);
+  max-width: min(760px, calc(100vw - 2 * clamp(16px, 5vw, 72px)));
 }
 
 .heroLogo {
@@ -304,6 +305,62 @@
   text-shadow: 0 4px 22px rgba(0, 0, 0, 0.32);
   font-size: clamp(18px, 1.6vw, 22px);
   line-height: 1.58;
+}
+
+.heroPhoneLink {
+  width: fit-content;
+  min-height: 64px;
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 252, 248, 0.96), rgba(243, 213, 141, 0.9));
+  color: #17110d;
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.28);
+  text-decoration: none;
+}
+
+.heroPhoneLink span {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.heroPhoneLink strong {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 600;
+  line-height: 0.9;
+}
+
+.heroInfoStrip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 62ch;
+}
+
+.heroInfoStrip span {
+  display: inline-flex;
+  max-width: 100%;
+  min-height: 34px;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(18, 13, 10, 0.28);
+  color: rgba(255, 255, 255, 0.88);
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: normal;
+  backdrop-filter: blur(10px);
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.28);
 }
 
 .hero .heroLabel {
@@ -1909,7 +1966,14 @@
 
   .heroCopy {
     gap: 14px;
-    max-width: 100%;
+    max-width: calc(100vw - 32px);
+    min-width: 0;
+    width: calc(100vw - 32px);
+  }
+
+  .heroLogo {
+    width: clamp(132px, 34vw, 184px);
+    margin-bottom: 0;
   }
 
   .heroLabel {
@@ -1924,6 +1988,32 @@
     line-height: 1.68;
   }
 
+  .heroPhoneLink {
+    width: 100%;
+    max-width: 100%;
+    min-height: 58px;
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 12px 16px;
+    border-radius: 24px;
+  }
+
+  .heroPhoneLink strong {
+    font-size: clamp(28px, 8vw, 34px);
+  }
+
+  .heroInfoStrip {
+    gap: 6px;
+    max-width: 100%;
+  }
+
+  .heroInfoStrip span {
+    min-height: 30px;
+    padding: 6px 10px;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+  }
+
   .heroMediaFrame {
     min-height: 100%;
   }
@@ -1935,12 +2025,19 @@
   }
 
   .heroActions {
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .heroActions .primaryButton {
+    grid-column: 1 / -1;
   }
 
   .heroActions .primaryButton,
   .heroActions .secondaryButton,
   .heroActions .ghostButton {
+    width: 100%;
     min-height: 44px;
     padding-inline: 16px;
     font-size: 11px;
@@ -2105,6 +2202,14 @@
     --hero-bottom-space: 118px;
   }
 
+  .heroCopy {
+    gap: 10px;
+  }
+
+  .heroIntro {
+    gap: 10px;
+  }
+
   .quickActionsTrack {
     gap: 10px;
   }
@@ -2139,7 +2244,13 @@
   }
 
   .heroText {
-    max-width: 28ch;
+    max-width: 31ch;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .heroInfoStrip span:first-child {
+    flex-basis: 100%;
   }
 
   .contactButtons {
