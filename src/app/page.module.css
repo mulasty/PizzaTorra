@@ -1,0 +1,1628 @@
+.page {
+  --bg: #f7efe6;
+  --surface: rgba(255, 255, 255, 0.84);
+  --surface-strong: #fffdf9;
+  --text: #171512;
+  --muted: #66574b;
+  --line: rgba(39, 32, 27, 0.11);
+  --olive: #1f2d1f;
+  --terracotta: #b36b4f;
+  --sand: #efe2d4;
+  --shadow: 0 30px 80px rgba(16, 12, 8, 0.1);
+
+  position: relative;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(224, 177, 142, 0.2), transparent 28%),
+    radial-gradient(circle at 88% 10%, rgba(31, 45, 31, 0.08), transparent 24%),
+    linear-gradient(180deg, #fffdf9 0%, var(--bg) 100%);
+  font-family: var(--font-body), "Helvetica Neue", Arial, sans-serif;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 14px clamp(16px, 3vw, 44px);
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+.footerLinks a,
+.footerLinks span {
+  color: inherit;
+  text-decoration: none;
+}
+
+.headerActions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.headerCallButton,
+.primaryButton,
+.secondaryButton,
+.ghostButton,
+.secondaryButtonLight,
+.ghostButtonLight,
+.pdfButton,
+.sectionAction a {
+  min-height: 46px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.headerCallButton,
+.primaryButton {
+  background: var(--olive);
+  color: #fff;
+  box-shadow: 0 16px 30px rgba(31, 45, 31, 0.18);
+}
+
+.secondaryButton,
+.secondaryButtonLight {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(31, 45, 31, 0.12);
+  color: var(--olive);
+}
+
+.ghostButton,
+.ghostButtonLight,
+.pdfButton {
+  background: transparent;
+  border-color: rgba(31, 45, 31, 0.16);
+  color: var(--olive);
+}
+
+.pdfButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mobileMenuButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 24px;
+  backdrop-filter: blur(12px);
+}
+
+.mobileMenu {
+  position: fixed;
+  inset: 86px 16px auto 16px;
+  z-index: 48;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.mobileMenuOpen {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.mobileMenuPanel {
+  display: grid;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: rgba(255, 252, 248, 0.98);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.mobileMenuPanel a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.hero,
+.quickActionsSection,
+.whySection,
+.hitsSection,
+.menuSection,
+.coffeeSection,
+.gallerySection,
+.reasonsSection,
+.reviewsSection,
+.contactSection,
+.footer {
+  padding-inline: clamp(16px, 5vw, 72px);
+}
+
+.hero {
+  --hero-top-space: clamp(28px, 4vw, 56px);
+  --hero-bottom-space: clamp(42px, 6vw, 84px);
+  position: relative;
+  height: calc(100dvh + 24px);
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  padding-top: var(--hero-top-space);
+  padding-bottom: var(--hero-bottom-space);
+  color: #fff;
+  isolation: isolate;
+}
+
+.heroGrid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  align-items: center;
+  min-height: calc(100dvh + 24px - var(--hero-top-space) - var(--hero-bottom-space));
+  width: 100%;
+}
+
+.heroCopy {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  gap: 18px;
+  min-height: 100%;
+  max-width: min(620px, 100%);
+}
+
+.heroLabel,
+.sectionEyebrow {
+  margin: 0;
+  color: var(--terracotta);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.heroTitle,
+.sectionTitle {
+  margin: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+}
+
+.heroTitle {
+  font-size: clamp(50px, 8vw, 110px);
+  max-width: 8ch;
+  text-shadow: 0 8px 36px rgba(0, 0, 0, 0.34);
+}
+
+.heroTitle span {
+  display: block;
+}
+
+.sectionTitle {
+  font-size: clamp(42px, 5.2vw, 68px);
+  max-width: 11ch;
+}
+
+.heroText,
+.sectionText {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--muted);
+  line-height: 1.78;
+  font-size: 17px;
+}
+
+.hero .heroText {
+  max-width: 34ch;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 4px 22px rgba(0, 0, 0, 0.32);
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.hero .heroLabel {
+  color: #f3b08d;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.34);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero .secondaryButton {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.24);
+  color: var(--olive);
+}
+
+.hero .ghostButton {
+  background: rgba(18, 13, 10, 0.18);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #fff;
+  backdrop-filter: blur(10px);
+}
+
+.heroVisual {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroMediaFrame {
+  position: absolute;
+  inset: -72px calc(-1 * clamp(16px, 5vw, 72px)) 0;
+  min-height: 100%;
+  border-radius: 0;
+  overflow: hidden;
+  border: 0;
+  box-shadow: none;
+}
+
+.heroMedia {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroMediaOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(10, 7, 5, 0.78) 0%, rgba(10, 7, 5, 0.54) 42%, rgba(10, 7, 5, 0.24) 100%),
+    linear-gradient(180deg, rgba(10, 7, 5, 0.1), rgba(10, 7, 5, 0.62)),
+    radial-gradient(circle at 24% 22%, rgba(255, 245, 235, 0.18), transparent 28%);
+}
+
+.heroSeal {
+  position: absolute;
+  top: clamp(22px, 4vw, 44px);
+  right: clamp(16px, 5vw, 72px);
+  width: clamp(104px, 10vw, 148px);
+  border-radius: 50%;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 26px rgba(16, 12, 8, 0.18);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.heroSealImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.quickActionsSection {
+  margin-top: -24px;
+  padding-top: 0;
+  position: relative;
+  z-index: 3;
+}
+
+.quickActionsTrack {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.quickActionCard {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "icon label"
+    "icon note";
+  column-gap: 14px;
+  row-gap: 4px;
+  align-items: center;
+  padding: 18px 20px;
+  border-radius: 22px;
+  border: 1px solid rgba(67, 51, 40, 0.1);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(16, 12, 8, 0.04);
+  backdrop-filter: blur(8px);
+}
+
+.quickActionIcon {
+  grid-area: icon;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(193, 117, 82, 0.08);
+  color: var(--terracotta);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.quickActionLabel {
+  grid-area: label;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 22px;
+  line-height: 0.98;
+}
+
+.quickActionNote {
+  grid-area: note;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.parallaxSection {
+  --parallax-shift: 0px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.parallaxSection > :not(.parallaxBackground) {
+  position: relative;
+  z-index: 1;
+}
+
+.parallaxBackground {
+  position: absolute;
+  inset: -10% 0;
+  z-index: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: translate3d(0, var(--parallax-shift), 0) scale(1.08);
+  will-change: transform;
+}
+
+.parallaxBackground::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.86), rgba(255, 250, 245, 0.78));
+}
+
+.brandBackground {
+  background-image: url("/pizzatorra/ingredienti-bg.jpg");
+  background-position: center;
+}
+
+.galleryBackground {
+  background-image: url("/pizzatorra/location-bg.jpg");
+  background-position: center;
+}
+
+.contactBackground {
+  background-image: url("/pizzatorra/contacts-bg.jpg");
+  background-position: right top;
+}
+
+.sectionIntro {
+  display: grid;
+  gap: 12px;
+  max-width: 72ch;
+  margin-bottom: 34px;
+}
+
+.whySection,
+.hitsSection,
+.menuSection,
+.coffeeSection,
+.gallerySection,
+.reasonsSection,
+.reviewsSection,
+.contactSection,
+.footer {
+  padding-top: clamp(72px, 10vw, 112px);
+}
+
+.whyGrid,
+.reasonsGrid,
+.reviewsGrid,
+.coffeeGrid {
+  display: grid;
+  gap: 18px;
+}
+
+.whyGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.featureCard,
+.reasonCard,
+.reviewCard,
+.coffeeCard,
+.menuItemCard,
+.contactCard {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 22px 52px rgba(16, 12, 8, 0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.featureCard {
+  padding: 26px;
+  backdrop-filter: blur(6px);
+}
+
+.featureIcon {
+  margin: 0 0 18px;
+  color: var(--terracotta);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.featureCard h3,
+.hitBody h3,
+.menuItemCard h3,
+.coffeeCard h3,
+.reasonCard h3,
+.contactCard h3,
+.reviewCard blockquote,
+.menuPanelTitleBlock h3,
+.menuAccordionCard h3 {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.featureCard h3,
+.reasonCard h3,
+.contactCard h3 {
+  margin: 0 0 10px;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 0.96;
+}
+
+.featureCard p:last-child,
+.reasonCard p,
+.contactCard p,
+.reviewCard span,
+.reviewCard blockquote,
+.menuItemCard p,
+.coffeeCard p,
+.hitBody p,
+.menuAccordionCard p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.sectionAction {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 24px;
+}
+
+.secondaryButtonLight,
+.ghostButtonLight {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.hitsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.hitCard {
+  overflow: hidden;
+  border-radius: 30px;
+  border: 1px solid var(--line);
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.hitImageWrap {
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+}
+
+.hitImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 220ms ease;
+}
+
+.hitBadge,
+.menuItemBadge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255, 252, 248, 0.94);
+  color: var(--terracotta);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hitBody {
+  display: grid;
+  gap: 10px;
+  padding: 22px;
+}
+
+.hitBody h3,
+.menuItemCard h3,
+.coffeeCard h3 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 0.96;
+}
+
+.hitBody strong,
+.menuItemCard strong,
+.coffeeCard strong,
+.menuAccordionCard strong {
+  color: var(--olive);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.menuShell {
+  display: grid;
+  gap: 18px;
+}
+
+.menuTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.menuTab {
+  min-height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 45, 31, 0.12);
+  background: rgba(255, 255, 255, 0.72);
+  padding: 0 16px;
+  color: var(--olive);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.menuTabActive {
+  background: var(--olive);
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(31, 45, 31, 0.2);
+}
+
+.menuPanel {
+  border-radius: 32px;
+  border: 1px solid rgba(31, 45, 31, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(249, 242, 234, 0.98));
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.menuPanelHeader {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 22px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid rgba(31, 45, 31, 0.1);
+}
+
+.menuPanelTitleBlock {
+  display: grid;
+  gap: 6px;
+}
+
+.menuPanelLabel {
+  color: var(--terracotta);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.menuPanelTitleBlock h3 {
+  margin: 0;
+  font-size: clamp(34px, 4vw, 48px);
+  font-weight: 500;
+  line-height: 0.94;
+}
+
+.menuPanelHeader p {
+  max-width: 38ch;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.menuCategoryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.menuItemCard {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  padding: 24px;
+}
+
+.menuItemCard::before {
+  content: "";
+  width: 42px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--olive), var(--terracotta));
+}
+
+.menuAccordionList {
+  display: none;
+}
+
+.menuAccordionItem {
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.88);
+  overflow: hidden;
+}
+
+.menuAccordionButton {
+  width: 100%;
+  padding: 18px 20px;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.menuAccordionPanel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 220ms ease;
+}
+
+.menuAccordionPanelOpen {
+  max-height: 1200px;
+}
+
+.menuAccordionCard {
+  display: grid;
+  gap: 8px;
+  padding: 0 20px 18px;
+}
+
+.menuAccordionCard h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.menuAccordionCard p {
+  margin: 0;
+}
+
+.pdfRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.pdfHint {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.coffeeGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.coffeeCard {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  padding: 22px;
+}
+
+.coffeeAccent {
+  width: 42px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--olive), var(--terracotta));
+}
+
+.galleryLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 16px;
+}
+
+.galleryAside {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.galleryMain,
+.gallerySmall {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: var(--shadow);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 240ms ease;
+}
+
+.galleryMain .galleryImage {
+  min-height: 560px;
+}
+
+.gallerySmall .galleryImage {
+  min-height: 210px;
+}
+
+.galleryMain figcaption,
+.gallerySmall figcaption {
+  padding: 14px 18px;
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.reasonsGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  counter-reset: reason;
+}
+
+.reasonCard,
+.reviewCard {
+  padding: 24px;
+}
+
+.reasonCard {
+  position: relative;
+}
+
+.reasonCard::before {
+  counter-increment: reason;
+  content: "0" counter(reason);
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 18px;
+  background: rgba(31, 45, 31, 0.08);
+  color: var(--olive);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.reviewsGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.reviewStars {
+  margin: 0 0 12px;
+  color: var(--terracotta);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.reviewCardTitle {
+  margin: 0 0 10px;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 0.98;
+}
+
+.reviewCard p:last-child {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: 18px;
+}
+
+.contactCard {
+  display: grid;
+  gap: 14px;
+  padding: 26px;
+}
+
+.addressBlock {
+  display: grid;
+  gap: 8px;
+  font-style: normal;
+}
+
+.hoursList {
+  display: grid;
+  gap: 8px;
+}
+
+.hoursList p {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(31, 45, 31, 0.08);
+}
+
+.contactButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.socialsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.socialChip {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 45, 31, 0.12);
+  background: rgba(255, 255, 255, 0.76);
+  color: var(--olive);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mapCard {
+  min-height: 480px;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: var(--shadow);
+}
+
+.mapEmbed {
+  width: 100%;
+  min-height: 480px;
+  border: 0;
+}
+
+.footer {
+  padding-bottom: 110px;
+  display: grid;
+  gap: 18px;
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.54));
+}
+
+.footerBrand {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+}
+
+.footerLogo {
+  width: min(310px, 72vw);
+  height: auto;
+  max-width: 100%;
+  margin: 0;
+}
+
+.footerTagline,
+.footerMeta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  color: var(--text);
+}
+
+.footerLinks a,
+.footerLinks span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 45, 31, 0.12);
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.musicPlayer {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 70;
+  width: min(360px, calc(100vw - 32px));
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+  background: rgba(18, 12, 9, 0.94);
+  color: #fff;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(18px);
+}
+
+.musicFlag {
+  height: 5px;
+  background: linear-gradient(90deg, #008c45 0 33.33%, #f7f1e6 33.33% 66.66%, #cd212a 66.66% 100%);
+}
+
+.musicToggle {
+  width: 100%;
+  min-height: 76px;
+  border: 0;
+  display: grid;
+  grid-template-columns: 54px 1fr 42px;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background:
+    radial-gradient(circle at 16% 20%, rgba(214, 166, 87, 0.2), transparent 32%),
+    transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.musicDisc {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid rgba(234, 202, 139, 0.46);
+  background: #17110d;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+}
+
+.musicDisc::after {
+  content: "";
+  position: absolute;
+  inset: 21px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 0 0 1px rgba(234, 202, 139, 0.38);
+}
+
+.musicDiscImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.musicToggleText {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.musicToggleText span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.musicToggleText strong {
+  overflow: hidden;
+  color: #f3d58d;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 0.95;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.musicToggleIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.musicPanel {
+  display: grid;
+  gap: 14px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0 14px;
+  transition: max-height 220ms ease, opacity 180ms ease, padding 180ms ease;
+}
+
+.musicPlayerOpen .musicPanel {
+  max-height: min(650px, calc(100vh - 150px));
+  overflow-y: auto;
+  opacity: 1;
+  padding: 0 14px 14px;
+}
+
+.musicPanelHeader {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding-top: 2px;
+}
+
+.musicCover {
+  width: 86px;
+  height: 86px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 1px solid rgba(234, 202, 139, 0.42);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+}
+
+.musicPanelHeader p,
+.musicNow span {
+  margin: 0;
+  color: #f3a37f;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.musicPanelHeader h2 {
+  margin: 4px 0 2px;
+  color: #fff;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 0.95;
+}
+
+.musicPanelHeader span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 12px;
+}
+
+.musicNow {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.musicNow strong {
+  color: #f3d58d;
+  font-size: 14px;
+}
+
+.musicControls {
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  gap: 10px;
+}
+
+.musicControls button,
+.musicTrackButton {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+}
+
+.musicControls button {
+  min-height: 44px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.09);
+  font-size: 24px;
+}
+
+.musicControls .musicPlayButton {
+  background: linear-gradient(90deg, #008c45, #f7f1e6 50%, #cd212a);
+  color: #17110d;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.musicTrackList {
+  display: grid;
+  gap: 8px;
+}
+
+.musicTrackButton {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 10px;
+  align-items: center;
+  min-height: 42px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.07);
+  text-align: left;
+}
+
+.musicTrackButton span {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.musicTrackButton strong {
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.musicTrackButtonActive {
+  border-color: rgba(243, 213, 141, 0.46);
+  background: rgba(243, 213, 141, 0.14);
+}
+
+.stickyMobileBar {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 60;
+  display: none;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  padding: 10px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(20, 14, 10, 0.88);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 24px 50px rgba(16, 12, 8, 0.24);
+}
+
+.stickyMobileBar a {
+  min-height: 44px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.headerCallButton:hover,
+.primaryButton:hover,
+.secondaryButton:hover,
+.ghostButton:hover,
+.secondaryButtonLight:hover,
+.ghostButtonLight:hover,
+.quickActionCard:hover,
+.desktopNav a:hover,
+.footerLinks a:hover {
+  transform: translateY(-1px);
+}
+
+.featureCard:hover,
+.reasonCard:hover,
+.reviewCard:hover,
+.coffeeCard:hover,
+.menuItemCard:hover,
+.contactCard:hover,
+.hitCard:hover,
+.galleryMain:hover,
+.gallerySmall:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 72px rgba(16, 12, 8, 0.12);
+}
+
+.hitCard:hover .hitImage,
+.galleryMain:hover .galleryImage,
+.gallerySmall:hover .galleryImage {
+  transform: scale(1.04);
+}
+
+@media (max-width: 1180px) {
+  .heroGrid,
+  .contactGrid,
+  .galleryLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .hitsGrid,
+  .coffeeGrid,
+  .reviewsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .whyGrid,
+  .reasonsGrid,
+  .menuCategoryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .menuPanelHeader {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+@media (max-width: 900px) {
+  .menuTabs,
+  .menuPanel {
+    display: none;
+  }
+
+  .mobileMenuButton,
+  .menuAccordionList,
+  .stickyMobileBar {
+    display: grid;
+  }
+
+  .heroGrid,
+  .hitsGrid,
+  .coffeeGrid,
+  .whyGrid,
+  .reasonsGrid,
+  .reviewsGrid,
+  .menuCategoryGrid,
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .quickActionsTrack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quickActionCard {
+    min-width: 0;
+  }
+
+  .galleryAside {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .musicPlayer {
+    right: 12px;
+    bottom: 90px;
+    width: min(300px, calc(100vw - 44px));
+  }
+
+  .musicPlayerOpen .musicPanel {
+    max-height: min(560px, calc(100vh - 210px));
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    justify-content: flex-end;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .hero {
+    --hero-top-space: 28px;
+    --hero-bottom-space: 122px;
+    height: 100dvh;
+    min-height: 100svh;
+    align-items: end;
+  }
+
+  .quickActionsSection {
+    margin-top: 0;
+  }
+
+  .heroTitle {
+    max-width: 6.8ch;
+    font-size: clamp(34px, 12.8vw, 52px);
+    line-height: 0.9;
+  }
+
+  .heroCopy {
+    gap: 14px;
+  }
+
+  .heroLabel {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+  }
+
+  .heroText,
+  .sectionText {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .heroMediaFrame {
+    min-height: 100%;
+  }
+
+  .heroSeal {
+    top: 14px;
+    right: 14px;
+    width: 76px;
+  }
+
+  .heroActions {
+    gap: 10px;
+  }
+
+  .heroActions .primaryButton,
+  .heroActions .secondaryButton,
+  .heroActions .ghostButton {
+    min-height: 44px;
+    padding-inline: 16px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  .sectionTitle,
+  .reviewCard blockquote {
+    font-size: clamp(32px, 9vw, 42px);
+  }
+
+  .quickActionLabel,
+  .featureCard h3,
+  .reasonCard h3,
+  .contactCard h3,
+  .hitBody h3,
+  .menuItemCard h3,
+  .coffeeCard h3 {
+    font-size: 24px;
+  }
+
+  .galleryAside {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .gallerySmall {
+    min-width: 0;
+  }
+
+  .galleryMain .galleryImage {
+    min-height: 320px;
+  }
+
+  .gallerySmall .galleryImage {
+    min-height: 156px;
+  }
+
+  .musicPlayer {
+    bottom: 90px;
+    width: min(272px, calc(100vw - 44px));
+    border-radius: 20px;
+  }
+
+  .musicToggle {
+    grid-template-columns: 44px 1fr 34px;
+    min-height: 62px;
+    gap: 10px;
+    padding: 9px 11px;
+  }
+
+  .musicDisc {
+    width: 44px;
+    height: 44px;
+  }
+
+  .musicToggleText span {
+    display: none;
+  }
+
+  .musicToggleText strong {
+    font-size: 17px;
+  }
+
+  .musicToggleIcon {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+  }
+
+  .stickyMobileBar {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 20px;
+  }
+
+  .stickyMobileBar a {
+    min-height: 44px;
+    padding-inline: 10px;
+    font-size: 11px;
+  }
+
+  .featureCard,
+  .reasonCard,
+  .reviewCard,
+  .coffeeCard,
+  .menuItemCard,
+  .contactCard {
+    border-radius: 24px;
+  }
+
+  .featureCard,
+  .reasonCard,
+  .reviewCard,
+  .coffeeCard,
+  .menuItemCard,
+  .contactCard,
+  .hitBody {
+    padding: 20px;
+  }
+
+  .menuAccordionButton {
+    min-height: 52px;
+    padding: 16px 18px;
+    font-size: 20px;
+  }
+
+  .pdfRow {
+    align-items: stretch;
+  }
+
+  .pdfButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero {
+    --hero-bottom-space: 118px;
+  }
+
+  .quickActionsTrack {
+    gap: 10px;
+  }
+
+  .quickActionCard {
+    padding: 16px;
+    column-gap: 12px;
+  }
+
+  .quickActionIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .quickActionLabel {
+    font-size: 20px;
+  }
+
+  .quickActionNote {
+    font-size: 11px;
+  }
+
+  .sectionIntro {
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .sectionTitle,
+  .reviewCardTitle {
+    max-width: 9ch;
+  }
+
+  .heroText {
+    max-width: 28ch;
+  }
+
+  .contactButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .contactButtons a {
+    width: 100%;
+  }
+
+  .musicPlayer {
+    width: min(260px, calc(100vw - 40px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featureCard,
+  .reasonCard,
+  .reviewCard,
+  .coffeeCard,
+  .menuItemCard,
+  .contactCard,
+  .hitCard,
+  .galleryMain,
+  .gallerySmall,
+  .hitImage,
+  .galleryImage,
+  .headerCallButton,
+  .primaryButton,
+  .secondaryButton,
+  .ghostButton,
+  .secondaryButtonLight,
+  .ghostButtonLight,
+  .quickActionCard,
+  .desktopNav a,
+  .footerLinks a {
+    transition: none;
+  }
+}
