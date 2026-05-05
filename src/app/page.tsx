@@ -27,9 +27,11 @@ const phoneHref = siteConfig.phoneHref;
 const emailHref = `mailto:${siteConfig.email}`;
 const address = fullAddress;
 const heroVideoSrc = siteConfig.heroVideo;
+const googleMapsUrl = siteConfig.google.googleMapsUrl;
+const googleReviewUrl = siteConfig.google.googleReviewUrl;
 const contactNotes = [
-  "Feniks Hala Targowa, lokal B18",
-  "Godziny otwarcia publikujemy po finalnym potwierdzeniu przez właściciela.",
+  siteConfig.address.venue,
+  ...siteConfig.openingHours.value.map((item) => item.label),
 ];
 
 const quickActions = [
@@ -104,6 +106,8 @@ const structuredData = {
   areaServed: siteConfig.address.addressLocality,
   hasMenu: `${siteConfig.url}#full-menu`,
   hasMap: mapLink,
+  sameAs: [googleMapsUrl],
+  openingHours: siteConfig.openingHours.value.map((item) => item.schema),
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.streetAddress,
@@ -796,6 +800,9 @@ export default function Page() {
               <a href={menuDownload.href} className={styles.secondaryButton} target="_blank" rel="noreferrer">
                 Menu PDF
               </a>
+              <a href={googleMapsUrl} className={styles.ghostButtonLight} target="_blank" rel="noreferrer">
+                Zobacz nas w Google Maps
+              </a>
             </div>
           </div>
 
@@ -812,6 +819,23 @@ export default function Page() {
       </section>
 
       <section className={styles.reviewBannerSection}>
+        <div className={styles.sectionIntro}>
+          <p className={styles.sectionEyebrow}>Google Reviews</p>
+          <h2 className={styles.sectionTitle}>Opinie naszych klientów</h2>
+          <p className={styles.sectionText}>
+            Aktualne opinie i oceny TORRA są dostępne bezpośrednio w profilu Google.
+            Po wizycie możesz też zostawić własną opinię i pomóc kolejnym gościom.
+          </p>
+          <div className={styles.reviewActions}>
+            <a href={googleMapsUrl} className={styles.primaryButton} target="_blank" rel="noreferrer">
+              Zobacz opinie w Google
+            </a>
+            <a href={googleReviewUrl} className={styles.secondaryButton} target="_blank" rel="noreferrer">
+              Dodaj opinię
+            </a>
+          </div>
+        </div>
+
         <figure className={styles.reviewBannerCard}>
           <Image
             src="/opinie-banner.png"
@@ -843,7 +867,7 @@ export default function Page() {
           <a href="#full-menu">MENU</a>
           <a href="#eventy">EVENTY</a>
           <a href="#kontakt">KONTAKT</a>
-          <span>Polityka prywatności — TODO</span>
+          <span>Polityka prywatności w przygotowaniu</span>
         </div>
 
         <p className={styles.footerMeta}>TORRA | Ostrołęka | tel. {phoneDisplay}</p>

@@ -1414,6 +1414,12 @@
   background: linear-gradient(180deg, rgba(255, 252, 248, 0.48), rgba(255, 255, 255, 0.28));
 }
 
+.reviewActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .reviewBannerCard {
   width: min(100%, 1220px);
   margin: 0 auto;
@@ -1726,7 +1732,7 @@
   position: fixed;
   left: 12px;
   right: 12px;
-  bottom: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom));
   z-index: 60;
   display: none;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2035,7 +2041,7 @@
   .stickyMobileBar {
     left: 10px;
     right: 10px;
-    bottom: 10px;
+    bottom: calc(10px + env(safe-area-inset-bottom));
     gap: 8px;
     padding: 8px;
     border-radius: 20px;

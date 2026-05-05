@@ -3,7 +3,6 @@ export type MenuItem = {
   details?: string;
   price: string;
   badge?: string;
-  todo?: string;
 };
 
 export type MenuSection = {
@@ -192,7 +191,6 @@ export const menuCategories: MenuCategory[] = [
         name: "Bacon",
         details: "bekon, ser, jajko, sos",
         price: "39 zł",
-        todo: "TODO: doprecyzować rodzaj sosu z właścicielem.",
       },
       {
         name: "Tonno Fresco",
@@ -208,7 +206,6 @@ export const menuCategories: MenuCategory[] = [
         name: "Philadelphia",
         details: "ser Philadelphia, pomidory, salami, rukola",
         price: "39 zł",
-        todo: "TODO: nazwa i skład poprawione redakcyjnie z literówki w źródle.",
       },
     ],
   },
@@ -235,8 +232,8 @@ export const menuCategories: MenuCategory[] = [
           { name: "Kawa czarna americano", price: "8 zł" },
           { name: "Kawa Latte", price: "9 zł" },
           { name: "Espresso", price: "8 zł" },
-          { name: "Espresso doppio", price: "10 zł", todo: "TODO: w źródle widnieje literówka „Espressso dopio”." },
-          { name: "Cappuccino", price: "9 zł", todo: "TODO: w źródle widnieje literówka „Cappucino”." },
+          { name: "Espresso doppio", price: "10 zł" },
+          { name: "Cappuccino", price: "9 zł" },
         ],
       },
       {
