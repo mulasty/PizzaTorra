@@ -834,30 +834,13 @@ export default function Page() {
       </section>
 
       <footer className={styles.footer}>
-        <div className={styles.footerBrand}>
-          <Image
-            src={siteConfig.logo}
-            alt="Logo TORRA pizza caffè musica"
-            width={500}
-            height={500}
-            sizes="(max-width: 700px) 72vw, 310px"
-            className={styles.footerLogo}
-            loading="lazy"
-            fetchPriority="low"
-          />
-          <p className={styles.footerTagline}>Pizza. Caffè. Musica.</p>
+        <div className={styles.footerOverlay} aria-hidden="true" />
+        <div className={styles.footerContent}>
+          <p className={styles.footerWordmark}>TORRA</p>
+          <p className={styles.footerTagline}>pizza • caffè • musica</p>
+          <p className={styles.footerMeta}>© 2026 TORRA. Wszystkie prawa zastrzeżone.</p>
+          <p className={styles.footerCredit}>Realizacja strony: Mula Group</p>
         </div>
-
-        <div className={styles.footerLinks}>
-          <a href="#top">TORRA</a>
-          <a href="#promocje">PROMOCJE</a>
-          <a href="#full-menu">MENU</a>
-          <a href="#eventy">EVENTY</a>
-          <a href="#kontakt">KONTAKT</a>
-          <span>Polityka prywatności w przygotowaniu</span>
-        </div>
-
-        <p className={styles.footerMeta}>TORRA | Ostrołęka | tel. {phoneDisplay}</p>
       </footer>
 
       <div className={styles.stickyMobileBar}>
