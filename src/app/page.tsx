@@ -28,6 +28,7 @@ const emailHref = `mailto:${siteConfig.email}`;
 const address = fullAddress;
 const heroVideoSrc = siteConfig.heroVideo;
 const googleMapsUrl = siteConfig.google.googleMapsUrl;
+const googleReviewsUrl = siteConfig.google.googleReviewsUrl;
 const googleReviewUrl = siteConfig.google.googleReviewUrl;
 const heroHoursDisplay = siteConfig.openingHours.value.map((item) => item.label);
 const contactNotes = [
@@ -885,7 +886,7 @@ export default function Page() {
               Opinie pochodzą z oficjalnej wizytówki Google TORRA. CID: {siteConfig.google.googleCid}
             </p>
             <div className={styles.reviewActions}>
-              <a href={googleMapsUrl} className={styles.primaryButton} target="_blank" rel="noreferrer">
+              <a href={googleReviewsUrl} className={styles.primaryButton} target="_blank" rel="noreferrer">
                 Zobacz opinie w Google
               </a>
               <a href={googleReviewUrl} className={styles.secondaryButton} target="_blank" rel="noreferrer">

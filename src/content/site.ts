@@ -1,18 +1,20 @@
 const phone = "788779853";
 const website = "https://www.pizzatorra.pl";
 const googleCid = "04361763573940380613";
-const googleMapsUrl = `https://www.google.com/maps?cid=${googleCid}`;
+const googleMapsUrl =
+  "https://www.google.com/maps/search/?api=1&query=TORRA%20pizza%20caff%C3%A8%20musica%20Genera%C5%82a%20Ignacego%20Pr%C4%85dzy%C5%84skiego%206%20lokal%20B18%2007-410%20Ostro%C5%82%C4%99ka";
 const googleReviewUrl = "https://g.page/r/CSEw5-wt7EG-EBM/review";
+const googleReviewsUrl = googleReviewUrl;
 
 export const siteConfig = {
   name: "TORRA pizza \u2022 caff\u00e8 \u2022 musica",
   legalName: "TORRA pizza \u2022 caff\u00e8 \u2022 musica",
   shortName: "TORRA",
-  seoTitle: "TORRA pizza \u2022 caff\u00e8 \u2022 musica | Pizzeria Ostro\u0142\u0119ka",
+  seoTitle: "Pizzeria TORRA Ostro\u0142\u0119ka \u2013 w\u0142oska pizza, caff\u00e8, zam\u00f3w teraz",
   description:
     "TORRA w Ostro\u0142\u0119ce to premium pizzeria przy Feniks Hala Targowa z pizz\u0105 w\u0142osk\u0105, pizz\u0105 sycylijsk\u0105, kaw\u0105, cateringiem i ofert\u0105 eventow\u0105.",
   seoDescription:
-    "TORRA pizza \u2022 caff\u00e8 \u2022 musica w Ostro\u0142\u0119ce. W\u0142oska pizza, pizza sycylijska, kawa, eventy i zam\u00f3wienia telefoniczne przy Pr\u0105dzy\u0144skiego 6 lokal B18.",
+    "Pizzeria TORRA w Ostro\u0142\u0119ce przy Feniks Hala Targowa. W\u0142oska pizza i caff\u00e8 - zadzwo\u0144 788 779 853 i zam\u00f3w teraz.",
   shortDescription: "Pizza, caff\u00e8, catering i eventy w klimacie TORRA w Ostro\u0142\u0119ce.",
   website,
   url: website,
@@ -53,6 +55,7 @@ export const siteConfig = {
     status: "active",
     googleCid,
     googleMapsUrl,
+    googleReviewsUrl,
     googleReviewUrl,
   },
   analytics: {
