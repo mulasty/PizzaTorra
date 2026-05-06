@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { siteConfig } from "@/content/site";
+import { CookieConsentBanner } from "./CookieConsentBanner";
 import "./globals.css";
 
 const display = Cormorant_Garamond({
@@ -109,7 +110,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
-      <body className={`${display.variable} ${body.variable}`}>{children}</body>
+      <body className={`${display.variable} ${body.variable}`}>
+        {children}
+        <CookieConsentBanner />
+      </body>
     </html>
   );
 }

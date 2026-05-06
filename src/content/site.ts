@@ -50,6 +50,9 @@ export const siteConfig = {
     googleMapsUrl,
     googleReviewUrl,
   },
+  analytics: {
+    googleAnalyticsId: "G-7PHN5DFMHN",
+  },
   social: {
     instagram: null,
     facebook: null,

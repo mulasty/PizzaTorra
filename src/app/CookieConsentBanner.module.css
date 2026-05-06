@@ -1,0 +1,131 @@
+.banner {
+  position: fixed;
+  left: clamp(14px, 3vw, 28px);
+  right: clamp(14px, 3vw, 28px);
+  top: 18px;
+  z-index: 80;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  width: min(920px, calc(100vw - 28px));
+  margin-inline: auto;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at top left, rgba(179, 107, 79, 0.2), transparent 34%),
+    linear-gradient(135deg, rgba(24, 17, 12, 0.97), rgba(15, 22, 15, 0.97));
+  color: #fffaf2;
+  box-shadow: 0 24px 70px rgba(12, 8, 5, 0.3);
+  padding: 18px;
+  backdrop-filter: blur(18px);
+}
+
+.copy {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.eyebrow {
+  color: #f3b08d;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.text,
+.privacy {
+  margin: 0;
+  color: rgba(255, 250, 242, 0.82);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.privacy {
+  font-size: 12px;
+}
+
+.settings {
+  display: grid;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.toggle {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: rgba(255, 250, 242, 0.88);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: #f3b08d;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.button {
+  min-height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  padding: 0 16px;
+  color: #fffaf2;
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.buttonPrimary {
+  border-color: rgba(243, 176, 141, 0.42);
+  background: linear-gradient(90deg, #f5e1bf, #f3b08d);
+  color: #17110d;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.22);
+}
+
+.buttonGhost {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 700px) {
+  .banner {
+    top: calc(72px + env(safe-area-inset-top));
+    grid-template-columns: 1fr;
+    gap: 14px;
+    max-height: min(48vh, 430px);
+    overflow-y: auto;
+    border-radius: 22px;
+    padding: 15px;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .button {
+    width: 100%;
+    min-height: 46px;
+  }
+}
