@@ -47,7 +47,7 @@ const trustFacts = [
 const quickActions = [
   { icon: "☎", label: phoneDisplay, note: "Zadzwoń i zamów", href: phoneHref },
   { icon: "🍕", label: "Menu", note: "Pizza 31,5 / 45 cm", href: "#full-menu" },
-  { icon: "📍", label: "Trasa", note: "Feniks Hala Targowa", href: mapLink },
+  { icon: "📍", label: "Trasa", note: "Feniks Hala Targowa", href: googleMapsUrl },
   { icon: "⏱", label: "Godziny", note: "pn-pt 11-21 • sob-nd 12-24", href: "#kontakt" },
 ];
 
@@ -928,7 +928,7 @@ export default function Page() {
         <a href="#full-menu" aria-label="Przejdź do menu TORRA">
           🍕 Menu
         </a>
-        <a href={mapLink} aria-label="Otwórz trasę do TORRA">
+        <a href={googleMapsUrl} aria-label="Otwórz trasę do TORRA" target="_blank" rel="noreferrer">
           📍 Trasa
         </a>
       </div>
