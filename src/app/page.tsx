@@ -68,22 +68,22 @@ const brandPillars = [
 
 const promotionSlides: PromotionSlide[] = [
   {
-    src: "/promo-maj-light.png",
+    src: "/promo-maj-light.webp",
     alt: "Promocja TORRA: do końca maja przy zakupie dużej pizzy mała pizza -50%",
     title: "Majowa promocja",
   },
   {
-    src: "/promo-maj-dark.png",
+    src: "/promo-maj-dark.webp",
     alt: "Promocja TORRA w ciemnej odsłonie: do końca maja przy zakupie dużej pizzy mała pizza -50%",
     title: "Majowa promocja nocą",
   },
   {
-    src: "/promo-monday-light.png",
+    src: "/promo-monday-light.webp",
     alt: "Promocja TORRA: każdy poniedziałek druga duża pizza -50%",
     title: "Poniedziałkowa promocja",
   },
   {
-    src: "/promo-monday-dark.png",
+    src: "/promo-monday-dark.webp",
     alt: "Promocja TORRA w ciemnej odsłonie: każdy poniedziałek druga duża pizza -50%",
     title: "Poniedziałkowa promocja nocą",
   },
@@ -136,6 +136,7 @@ export default function Page() {
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [activePromoSlide, setActivePromoSlide] = useState(0);
+  const [heroVideoEnabled, setHeroVideoEnabled] = useState(false);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -192,6 +193,21 @@ export default function Page() {
       document.body.style.overflow = "";
     };
   }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (prefersReducedMotion.matches) {
+      return;
+    }
+
+    const isMobileViewport = window.matchMedia("(max-width: 700px)").matches;
+    const timeoutId = window.setTimeout(
+      () => setHeroVideoEnabled(true),
+      isMobileViewport ? 1800 : 900,
+    );
+
+    return () => window.clearTimeout(timeoutId);
+  }, []);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -354,6 +370,7 @@ export default function Page() {
               width={220}
               height={220}
               className={styles.heroLogo}
+              preload
             />
             <div className={styles.heroIntro}>
               <p className={styles.heroLabel}>Pizza • Caffè • Musica</p>
@@ -410,10 +427,10 @@ export default function Page() {
                 muted
                 loop
                 playsInline
-                preload="metadata"
+                preload="none"
                 poster="/pizzatorra/pizza-1.jpeg"
               >
-                <source src={heroVideoSrc} type="video/mp4" />
+                {heroVideoEnabled ? <source src={heroVideoSrc} type="video/mp4" /> : null}
               </video>
               <div className={styles.heroMediaOverlay} />
             </div>
@@ -450,9 +467,7 @@ export default function Page() {
               onEnded={() => skipTrack(1)}
               onPause={() => setMusicPlaying(false)}
               onPlay={() => setMusicPlaying(true)}
-            >
-              <source src={currentTrack.src} type="audio/mpeg" />
-            </audio>
+            />
 
             <div className={styles.musicFlag} aria-hidden="true" />
 
@@ -470,6 +485,8 @@ export default function Page() {
                   width={96}
                   height={96}
                   className={styles.musicDiscImage}
+                  loading="lazy"
+                  fetchPriority="low"
                 />
               </span>
               <span className={styles.musicToggleText}>
@@ -487,6 +504,8 @@ export default function Page() {
                   width={160}
                   height={160}
                   className={styles.musicCover}
+                  loading="lazy"
+                  fetchPriority="low"
                 />
                 <div>
                   <p>Playlist</p>
@@ -557,8 +576,10 @@ export default function Page() {
                   alt={slide.alt}
                   width={1536}
                   height={1024}
-                  sizes="100vw"
+                  sizes="(max-width: 700px) calc(100vw - 56px), (max-width: 1180px) 92vw, 1200px"
                   className={styles.promoVisualImage}
+                  loading="lazy"
+                  fetchPriority="low"
                 />
               </figure>
             ))}
@@ -705,12 +726,14 @@ export default function Page() {
           ) : (
             <div className={styles.menuPlaceholder}>
               <Image
-                src="/menu-placeholder.png"
+                src="/menu-placeholder.webp"
                 alt="Menu TORRA z podziałem na pizzę, pizzę sycylijską, insalate, panuozzo, desery oraz napoje i caffè"
                 width={1684}
                 height={947}
                 sizes="(max-width: 900px) 100vw, 1100px"
                 className={styles.menuPlaceholderImage}
+                loading="lazy"
+                fetchPriority="low"
               />
             </div>
           )}
@@ -886,12 +909,14 @@ export default function Page() {
 
         <figure className={styles.reviewBannerCard}>
           <Image
-            src="/opinie-banner.png"
+            src="/opinie-banner.webp"
             alt="Grafika TORRA z prośbą o opinię Google i kodem QR"
             width={1448}
             height={1086}
             sizes="(max-width: 700px) 100vw, (max-width: 1180px) 92vw, 1400px"
             className={styles.reviewBannerImage}
+            loading="lazy"
+            fetchPriority="low"
           />
         </figure>
       </section>
@@ -905,6 +930,8 @@ export default function Page() {
             height={500}
             sizes="(max-width: 700px) 72vw, 310px"
             className={styles.footerLogo}
+            loading="lazy"
+            fetchPriority="low"
           />
           <p className={styles.footerTagline}>Pizza. Caffè. Musica.</p>
         </div>
