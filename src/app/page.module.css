@@ -536,8 +536,7 @@
 }
 
 .brandBackground {
-  background-image: url("/pizzatorra/ingredienti-bg.jpg");
-  background-position: center;
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.3), rgba(255, 250, 245, 0.18));
 }
 
 .galleryBackground {
@@ -583,6 +582,7 @@
 }
 
 .brandDescriptionBlock {
+  position: relative;
   display: grid;
   gap: 18px;
   width: min(100%, 860px);
@@ -590,10 +590,28 @@
   border: 1px solid rgba(31, 45, 31, 0.12);
   border-radius: 30px;
   background:
-    linear-gradient(135deg, rgba(255, 252, 248, 0.94), rgba(248, 243, 235, 0.9)),
-    radial-gradient(circle at top right, rgba(200, 59, 52, 0.08), transparent 32%);
+    linear-gradient(135deg, rgba(255, 252, 248, 0.28), rgba(248, 243, 235, 0.22)),
+    url("/pizzatorra/ingredienti-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   box-shadow: 0 24px 60px rgba(16, 12, 8, 0.08);
-  backdrop-filter: blur(8px);
+  overflow: hidden;
+}
+
+.brandDescriptionBlock::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 248, 0.92), rgba(248, 243, 235, 0.88)),
+    radial-gradient(circle at top right, rgba(179, 107, 79, 0.12), transparent 30%);
+  pointer-events: none;
+}
+
+.brandDescriptionBlock > * {
+  position: relative;
+  z-index: 1;
 }
 
 .brandDescriptionBlock p {

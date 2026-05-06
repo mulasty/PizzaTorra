@@ -600,11 +600,8 @@ export default function Page() {
 
       <section
         id="marka"
-        className={`${styles.whySection} ${styles.parallaxSection}`}
-        data-parallax-section
-        data-parallax-speed="0.14"
+        className={styles.whySection}
       >
-        <div className={`${styles.parallaxBackground} ${styles.brandBackground}`} aria-hidden="true" />
         <div className={styles.sectionIntro}>
           <p className={styles.sectionEyebrow}>Dlaczego TORRA</p>
           <h2 className={styles.sectionTitle}>Dlaczego warto wybrać TORRA?</h2>
