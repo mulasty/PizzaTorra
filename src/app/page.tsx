@@ -36,15 +36,6 @@ const contactNotes = [
   ...siteConfig.openingHours.value.map((item) => item.label),
 ];
 
-const trustFacts = [
-  { label: "Oficjalny adres", value: fullAddress },
-  { label: "Telefon", value: phoneDisplay, href: phoneHref },
-  { label: "Godziny", value: siteConfig.openingHours.value.map((item) => item.label).join(" • ") },
-  { label: "Google Maps", value: "Zobacz trasę i wizytówkę", href: googleMapsUrl },
-  { label: "Zamówienia", value: "Zamów telefonicznie przed odbiorem" },
-  { label: "Eventy / catering", value: "Zapytaj o spotkanie, lunch lub catering", href: "#eventy" },
-];
-
 const quickActions = [
   { icon: "☎", label: phoneDisplay, note: "Zadzwoń i zamów", href: phoneHref },
   { icon: "🍕", label: "Menu", note: "Pizza 31,5 / 45 cm", href: "#full-menu" },
@@ -845,16 +836,13 @@ export default function Page() {
       </section>
 
       <section className={styles.reviewBannerSection}>
-        <div className={styles.trustGrid}>
-          <div className={styles.trustCopy}>
+        <div className={styles.reviewContent}>
+          <div className={styles.reviewCopy}>
             <p className={styles.sectionEyebrow}>Google Reviews</p>
             <h2 className={styles.sectionTitle}>Opinie klientów TORRA</h2>
             <p className={styles.sectionText}>
               Aktualne opinie gości są dostępne w oficjalnej wizytówce Google TORRA.
-              Nie pokazujemy zmyślonych cytatów ani ocen. Najlepiej sprawdzić je bezpośrednio u źródła.
-            </p>
-            <p className={styles.trustSource}>
-              Opinie pochodzą z oficjalnej wizytówki Google TORRA. CID: {siteConfig.google.googleCid}
+              Sprawdź je bezpośrednio u źródła albo zostaw własną opinię po wizycie.
             </p>
             <div className={styles.reviewActions}>
               <a href={googleReviewsUrl} className={styles.primaryButton} target="_blank" rel="noreferrer">
@@ -864,21 +852,6 @@ export default function Page() {
                 Dodaj opinię
               </a>
             </div>
-          </div>
-
-          <div className={styles.trustFacts} aria-label="Potwierdzone informacje o TORRA">
-            {trustFacts.map((fact) => (
-              <article key={fact.label} className={styles.trustFactCard}>
-                <span>{fact.label}</span>
-                {fact.href ? (
-                  <a href={fact.href} target={fact.href.startsWith("http") ? "_blank" : undefined} rel={fact.href.startsWith("http") ? "noreferrer" : undefined}>
-                    {fact.value}
-                  </a>
-                ) : (
-                  <strong>{fact.value}</strong>
-                )}
-              </article>
-            ))}
           </div>
         </div>
 
