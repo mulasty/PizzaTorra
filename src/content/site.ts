@@ -1,10 +1,11 @@
 const phone = "788779853";
 const website = "https://www.pizzatorra.pl";
 const googleCid = "04361763573940380613";
-const googleMapsUrl =
+const googleProfileUrl =
   "https://www.google.com/maps/search/?api=1&query=TORRA%20pizza%20caff%C3%A8%20musica%20Genera%C5%82a%20Ignacego%20Pr%C4%85dzy%C5%84skiego%206%20lokal%20B18%2007-410%20Ostro%C5%82%C4%99ka";
 const googleReviewUrl = "https://g.page/r/CSEw5-wt7EG-EBM/review";
-const googleReviewsUrl = googleReviewUrl;
+const googleMapsUrl = googleProfileUrl;
+const googleReviewsUrl = googleProfileUrl;
 
 export const siteConfig = {
   name: "TORRA pizza \u2022 caff\u00e8 \u2022 musica",
@@ -55,6 +56,7 @@ export const siteConfig = {
     status: "active",
     googleCid,
     googleMapsUrl,
+    googleProfileUrl,
     googleReviewsUrl,
     googleReviewUrl,
   },

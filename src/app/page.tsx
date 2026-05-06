@@ -612,22 +612,18 @@ export default function Page() {
 
         <div className={styles.brandDescriptionBlock}>
           <p>
-            TORRA pizza • caffè • musica to pizzeria w Ostrołęce przy Feniks Hala Targowa,
-            tworzona dla osób, które chcą zjeść dobrą włoską pizzę bez przypadkowości.
-            Łączymy chrupiące ciasto według włoskiej receptury, dopracowane dodatki,
-            kawę i atmosferę miejsca, do którego można wpaść na lunch, kolację albo
-            spokojne spotkanie.
+            Zapach świeżo pieczonej pizzy, chrupiące ciasto i smaki, które naprawdę
+            robią różnicę. W TORRA wszystko kręci się wokół tego, co najważniejsze:
+            dobrej pizzy, prawdziwej włoskiej kawy i muzyki, która buduje klimat miejsca.
           </p>
           <p>
-            Naszą siłą jest prosty wybór: czytelne menu, widoczne ceny, potwierdzone
-            godziny otwarcia i zamówienia telefoniczne pod numerem {phoneDisplay}.
-            Goście mogą szybko sprawdzić trasę, zobaczyć aktualne informacje w Google
-            i zamówić pizzę bez szukania ukrytych szczegółów.
+            Wchodzisz, zamawiasz i po prostu jesz - bez pośpiechu, bez zbędnych
+            dodatków. Albo dzwonisz pod {phoneDisplay} i odbierasz pizzę wtedy,
+            kiedy masz ochotę.
           </p>
           <p>
-            TORRA to również caffè, musica oraz przestrzeń na spotkania, eventy i catering.
-            Jeśli szukasz pizzerii w Ostrołęce, która ma włoski charakter, konkretną
-            lokalizację i jasny kontakt, TORRA jest miejscem, które warto wybrać.
+            TORRA to smak, który zostaje w głowie, i atmosfera, do której wraca się
+            naturalnie.
           </p>
         </div>
 
@@ -809,12 +805,12 @@ export default function Page() {
             <p className={styles.sectionEyebrow}>Google Reviews</p>
             <h2 className={styles.sectionTitle}>Opinie klientów TORRA</h2>
             <p className={styles.sectionText}>
-              Aktualne opinie gości są dostępne w oficjalnej wizytówce Google TORRA.
-              Sprawdź je bezpośrednio u źródła albo zostaw własną opinię po wizycie.
+              Sprawdź, co goście mówią o TORRA w Google. Byłeś u nas? Zostaw swoją
+              opinię - to bardzo pomaga naszej pizzerii.
             </p>
             <div className={styles.reviewActions}>
               <a href={googleReviewsUrl} className={styles.primaryButton} target="_blank" rel="noreferrer">
-                Zobacz opinie w Google
+                Zobacz opinie
               </a>
               <a href={googleReviewUrl} className={styles.secondaryButton} target="_blank" rel="noreferrer">
                 Dodaj opinię
