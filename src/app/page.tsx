@@ -8,7 +8,7 @@ import {
   menuDownload,
 } from "@/content/menu";
 import type { MenuCategory, MenuItem, MenuSection } from "@/content/menu";
-import { fullAddress, mapEmbed, mapLink, siteConfig } from "@/content/site";
+import { mapEmbed, mapLink, siteConfig } from "@/content/site";
 import styles from "./page.module.css";
 
 type MusicTrack = {
@@ -24,17 +24,11 @@ type PromotionSlide = {
 
 const phoneDisplay = siteConfig.phoneDisplay;
 const phoneHref = siteConfig.phoneHref;
-const emailHref = `mailto:${siteConfig.email}`;
-const address = fullAddress;
 const heroVideoSrc = siteConfig.heroVideo;
 const googleMapsUrl = siteConfig.google.googleMapsUrl;
 const googleReviewsUrl = siteConfig.google.googleReviewsUrl;
 const googleReviewUrl = siteConfig.google.googleReviewUrl;
 const heroHoursDisplay = siteConfig.openingHours.value.map((item) => item.label);
-const contactNotes = [
-  siteConfig.address.venue,
-  ...siteConfig.openingHours.value.map((item) => item.label),
-];
 
 const quickActions = [
   { icon: "☎", label: phoneDisplay, note: "Zadzwoń i zamów", href: phoneHref },
@@ -779,59 +773,33 @@ export default function Page() {
         data-parallax-speed="0.16"
       >
         <div className={`${styles.parallaxBackground} ${styles.contactBackground}`} aria-hidden="true" />
-        <div className={styles.sectionIntro}>
+        <div className={`${styles.sectionIntro} ${styles.contactIntro}`}>
           <p className={styles.sectionEyebrow}>Kontakt + mapa</p>
-          <h2 className={styles.sectionTitle}>Przyjdź do TORRA</h2>
+          <h2 className={styles.sectionTitle}>Kontakt i dojazd do TORRA</h2>
           <p className={styles.sectionText}>
-            Pizzeria Ostrołęka TORRA działa przy Prądzyńskiego 6, Feniks Hala Targowa,
-            lokal B18. Tu zamówisz pizzę, kawę, catering i rezerwacje eventowe.
+            TORRA pizza • caffè • musica działa w Ostrołęce przy Generała Ignacego
+            Prądzyńskiego 6 lokal B18, w Feniks Hala Targowa. Jeśli chcesz zamówić
+            włoską pizzę, sprawdzić dojazd albo zapytać o catering i event, zadzwoń
+            pod {phoneDisplay} lub otwórz trasę w Google Maps.
           </p>
+          <div className={styles.contactButtons}>
+            <a href={phoneHref} className={styles.primaryButton}>
+              Zadzwoń
+            </a>
+            <a href={mapLink} className={styles.ghostButtonLight} target="_blank" rel="noreferrer">
+              Otwórz trasę
+            </a>
+          </div>
         </div>
 
-        <div className={styles.contactGrid}>
-          <div className={styles.contactCard}>
-            <h3>TORRA Ostrołęka</h3>
-            <address className={styles.addressBlock}>
-              <p>{address}</p>
-              <p>
-                Telefon: <a href={phoneHref}>{phoneDisplay}</a>
-              </p>
-              <p>
-                E-mail: <a href={emailHref}>{siteConfig.email}</a>
-              </p>
-            </address>
-
-            <div className={styles.hoursList}>
-              {contactNotes.map((item) => (
-                <p key={item}>{item}</p>
-              ))}
-            </div>
-
-            <div className={styles.contactButtons}>
-              <a href={phoneHref} className={styles.primaryButton}>
-                Zadzwoń
-              </a>
-              <a href={mapLink} className={styles.ghostButtonLight}>
-                Otwórz trasę
-              </a>
-              <a href={menuDownload.href} className={styles.secondaryButton} target="_blank" rel="noreferrer">
-                Menu PDF
-              </a>
-              <a href={googleMapsUrl} className={styles.ghostButtonLight} target="_blank" rel="noreferrer">
-                Zobacz nas w Google Maps
-              </a>
-            </div>
-          </div>
-
-          <div className={styles.mapCard}>
-            <iframe
-              title="Mapa TORRA Ostrołęka"
-              src={mapEmbed}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className={styles.mapEmbed}
-            />
-          </div>
+        <div className={styles.mapCard}>
+          <iframe
+            title="Mapa TORRA Ostrołęka"
+            src={mapEmbed}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className={styles.mapEmbed}
+          />
         </div>
       </section>
 

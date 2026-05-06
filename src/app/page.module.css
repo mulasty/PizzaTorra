@@ -1459,35 +1459,8 @@
   line-height: 1.1;
 }
 
-.contactGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
-  gap: 18px;
-}
-
-.contactCard {
-  display: grid;
-  gap: 14px;
-  padding: 26px;
-}
-
-.addressBlock {
-  display: grid;
-  gap: 8px;
-  font-style: normal;
-}
-
-.hoursList {
-  display: grid;
-  gap: 8px;
-}
-
-.hoursList p {
-  margin: 0;
-  padding: 10px 12px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.74);
-  border: 1px solid rgba(31, 45, 31, 0.08);
+.contactIntro {
+  max-width: 78ch;
 }
 
 .contactButtons {
@@ -1497,6 +1470,8 @@
 }
 
 .mapCard {
+  width: min(100%, 1220px);
+  margin: 0 auto;
   min-height: 480px;
   overflow: hidden;
   border-radius: 30px;
@@ -1910,7 +1885,6 @@
 
 @media (max-width: 1180px) {
   .heroGrid,
-  .contactGrid,
   .galleryLayout {
     grid-template-columns: 1fr;
   }
@@ -1970,8 +1944,7 @@
   .whyGrid,
   .reasonsGrid,
   .eventGrid,
-  .menuCategoryGrid,
-  .contactGrid {
+  .menuCategoryGrid {
     grid-template-columns: 1fr;
   }
 
