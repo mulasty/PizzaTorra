@@ -105,6 +105,7 @@ const torraTracks: MusicTrack[] = [
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
+  "@id": siteConfig.url,
   name: siteConfig.name,
   alternateName: siteConfig.legalName,
   url: siteConfig.url,
@@ -112,8 +113,10 @@ const structuredData = {
   logo: `${siteConfig.url}${siteConfig.logo}`,
   telephone: siteConfig.phoneDisplay,
   email: siteConfig.email,
+  priceRange: siteConfig.priceRange,
   servesCuisine: siteConfig.cuisines,
   areaServed: siteConfig.address.addressLocality,
+  menu: `${siteConfig.url}#full-menu`,
   hasMenu: `${siteConfig.url}#full-menu`,
   hasMap: mapLink,
   sameAs: [googleMapsUrl],

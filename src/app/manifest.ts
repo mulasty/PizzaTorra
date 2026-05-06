@@ -3,9 +3,10 @@ import { siteConfig } from "@/content/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${siteConfig.name} | Pizzeria Ostro\u0142\u0119ka`,
-    short_name: siteConfig.name,
-    description: siteConfig.shortDescription,
+    id: siteConfig.url,
+    name: siteConfig.seoTitle,
+    short_name: siteConfig.shortName,
+    description: siteConfig.seoDescription,
     start_url: "/",
     scope: "/",
     display: "standalone",
