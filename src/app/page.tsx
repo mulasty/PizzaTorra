@@ -52,21 +52,6 @@ const quickActions = [
   { icon: "⏱", label: "Godziny", note: "pn-pt 11-21 • sob-nd 12-24", href: "#kontakt" },
 ];
 
-const brandPillars = [
-  {
-    title: "Pizza",
-    text: "Klasyki, premium dodatki i pizza sycylijska zgodna z aktualnym menu TORRA.",
-  },
-  {
-    title: "Caffè",
-    text: "Kawa, herbata i napoje dobrane do lunchu, spotkań i spokojnego wieczoru.",
-  },
-  {
-    title: "Musica",
-    text: "Spotkania, catering i eventy w miejscu, które łączy włoski smak z dobrą atmosferą.",
-  },
-];
-
 const promotionSlides: PromotionSlide[] = [
   {
     src: "/promo-maj-light.webp",
@@ -637,42 +622,28 @@ export default function Page() {
         <div className={`${styles.parallaxBackground} ${styles.brandBackground}`} aria-hidden="true" />
         <div className={styles.sectionIntro}>
           <p className={styles.sectionEyebrow}>Dlaczego TORRA</p>
-          <h2 className={styles.sectionTitle}>Nie tylko pizzeria. Miejsce z klimatem.</h2>
+          <h2 className={styles.sectionTitle}>Dlaczego warto wybrać TORRA?</h2>
         </div>
 
-        <div className={styles.whyGrid}>
-          {brandPillars.map((pillar) => (
-            <article key={pillar.title} className={styles.featureCard}>
-              <p className={styles.featureIcon}>{pillar.title}</p>
-              <h3>{pillar.title}</h3>
-              <p>{pillar.text}</p>
-            </article>
-          ))}
-        </div>
-
-        <div className={styles.musicShowcase}>
-          <article className={styles.musicStoryCard}>
-            <p className={styles.musicStoryBadge}>TORRA Musica</p>
-            <h3 className={styles.musicStoryTitle}>Autorska muzyka TORRA</h3>
-            <p className={styles.musicStoryText}>
-              To nasza autorska muzyka, stworzona po to, aby dopełnić smak pizzy,
-              caffè i atmosferę spotkań w TORRA. Włącz playlistę i poczuj spokojny,
-              prawdziwie włoski klimat jeszcze przed wizytą w lokalu.
-            </p>
-          </article>
-
-          <div className={styles.musicEmbedCard}>
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/videoseries?si=f1tC8WxL5p4jmb--&list=OLAK5uy_msxfccVc1l6j74VnRFwaqNjCIFWskszBA"
-              title="TORRA Musica playlista YouTube"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-              className={styles.musicEmbed}
-            />
-          </div>
+        <div className={styles.brandDescriptionBlock}>
+          <p>
+            TORRA pizza • caffè • musica to pizzeria w Ostrołęce przy Feniks Hala Targowa,
+            tworzona dla osób, które chcą zjeść dobrą włoską pizzę bez przypadkowości.
+            Łączymy chrupiące ciasto według włoskiej receptury, dopracowane dodatki,
+            kawę i atmosferę miejsca, do którego można wpaść na lunch, kolację albo
+            spokojne spotkanie.
+          </p>
+          <p>
+            Naszą siłą jest prosty wybór: czytelne menu, widoczne ceny, potwierdzone
+            godziny otwarcia i zamówienia telefoniczne pod numerem {phoneDisplay}.
+            Goście mogą szybko sprawdzić trasę, zobaczyć aktualne informacje w Google
+            i zamówić pizzę bez szukania ukrytych szczegółów.
+          </p>
+          <p>
+            TORRA to również caffè, musica oraz przestrzeń na spotkania, eventy i catering.
+            Jeśli szukasz pizzerii w Ostrołęce, która ma włoski charakter, konkretną
+            lokalizację i jasny kontakt, TORRA jest miejscem, które warto wybrać.
+          </p>
         </div>
 
       </section>
