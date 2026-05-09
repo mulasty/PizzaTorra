@@ -1,8 +1,17 @@
 const phone = "788779853";
 const website = "https://www.pizzatorra.pl";
 const googleCid = "04361763573940380613";
+const street = "Generała Ignacego Prądzyńskiego 6 lokal B18";
+const city = "Ostrołęka";
+const postalCode = "07-410";
+const country = "PL";
+const venue = "Feniks Hala Targowa";
+const fullAddress = `${street}, ${postalCode} ${city}`;
+const mapsSearchQuery = encodeURIComponent(
+  `TORRA pizza caffè musica ${street} ${postalCode} ${city}`,
+);
 const googleProfileUrl =
-  "https://www.google.com/maps/search/?api=1&query=TORRA%20pizza%20caff%C3%A8%20musica%20Genera%C5%82a%20Ignacego%20Pr%C4%85dzy%C5%84skiego%206%20lokal%20B18%2007-410%20Ostro%C5%82%C4%99ka";
+  `https://www.google.com/maps/search/?api=1&query=${mapsSearchQuery}`;
 const googleReviewUrl = "https://g.page/r/CSEw5-wt7EG-EBM/review";
 const googleMapsUrl = googleProfileUrl;
 const googleReviewsUrl = googleProfileUrl;
@@ -26,14 +35,14 @@ export const siteConfig = {
   email: "info@pizzatorra.pl",
   priceRange: "6-55 PLN",
   address: {
-    street: "Genera\u0142a Ignacego Pr\u0105dzy\u0144skiego 6 lokal B18",
-    city: "Ostro\u0142\u0119ka",
-    postalCode: "07-410",
-    country: "PL",
-    venue: "Feniks Hala Targowa",
-    streetAddress: "Genera\u0142a Ignacego Pr\u0105dzy\u0144skiego 6 lokal B18",
-    addressLocality: "Ostro\u0142\u0119ka",
-    addressCountry: "PL",
+    street,
+    city,
+    postalCode,
+    country,
+    venue,
+    streetAddress: street,
+    addressLocality: city,
+    addressCountry: country,
   },
   openingHours: {
     status: "confirmed",
@@ -76,7 +85,7 @@ export const siteConfig = {
     latitude: "",
     longitude: "",
   },
-  mapQuery: "53.08104369454033%2C21.572176677220913",
+  mapQuery: mapsSearchQuery,
   ogImage: "/og-torra.jpg",
   ogImageAlt: "TORRA pizza caff\u00e8 musica w Ostro\u0142\u0119ce",
   logo: "/logo_2.png",
@@ -97,7 +106,5 @@ export const siteConfig = {
 } as const;
 
 export const mapLink = siteConfig.google.googleMapsUrl;
-export const mapEmbed =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2396.6230924536508!2d21.572176677220913!3d53.08104369454033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471e416612f5184d%3A0xbe41ec2dece73021!2sTorra%20%7C%20Pizzeria%20Ostro%C5%82%C4%99ka!5e0!3m2!1spl!2spl!4v1778002579340!5m2!1spl!2spl";
-
-export const fullAddress = `${siteConfig.address.street}, ${siteConfig.address.postalCode} ${siteConfig.address.city}`;
+export const mapEmbed = `https://www.google.com/maps?q=${siteConfig.mapQuery}&z=17&output=embed`;
+export { fullAddress };
