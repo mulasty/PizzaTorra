@@ -16,14 +16,10 @@ type MusicTrack = {
   src: string;
 };
 
-type PromotionSlide = {
-  src: string;
-  alt: string;
-  title: string;
-};
-
 const phoneDisplay = siteConfig.phoneDisplay;
 const phoneHref = siteConfig.phoneHref;
+const emailDisplay = siteConfig.email;
+const emailHref = `mailto:${siteConfig.email}`;
 const heroVideoSrc = siteConfig.heroVideo;
 const googleMapsUrl = siteConfig.google.googleMapsUrl;
 const googleReviewsUrl = siteConfig.google.googleReviewsUrl;
@@ -37,28 +33,10 @@ const quickActions = [
   { icon: "⏱", label: "Godziny", note: "pn-pt 11-21 • sob-nd 12-24", href: "#kontakt" },
 ];
 
-const promotionSlides: PromotionSlide[] = [
-  {
-    src: "/promo-maj-light.webp",
-    alt: "Promocja TORRA: do końca maja przy zakupie dużej pizzy mała pizza -50%",
-    title: "Majowa promocja",
-  },
-  {
-    src: "/promo-maj-dark.webp",
-    alt: "Promocja TORRA w ciemnej odsłonie: do końca maja przy zakupie dużej pizzy mała pizza -50%",
-    title: "Majowa promocja nocą",
-  },
-  {
-    src: "/promo-monday-light.webp",
-    alt: "Promocja TORRA: każdy poniedziałek druga duża pizza -50%",
-    title: "Poniedziałkowa promocja",
-  },
-  {
-    src: "/promo-monday-dark.webp",
-    alt: "Promocja TORRA w ciemnej odsłonie: każdy poniedziałek druga duża pizza -50%",
-    title: "Poniedziałkowa promocja nocą",
-  },
-];
+const promotionBanner = {
+  src: "/promo-monday-light.webp",
+  alt: "Promocja TORRA: każdy poniedziałek druga duża pizza -50%",
+};
 
 const torraTracks: MusicTrack[] = [
   { title: "Benvenuti da TORRA", src: "/musica/track-01.mp3" },
@@ -109,7 +87,6 @@ export default function Page() {
   const [musicPlayerOpen, setMusicPlayerOpen] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [musicPlaying, setMusicPlaying] = useState(false);
-  const [activePromoSlide, setActivePromoSlide] = useState(0);
   const [heroVideoEnabled, setHeroVideoEnabled] = useState(false);
 
   useEffect(() => {
@@ -181,21 +158,6 @@ export default function Page() {
     );
 
     return () => window.clearTimeout(timeoutId);
-  }, []);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (prefersReducedMotion.matches) {
-      return;
-    }
-
-    const intervalId = window.setInterval(() => {
-      setActivePromoSlide((current) => (current + 1) % promotionSlides.length);
-    }, 5200);
-
-    return () => {
-      window.clearInterval(intervalId);
-    };
   }, []);
 
   const activeCategory = menuCategories.find((category) => category.id === activeMenuTab);
@@ -283,12 +245,6 @@ export default function Page() {
     const nextTrackIndex =
       (currentTrackIndex + direction + torraTracks.length) % torraTracks.length;
     await playTrack(nextTrackIndex);
-  };
-
-  const skipPromotionSlide = (direction: 1 | -1) => {
-    setActivePromoSlide((current) =>
-      (current + direction + promotionSlides.length) % promotionSlides.length,
-    );
   };
 
   return (
@@ -391,6 +347,10 @@ export default function Page() {
                 Wyznacz trasę
               </a>
             </div>
+
+            <p className={styles.contactEmailLine}>
+              Kontakt e-mail: <a href={emailHref}>{emailDisplay}</a>
+            </p>
           </div>
 
           <div className={styles.heroVisual}>
@@ -537,63 +497,18 @@ export default function Page() {
 
         <div className={styles.promoSlider}>
           <div className={styles.promoSliderViewport}>
-            {promotionSlides.map((slide, index) => (
-              <figure
-                key={slide.src}
-                className={`${styles.promoSlide} ${
-                  index === activePromoSlide ? styles.promoSlideActive : ""
-                }`}
-                aria-hidden={index === activePromoSlide ? undefined : true}
-              >
-                <Image
-                  src={slide.src}
-                  alt={slide.alt}
-                  width={1536}
-                  height={1024}
-                  sizes="(max-width: 700px) calc(100vw - 56px), (max-width: 1180px) 92vw, 1200px"
-                  className={styles.promoVisualImage}
-                  loading="lazy"
-                  fetchPriority="low"
-                />
-              </figure>
-            ))}
-          </div>
-
-          <div className={styles.promoSliderFooter}>
-            <div className={styles.promoSliderControls}>
-              <button
-                type="button"
-                className={styles.promoSliderButton}
-                onClick={() => skipPromotionSlide(-1)}
-                aria-label="Poprzednia promocja"
-              >
-                ‹
-              </button>
-
-              <div className={styles.promoSliderDots} aria-label="Wybór slajdu promocji">
-                {promotionSlides.map((slide, index) => (
-                  <button
-                    key={slide.src}
-                    type="button"
-                    className={`${styles.promoSliderDot} ${
-                      index === activePromoSlide ? styles.promoSliderDotActive : ""
-                    }`}
-                    onClick={() => setActivePromoSlide(index)}
-                    aria-label={`Przejdź do slajdu: ${slide.title}`}
-                    aria-pressed={index === activePromoSlide}
-                  />
-                ))}
-              </div>
-
-              <button
-                type="button"
-                className={styles.promoSliderButton}
-                onClick={() => skipPromotionSlide(1)}
-                aria-label="Następna promocja"
-              >
-                ›
-              </button>
-            </div>
+            <figure className={`${styles.promoSlide} ${styles.promoSlideActive}`}>
+              <Image
+                src={promotionBanner.src}
+                alt={promotionBanner.alt}
+                width={1536}
+                height={1024}
+                sizes="(max-width: 700px) calc(100vw - 56px), (max-width: 1180px) 92vw, 1200px"
+                className={styles.promoVisualImage}
+                loading="lazy"
+                fetchPriority="low"
+              />
+            </figure>
           </div>
         </div>
       </section>
@@ -633,6 +548,9 @@ export default function Page() {
           <p className={styles.sectionText}>
             Pizza 31,5 cm i 45 cm, pizza sycylijska, panuozzo, insalate,
             desery, kawa i napoje. Ceny widzisz od razu, więc decyzja ma być szybka.
+          </p>
+          <p className={styles.contactEmailLine}>
+            Zamówienia grupowe i pytania: <a href={emailHref}>{emailDisplay}</a>
           </p>
           <div className={styles.menuSalesActions}>
             <a href={phoneHref} className={styles.primaryButton} aria-label="Zadzwoń do TORRA i złóż zamówienie">
@@ -756,6 +674,9 @@ export default function Page() {
           <a href={phoneHref} className={styles.secondaryButton}>
             Zarezerwuj telefonicznie
           </a>
+          <a href={emailHref} className={styles.ghostButton}>
+            {emailDisplay}
+          </a>
         </div>
       </section>
 
@@ -774,6 +695,9 @@ export default function Page() {
             Prądzyńskiego 6 lokal B18, w Feniks Hala Targowa. Jeśli chcesz zamówić
             włoską pizzę, sprawdzić dojazd albo zapytać o catering i event, zadzwoń
             pod {phoneDisplay} lub otwórz trasę w Google Maps.
+          </p>
+          <p className={styles.contactEmailLine}>
+            Napisz do nas: <a href={emailHref}>{emailDisplay}</a>
           </p>
           <div className={styles.contactButtons}>
             <a href={phoneHref} className={styles.primaryButton}>
@@ -835,6 +759,10 @@ export default function Page() {
         <div className={styles.footerContent}>
           <p className={styles.footerWordmark}>TORRA</p>
           <p className={styles.footerTagline}>pizza • caffè • musica</p>
+          <div className={styles.footerLinks}>
+            <a href={phoneHref}>{phoneDisplay}</a>
+            <a href={emailHref}>{emailDisplay}</a>
+          </div>
           <p className={styles.footerMeta}>© 2026 TORRA. Wszystkie prawa zastrzeżone.</p>
           <p className={styles.footerCredit}>Realizacja strony: Mula Group</p>
         </div>
