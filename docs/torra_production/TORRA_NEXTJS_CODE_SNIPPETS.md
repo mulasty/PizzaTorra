@@ -1,4 +1,4 @@
-# TORRA — NEXT.JS CODE SNIPPETS
+﻿# TORRA — NEXT.JS CODE SNIPPETS
 
 ## src/content/site.ts
 ```ts

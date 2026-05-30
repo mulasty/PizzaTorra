@@ -1,4 +1,4 @@
-# TORRA SALES KILLER — MASTERPLAN WDROŻENIOWY
+﻿# TORRA SALES KILLER — MASTERPLAN WDROŻENIOWY
 
 ## Cel
 Przekształcić www.pizzatorra.pl z ładnej wizytówki w stronę sprzedażową, która maksymalizuje telefony, wejścia do lokalu, zamówienia, eventy i lokalne SEO.

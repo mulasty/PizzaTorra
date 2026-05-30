@@ -1,4 +1,4 @@
-﻿"use client";
+﻿﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -7,7 +7,7 @@ import {
   menuCategories,
   menuDownload,
 } from "@/content/menu";
-import type { MenuCategory, MenuItem, MenuSection } from "@/content/menu";
+import type { MenuCategory, MenuItem } from "@/content/menu";
 import { mapEmbed, mapLink, siteConfig } from "@/content/site";
 import styles from "./page.module.css";
 
@@ -51,6 +51,11 @@ const torraTracks: MusicTrack[] = [
   { title: "Arrivederci TORRA", src: "/musica/track-10.mp3" },
 ];
 
+const menuColumnIds = [
+  ["pizza", "desery", "kawa"],
+  ["insalate", "panuozzo", "zapiekanka", "dodatki", "napoje"],
+];
+
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
@@ -82,8 +87,6 @@ const structuredData = {
 export default function Page() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeMenuTab, setActiveMenuTab] = useState(menuCategories[0]?.id ?? "");
-  const [openAccordion, setOpenAccordion] = useState(menuCategories[0]?.id ?? "");
   const [musicPlayerOpen, setMusicPlayerOpen] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [musicPlaying, setMusicPlaying] = useState(false);
@@ -160,44 +163,55 @@ export default function Page() {
     return () => window.clearTimeout(timeoutId);
   }, []);
 
-  const activeCategory = menuCategories.find((category) => category.id === activeMenuTab);
+  const menuColumns = menuColumnIds.map((column) =>
+    column
+      .map((id) => menuCategories.find((category) => category.id === id))
+      .filter((category): category is MenuCategory => Boolean(category)),
+  );
 
-  const renderMenuItems = (items: MenuItem[], compact = false) =>
+  const renderMenuItems = (items: MenuItem[]) =>
     items.map((item) => (
-      <article key={item.name} className={compact ? styles.menuAccordionCard : styles.menuItemCard}>
+      <article key={item.name} className={styles.menuItemCard}>
         {item.badge ? <span className={styles.menuItemBadge}>{item.badge}</span> : null}
-        <div className={styles.menuItemTopRow}>
-          <h3>{item.name}</h3>
+        <div className={styles.menuItemLead}>
+          <h4>{item.name}</h4>
+          <span className={styles.menuItemDots} aria-hidden="true" />
           <strong>{item.price}</strong>
         </div>
         {item.details ? <p>{item.details}</p> : null}
       </article>
     ));
 
-  const renderMenuSections = (sections: MenuSection[], compact = false) =>
-    sections.map((section) => (
-      <section key={section.title} className={compact ? styles.menuSubsectionCompact : styles.menuSubsection}>
-        <div className={styles.menuSubsectionHeader}>
-          <h4>{section.title}</h4>
-          {section.description ? <p>{section.description}</p> : null}
-        </div>
-        <div className={compact ? styles.menuSubsectionCompactList : styles.menuCategoryGrid}>
-          {renderMenuItems(section.items, compact)}
-        </div>
-      </section>
-    ));
-
-  const renderCategoryContent = (category: MenuCategory, compact = false) => {
+  const renderMenuSections = (category: MenuCategory) => {
     if (category.sections) {
-      return renderMenuSections(category.sections, compact);
+      return category.sections.map((section) => (
+        <section key={section.title} className={styles.menuSubsection}>
+          <div className={styles.menuSubsectionHeader}>
+            <h4>{section.title}</h4>
+            {section.description ? <p>{section.description}</p> : null}
+          </div>
+          <div className={styles.menuSubsectionList}>{renderMenuItems(section.items)}</div>
+        </section>
+      ));
     }
 
-    return renderMenuItems(category.items ?? [], compact);
+    return <div className={styles.menuSubsectionList}>{renderMenuItems(category.items ?? [])}</div>;
   };
 
-  const toggleAccordion = (id: string) => {
-    setOpenAccordion((current) => (current === id ? "" : id));
-  };
+  const renderMenuCategory = (category: MenuCategory) => (
+    <section key={category.id} className={styles.menuCategoryCard}>
+      <div className={styles.menuCategoryHeading}>
+        <div className={styles.menuCategoryHeadingLine} aria-hidden="true" />
+        <div>
+          <h3>{category.title}</h3>
+          {category.badge ? <span className={styles.menuCategoryBadge}>{category.badge}</span> : null}
+        </div>
+        <div className={styles.menuCategoryHeadingLine} aria-hidden="true" />
+      </div>
+      <p className={styles.menuCategoryDescription}>{category.description}</p>
+      <div className={styles.menuCategoryBody}>{renderMenuSections(category)}</div>
+    </section>
+  );
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
   const currentTrack = torraTracks[currentTrackIndex];
@@ -556,98 +570,58 @@ export default function Page() {
             <a href={phoneHref} className={styles.primaryButton} aria-label="Zadzwoń do TORRA i złóż zamówienie">
               Zadzwoń i zamów
             </a>
-            <a href="#eventy" className={styles.secondaryButton} aria-label="Zapytaj TORRA o event lub catering">
-              Zapytaj o event / catering
+            <a
+              href={menuDownload.href}
+              className={styles.secondaryButton}
+              target="_blank"
+              rel="noreferrer"
+              download
+              aria-label="Pobierz pełne menu TORRA w PDF"
+            >
+              {menuDownload.label}
             </a>
           </div>
         </div>
 
-        <div className={styles.menuShell}>
-          <div className={styles.menuTabs} role="tablist" aria-label="Kategorie menu">
-            {menuCategories.map((category) => (
-              <button
-                key={category.id}
-                type="button"
-                role="tab"
-                aria-selected={activeMenuTab === category.id}
-                className={`${styles.menuTab} ${
-                  activeMenuTab === category.id ? styles.menuTabActive : ""
-                }`}
-                onClick={() => setActiveMenuTab(category.id)}
-              >
-                {category.title}
-              </button>
-            ))}
-          </div>
-
-          {activeCategory ? (
-            <div className={styles.menuPanel} role="tabpanel">
-              <div className={styles.menuPanelHeader}>
-                <div className={styles.menuPanelTitleBlock}>
-                  <span className={styles.menuPanelLabel}>Wybrana kategoria</span>
-                  <h3>{activeCategory.title}</h3>
-                  {activeCategory.badge ? (
-                    <span className={styles.menuCategoryBadge}>{activeCategory.badge}</span>
-                  ) : null}
-                </div>
-                <p>{activeCategory.description}</p>
+          <div className={styles.menuShell}>
+          <div className={styles.menuBoard}>
+            <div className={styles.menuBoardHeader}>
+              <div className={styles.menuBoardBrand}>
+                <span className={styles.menuBoardAccent} aria-hidden="true" />
+                <p>Pizza • Caffè • Musica</p>
+                <h3>TORRA</h3>
+                <span className={styles.menuBoardAccent} aria-hidden="true" />
               </div>
-              <div className={styles.menuPanelContent}>{renderCategoryContent(activeCategory)}</div>
+              <div className={styles.menuBoardDownload}>
+                <p>Pełna karta do pobrania</p>
+                <a href={menuDownload.href} target="_blank" rel="noreferrer" download>
+                  {menuDownload.label}
+                </a>
+              </div>
             </div>
-          ) : (
-            <div className={styles.menuPlaceholder}>
-              <Image
-                src="/menu-placeholder.webp"
-                alt="Menu TORRA z podziałem na pizzę, pizzę sycylijską, insalate, panuozzo, desery oraz napoje i caffè"
-                width={1684}
-                height={947}
-                sizes="(max-width: 900px) 100vw, 1100px"
-                className={styles.menuPlaceholderImage}
-                loading="lazy"
-                fetchPriority="low"
-              />
-            </div>
-          )}
 
-          <div className={styles.menuAccordionList}>
-            {menuCategories.map((category) => {
-              const isOpen = openAccordion === category.id;
-              return (
-                <div key={category.id} className={styles.menuAccordionItem}>
-                  <button
-                    type="button"
-                    className={styles.menuAccordionButton}
-                    onClick={() => toggleAccordion(category.id)}
-                    aria-expanded={isOpen}
-                  >
-                    <span>{category.title}</span>
-                    <span>{isOpen ? "−" : "+"}</span>
-                  </button>
-                  <div
-                    className={`${styles.menuAccordionPanel} ${
-                      isOpen ? styles.menuAccordionPanelOpen : ""
-                    }`}
-                  >
-                    <div className={styles.menuAccordionContent}>
-                      {category.badge ? (
-                        <span className={styles.menuCategoryBadge}>{category.badge}</span>
-                      ) : null}
-                      <p className={styles.menuAccordionDescription}>{category.description}</p>
-                      {renderCategoryContent(category, true)}
-                    </div>
-                  </div>
+            <div className={styles.menuBoardColumns}>
+              {menuColumns.map((column, columnIndex) => (
+                <div key={`menu-column-${columnIndex}`} className={styles.menuBoardColumn}>
+                  {column.map((category) => renderMenuCategory(category))}
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
 
         <div className={styles.pdfRow}>
-          <a href={menuDownload.href} className={styles.pdfButton} target="_blank" rel="noreferrer">
+          <a
+            href={menuDownload.href}
+            className={styles.pdfButton}
+            target="_blank"
+            rel="noreferrer"
+            download
+          >
             {menuDownload.label}
           </a>
           <span className={styles.pdfHint}>
-            Źródłowa ulotka menu dostępna do pobrania bezpośrednio ze strony.
+            Menu jest dostępne bezpośrednio na stronie i jako plik PDF do pobrania.
           </span>
         </div>
       </section>

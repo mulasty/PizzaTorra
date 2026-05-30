@@ -1,4 +1,4 @@
-.page {
+﻿.page {
   --sticky-mobile-bar-height: 76px;
   --bg: #f7efe6;
   --surface: rgba(255, 255, 255, 0.84);
@@ -900,7 +900,7 @@
 
 .menuShell {
   display: grid;
-  gap: 18px;
+  gap: 22px;
 }
 
 .menuSalesActions {
@@ -909,83 +909,227 @@
   gap: 12px;
 }
 
-.menuTabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.menuTab {
-  min-height: 46px;
-  border-radius: 999px;
-  border: 1px solid rgba(31, 45, 31, 0.12);
-  background: rgba(255, 255, 255, 0.72);
-  padding: 0 16px;
-  color: var(--olive);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.menuTabActive {
-  background: var(--olive);
-  color: #fff;
-  box-shadow: 0 12px 24px rgba(31, 45, 31, 0.2);
-}
-
-.menuPanel {
-  border-radius: 32px;
-  border: 1px solid rgba(31, 45, 31, 0.12);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(249, 242, 234, 0.98));
-  box-shadow: var(--shadow);
-  padding: 24px;
-}
-
-.menuPlaceholder {
+.menuBoard {
+  position: relative;
   display: grid;
-  place-items: center;
-  min-height: 220px;
-  padding: clamp(12px, 1.8vw, 18px);
-  border-radius: 32px;
-  border: 1px dashed rgba(31, 45, 31, 0.18);
-  background: rgba(255, 255, 255, 0.54);
+  gap: 28px;
+  padding: clamp(24px, 3vw, 40px);
+  border: 1px solid rgba(114, 74, 54, 0.28);
+  border-radius: 36px;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.9), transparent 26%),
+    radial-gradient(circle at 82% 86%, rgba(195, 113, 75, 0.12), transparent 28%),
+    linear-gradient(180deg, #fbf5ed 0%, #f5ebde 100%);
+  box-shadow:
+    inset 0 0 0 8px rgba(255, 252, 248, 0.78),
+    inset 0 0 0 10px rgba(177, 60, 44, 0.2),
+    var(--shadow);
 }
 
-.menuPlaceholderImage {
-  width: min(100%, 940px);
-  height: auto;
-  display: block;
-  border-radius: 24px;
-  box-shadow: 0 18px 44px rgba(16, 12, 8, 0.08);
+.menuBoard::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(34, 78, 45, 0.18);
+  border-radius: 28px;
+  pointer-events: none;
 }
 
-.menuPanelHeader {
+.menuBoardHeader {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: end;
   justify-content: space-between;
-  gap: 20px;
-  padding-bottom: 22px;
-  margin-bottom: 22px;
-  border-bottom: 1px solid rgba(31, 45, 31, 0.1);
+  gap: 18px;
 }
 
-.menuPanelTitleBlock {
+.menuBoardBrand {
   display: grid;
-  gap: 6px;
+  gap: 10px;
+}
+
+.menuBoardBrand p,
+.menuBoardDownload p,
+.menuCategoryDescription,
+.menuSubsectionHeader p,
+.menuItemCard p,
+.pdfHint {
+  margin: 0;
+  color: #5d4e42;
+  line-height: 1.7;
+}
+
+.menuBoardBrand p {
+  color: #714f3d;
+  font-size: 13px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.menuBoardBrand h3 {
+  margin: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(56px, 8vw, 120px);
+  font-weight: 500;
+  line-height: 0.86;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.menuBoardAccent,
+.menuCategoryHeadingLine {
+  width: 100%;
+  max-width: 360px;
+  height: 2px;
+  background: linear-gradient(90deg, #2f7b43 0%, #e7d9c7 50%, #b4382c 100%);
+}
+
+.menuBoardDownload {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 280px);
+  display: grid;
+  gap: 10px;
+  padding: 18px 20px;
+  border: 1px solid rgba(114, 74, 54, 0.18);
+  border-radius: 22px;
+  background: rgba(255, 252, 248, 0.66);
+  box-shadow: 0 14px 34px rgba(46, 33, 26, 0.08);
+}
+
+.menuBoardDownload a {
+  width: fit-content;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: var(--olive);
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.menuBoardColumns {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.menuBoardColumn {
+  display: grid;
+  align-content: start;
+  gap: 26px;
+}
+
+.menuCategoryCard {
+  display: grid;
+  gap: 16px;
+}
+
+.menuCategoryHeading {
+  display: grid;
+  grid-template-columns: minmax(32px, 92px) 1fr minmax(32px, 92px);
+  align-items: center;
+  gap: 14px;
+}
+
+.menuCategoryHeading h3 {
+  margin: 0;
+  color: #ac3f2f;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(30px, 3vw, 48px);
+  font-weight: 500;
+  line-height: 0.94;
 }
 
 .menuCategoryBadge {
+  display: inline-flex;
   width: fit-content;
-  padding: 8px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(31, 45, 31, 0.12);
-  background: rgba(255, 255, 255, 0.82);
-  color: var(--olive);
+  margin-top: 6px;
+  color: #224e2d;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.menuCategoryDescription {
+  max-width: 56ch;
+  font-size: 15px;
+}
+
+.menuCategoryBody,
+.menuSubsection,
+.menuSubsectionList {
+  display: grid;
+  gap: 14px;
+}
+
+.menuSubsectionHeader h4 {
+  margin: 0;
+  color: #224e2d;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.menuItemCard {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.menuItemLead {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.menuItemLead h4 {
+  margin: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 29px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.menuItemLead strong {
+  color: #191310;
+  font-size: 17px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.menuItemDots {
+  align-self: center;
+  border-bottom: 1px dotted rgba(114, 74, 54, 0.6);
+}
+
+.menuItemBadge {
+  position: static;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #224e2d;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.menuItemCard p {
+  font-size: 15px;
+  font-style: italic;
 }
 
 .menuPanelLabel {
@@ -996,158 +1140,22 @@
   text-transform: uppercase;
 }
 
-.menuPanelTitleBlock h3 {
-  margin: 0;
-  font-size: clamp(34px, 4vw, 48px);
-  font-weight: 500;
-  line-height: 0.94;
-}
-
-.menuPanelHeader p {
-  max-width: 38ch;
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.menuCategoryGrid {
+.menuPlaceholder {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  place-items: center;
+  min-height: 220px;
+  padding: clamp(10px, 1.6vw, 16px);
+  border-radius: 28px;
+  border: 1px solid rgba(114, 74, 54, 0.14);
+  background: rgba(255, 255, 255, 0.64);
 }
 
-.menuPanelContent {
-  display: grid;
-  gap: 22px;
-}
-
-.menuSubsection,
-.menuSubsectionCompact {
-  display: grid;
-  gap: 14px;
-}
-
-.menuSubsectionHeader {
-  display: grid;
-  gap: 6px;
-}
-
-.menuSubsectionHeader h4 {
-  margin: 0;
-  color: var(--olive);
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.menuSubsectionHeader p,
-.menuAccordionDescription {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-.menuItemCard {
-  position: relative;
-  display: grid;
-  gap: 10px;
-  padding: 24px;
-  min-width: 0;
-}
-
-.menuItemTopRow {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 16px;
-  min-width: 0;
-}
-
-.menuItemTopRow h3 {
-  min-width: 0;
-}
-
-.menuItemTopRow strong {
-  flex-shrink: 0;
-  text-align: right;
-  white-space: nowrap;
-}
-
-.menuItemBadge {
-  position: static;
-  width: fit-content;
-  max-width: 100%;
-}
-
-.menuItemCard::before {
-  content: "";
-  width: 42px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--olive), var(--terracotta));
-}
-
-.menuAccordionList {
-  display: none;
-}
-
-.menuAccordionItem {
-  border-radius: 24px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.88);
-  overflow: hidden;
-}
-
-.menuAccordionButton {
-  width: 100%;
-  padding: 18px 20px;
-  border: 0;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: var(--text);
-  font-family: var(--font-display), Georgia, serif;
-  font-size: 22px;
-  font-weight: 500;
-}
-
-.menuAccordionPanel {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 220ms ease;
-}
-
-.menuAccordionPanelOpen {
-  max-height: 4000px;
-}
-
-.menuAccordionContent {
-  display: grid;
-  gap: 14px;
-  padding: 0 20px 18px;
-}
-
-.menuAccordionCard {
-  display: grid;
-  gap: 8px;
-  padding: 0;
-  min-width: 0;
-}
-
-.menuAccordionCard h3 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 500;
-}
-
-.menuAccordionCard p {
-  margin: 0;
-}
-
-.menuSubsectionCompactList {
-  display: grid;
-  gap: 18px;
+.menuPlaceholderImage {
+  width: min(100%, 940px);
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  box-shadow: 0 18px 44px rgba(16, 12, 8, 0.08);
 }
 
 .pdfRow {
@@ -1961,14 +1969,17 @@
   }
 
   .whyGrid,
-  .reasonsGrid,
-  .menuCategoryGrid {
+  .reasonsGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .menuPanelHeader {
+  .menuBoardHeader {
     flex-direction: column;
     align-items: start;
+  }
+
+  .menuBoardDownload {
+    width: 100%;
   }
 
   .musicShowcase {
@@ -1989,15 +2000,8 @@
 }
 
 @media (max-width: 900px) {
-  .menuTabs,
-  .menuPanel,
-  .menuPlaceholder {
-    display: none;
-  }
-
-  .mobileMenuButton,
-  .menuAccordionList {
-    display: grid;
+  .menuBoardColumns {
+    grid-template-columns: 1fr;
   }
 
   .heroGrid,
@@ -2005,8 +2009,7 @@
   .promoGrid,
   .whyGrid,
   .reasonsGrid,
-  .eventGrid,
-  .menuCategoryGrid {
+  .eventGrid {
     grid-template-columns: 1fr;
   }
 
@@ -2256,15 +2259,6 @@
     padding-bottom: calc(132px + env(safe-area-inset-bottom));
   }
 
-  .menuItemTopRow {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .menuItemTopRow strong {
-    text-align: left;
-  }
-
   .cardActions {
     display: grid;
   }
@@ -2282,16 +2276,40 @@
   .reasonCard,
   .eventCard,
   .promoCard,
-  .menuItemCard,
   .contactCard,
   .hitBody {
     padding: 20px;
   }
 
-  .menuAccordionButton {
-    min-height: 52px;
-    padding: 16px 18px;
-    font-size: 20px;
+  .menuBoard {
+    padding: 22px 18px;
+    border-radius: 28px;
+  }
+
+  .menuBoard::before {
+    inset: 10px;
+    border-radius: 20px;
+  }
+
+  .menuBoardBrand h3 {
+    font-size: clamp(44px, 15vw, 72px);
+  }
+
+  .menuCategoryHeading {
+    grid-template-columns: 42px 1fr 42px;
+  }
+
+  .menuItemLead {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .menuItemDots {
+    display: none;
+  }
+
+  .menuItemLead strong {
+    justify-self: start;
   }
 
   .menuSalesActions {
@@ -2322,11 +2340,14 @@
   }
 
   .pdfRow {
+    display: grid;
     align-items: stretch;
   }
 
-  .pdfButton {
+  .pdfButton,
+  .menuBoardDownload a {
     width: 100%;
+    justify-content: center;
   }
 }
 
@@ -2380,6 +2401,14 @@
     max-width: 11ch;
   }
 
+  .menuCategoryHeading h3 {
+    font-size: 24px;
+  }
+
+  .menuItemLead h4 {
+    font-size: 23px;
+  }
+
   .heroText {
     max-width: 31ch;
     font-size: 14px;
@@ -2397,10 +2426,6 @@
 
   .contactButtons a {
     width: 100%;
-  }
-
-  .musicPlayer {
-    width: min(260px, calc(100vw - 40px));
   }
 }
 

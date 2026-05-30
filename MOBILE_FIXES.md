@@ -1,4 +1,4 @@
-# Mobile Fixes — TORRA
+﻿# Mobile Fixes — TORRA
 
 Data wdrożenia: 27.04.2026
 

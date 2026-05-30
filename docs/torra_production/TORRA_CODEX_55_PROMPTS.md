@@ -1,4 +1,4 @@
-# TORRA — PROMPTY DLA CODEX 5.5
+﻿# TORRA — PROMPTY DLA CODEX 5.5
 
 ## Prompt 1 — Audyt repo i plan refaktoru
 ```txt
