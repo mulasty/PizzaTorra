@@ -198,7 +198,7 @@ export const menuCategories: MenuCategory[] = [
           },
           {
             name: "Oliwa: czosnkowa / ostra / parmezanowa / zwykła",
-            price: "dopłata 3 PLN",
+            price: "dopłata 7 PLN",
           },
         ],
       },
