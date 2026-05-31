@@ -99,6 +99,12 @@ export const metadata: Metadata = {
   },
 };
 
+const criticalAssets = [
+  { rel: "preload", href: "/logo_2.png", as: "image", fetchpriority: "high" },
+  { rel: "preload", href: "/pizzatorra/pizza-1.jpeg", as: "image", fetchpriority: "high" },
+  { rel: "preload", href: "/og-torra.jpg", as: "image" },
+];
+
 export const viewport: Viewport = {
   themeColor: "#140e0a",
 };
@@ -110,6 +116,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
+      <head>
+        {criticalAssets.map(({ rel, href, as, ...rest }) => (
+          <link key={href} rel={rel} href={href} as={as} {...rest} />
+        ))}
+      </head>
       <body className={`${display.variable} ${body.variable}`}>
         {children}
         <CookieConsentBanner />

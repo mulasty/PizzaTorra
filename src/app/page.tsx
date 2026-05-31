@@ -314,7 +314,8 @@ export default function Page() {
               width={220}
               height={220}
               className={styles.heroLogo}
-              preload
+              priority
+              fetchPriority="high"
             />
             <div className={styles.heroIntro}>
               <p className={styles.heroLabel}>Pizza • Caffè • Musica</p>
