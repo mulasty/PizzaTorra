@@ -1,20 +1,16 @@
-﻿"use client";
-
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+﻿import Image from "next/image";
 import {
   eventOffer,
   menuCategories,
   menuDownload,
 } from "@/content/menu";
-import type { MenuCategory, MenuItem } from "@/content/menu";
+import type { MenuItem, MenuCategory } from "@/content/menu";
 import { mapEmbed, mapLink, siteConfig } from "@/content/site";
+import { MobileNavigation } from "@/components/MobileNavigation";
+import { HeroVideo } from "@/components/HeroVideo";
+import { MusicPlayer } from "@/components/MusicPlayer";
+import { ParallaxEffect } from "@/components/ParallaxEffect";
 import styles from "./page.module.css";
-
-type MusicTrack = {
-  title: string;
-  src: string;
-};
 
 const phoneDisplay = siteConfig.phoneDisplay;
 const phoneHref = siteConfig.phoneHref;
@@ -27,10 +23,10 @@ const googleReviewUrl = siteConfig.google.googleReviewUrl;
 const heroHoursDisplay = siteConfig.openingHours.value.map((item) => item.label);
 
 const quickActions = [
-  { icon: "☎", label: phoneDisplay, note: "Zadzwoń i zamów", href: phoneHref },
-  { icon: "🍕", label: "Menu", note: "Pizza 31,5 / 45 cm", href: "#full-menu" },
-  { icon: "📍", label: "Trasa", note: "Feniks Hala Targowa", href: googleMapsUrl },
-  { icon: "⏱", label: "Godziny", note: "pn-pt 11-21 • sob-nd 12-24", href: "#kontakt" },
+  { icon: "\u260E", label: phoneDisplay, note: "Zadzwoń i zamów", href: phoneHref },
+  { icon: "\uD83C\uDF55", label: "Menu", note: "Pizza 31,5 / 45 cm", href: "#full-menu" },
+  { icon: "\uD83D\uDCCD", label: "Trasa", note: "Feniks Hala Targowa", href: googleMapsUrl },
+  { icon: "\u23F1", label: "Godziny", note: "pn-pt 11-21 \u2022 sob-nd 12-24", href: "#kontakt" },
 ];
 
 const promotionBanner = {
@@ -38,7 +34,7 @@ const promotionBanner = {
   alt: "Promocja TORRA: każdy poniedziałek druga duża pizza -50%",
 };
 
-const torraTracks: MusicTrack[] = [
+const torraTracks = [
   { title: "Benvenuti da TORRA", src: "/musica/track-01.mp3" },
   { title: "Pizza al Sole", src: "/musica/track-02.mp3" },
   { title: "Caffè di Ostrołęka", src: "/musica/track-03.mp3" },
@@ -84,226 +80,66 @@ const structuredData = {
   },
 };
 
-export default function Page() {
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [musicPlayerOpen, setMusicPlayerOpen] = useState(false);
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-  const [musicPlaying, setMusicPlaying] = useState(false);
-  const [heroVideoEnabled, setHeroVideoEnabled] = useState(false);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (prefersReducedMotion.matches) {
-      return;
-    }
-
-    const sections = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-parallax-section]"),
-    );
-
-    if (!sections.length) {
-      return;
-    }
-
-    let frame = 0;
-
-    const updateParallax = () => {
-      const viewportHeight = window.innerHeight;
-
-      for (const section of sections) {
-        const rect = section.getBoundingClientRect();
-        const speed = Number(section.dataset.parallaxSpeed ?? 0.18);
-        const distanceFromCenter = rect.top + rect.height / 2 - viewportHeight / 2;
-        const shift = Math.max(-88, Math.min(88, distanceFromCenter * -speed));
-        section.style.setProperty("--parallax-shift", `${shift.toFixed(2)}px`);
-      }
-
-      frame = 0;
-    };
-
-    const requestUpdate = () => {
-      if (!frame) {
-        frame = window.requestAnimationFrame(updateParallax);
-      }
-    };
-
-    updateParallax();
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate);
-
-    return () => {
-      if (frame) {
-        window.cancelAnimationFrame(frame);
-      }
-      window.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
-    };
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [mobileMenuOpen]);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (prefersReducedMotion.matches) {
-      return;
-    }
-
-    const isMobileViewport = window.matchMedia("(max-width: 700px)").matches;
-    const timeoutId = window.setTimeout(
-      () => setHeroVideoEnabled(true),
-      isMobileViewport ? 1800 : 900,
-    );
-
-    return () => window.clearTimeout(timeoutId);
-  }, []);
-
-  const menuColumns = menuColumnIds.map((column) =>
-    column
-      .map((id) => menuCategories.find((category) => category.id === id))
-      .filter((category): category is MenuCategory => Boolean(category)),
-  );
-
-  const renderMenuItems = (items: MenuItem[]) =>
-    items.map((item) => (
-      <article key={item.name} className={styles.menuItemCard}>
-        {item.badge ? <span className={styles.menuItemBadge}>{item.badge}</span> : null}
-        <div className={styles.menuItemLead}>
-          <h4>{item.name}</h4>
-          <span className={styles.menuItemDots} aria-hidden="true" />
-          <strong>{item.price}</strong>
-        </div>
-        {item.details ? <p>{item.details}</p> : null}
-      </article>
-    ));
-
-  const renderMenuSections = (category: MenuCategory) => {
-    if (category.sections) {
-      return category.sections.map((section) => (
-        <section key={section.title} className={styles.menuSubsection}>
-          <div className={styles.menuSubsectionHeader}>
-            <h4>{section.title}</h4>
-            {section.description ? <p>{section.description}</p> : null}
-          </div>
-          <div className={styles.menuSubsectionList}>{renderMenuItems(section.items)}</div>
-        </section>
-      ));
-    }
-
-    return <div className={styles.menuSubsectionList}>{renderMenuItems(category.items ?? [])}</div>;
-  };
-
-  const renderMenuCategory = (category: MenuCategory) => (
-    <section key={category.id} className={styles.menuCategoryCard}>
-      <div className={styles.menuCategoryHeading}>
-        <div className={styles.menuCategoryHeadingLine} aria-hidden="true" />
-        <div>
-          <h3>{category.title}</h3>
-          {category.badge ? <span className={styles.menuCategoryBadge}>{category.badge}</span> : null}
-        </div>
-        <div className={styles.menuCategoryHeadingLine} aria-hidden="true" />
+const renderMenuItems = (items: MenuItem[]) =>
+  items.map((item) => (
+    <article key={item.name} className={styles.menuItemCard}>
+      {item.badge ? <span className={styles.menuItemBadge}>{item.badge}</span> : null}
+      <div className={styles.menuItemLead}>
+        <h4>{item.name}</h4>
+        <span className={styles.menuItemDots} aria-hidden="true" />
+        <strong>{item.price}</strong>
       </div>
-      <p className={styles.menuCategoryDescription}>{category.description}</p>
-      <div className={styles.menuCategoryBody}>{renderMenuSections(category)}</div>
-    </section>
-  );
+      {item.details ? <p>{item.details}</p> : null}
+    </article>
+  ));
 
-  const closeMobileMenu = () => setMobileMenuOpen(false);
-  const currentTrack = torraTracks[currentTrackIndex];
+const renderMenuSections = (category: MenuCategory) => {
+  if (category.sections) {
+    return category.sections.map((section) => (
+      <section key={section.title} className={styles.menuSubsection}>
+        <div className={styles.menuSubsectionHeader}>
+          <h4>{section.title}</h4>
+          {section.description ? <p>{section.description}</p> : null}
+        </div>
+        <div className={styles.menuSubsectionList}>{renderMenuItems(section.items)}</div>
+      </section>
+    ));
+  }
 
-  const playTrack = async (trackIndex = currentTrackIndex) => {
-    const audio = audioRef.current;
-    if (!audio) {
-      return;
-    }
+  return <div className={styles.menuSubsectionList}>{renderMenuItems(category.items ?? [])}</div>;
+};
 
-    setCurrentTrackIndex(trackIndex);
+const renderMenuCategory = (category: MenuCategory) => (
+  <section key={category.id} className={styles.menuCategoryCard}>
+    <div className={styles.menuCategoryHeading}>
+      <div className={styles.menuCategoryHeadingLine} aria-hidden="true" />
+      <div>
+        <h3>{category.title}</h3>
+        {category.badge ? <span className={styles.menuCategoryBadge}>{category.badge}</span> : null}
+      </div>
+      <div className={styles.menuCategoryHeadingLine} aria-hidden="true" />
+    </div>
+    <p className={styles.menuCategoryDescription}>{category.description}</p>
+    <div className={styles.menuCategoryBody}>{renderMenuSections(category)}</div>
+  </section>
+);
 
-    if (audio.src !== new URL(torraTracks[trackIndex].src, window.location.href).href) {
-      audio.src = torraTracks[trackIndex].src;
-    }
+const menuColumns = menuColumnIds.map((column) =>
+  column
+    .map((id) => menuCategories.find((category) => category.id === id))
+    .filter((category): category is MenuCategory => Boolean(category)),
+);
 
-    try {
-      await audio.play();
-      setMusicPlaying(true);
-    } catch {
-      setMusicPlaying(false);
-    }
-  };
-
-  const toggleMusic = async () => {
-    const audio = audioRef.current;
-    if (!audio) {
-      return;
-    }
-
-    if (musicPlaying) {
-      audio.pause();
-      setMusicPlaying(false);
-      return;
-    }
-
-    await playTrack();
-  };
-
-  const selectTrack = async (trackIndex: number) => {
-    await playTrack(trackIndex);
-  };
-
-  const skipTrack = async (direction: 1 | -1) => {
-    const nextTrackIndex =
-      (currentTrackIndex + direction + torraTracks.length) % torraTracks.length;
-    await playTrack(nextTrackIndex);
-  };
-
+export default function Page() {
   return (
     <main className={styles.page}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <header className={styles.header}>
-        <div className={styles.headerActions}>
-          <button
-            type="button"
-            className={styles.mobileMenuButton}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-menu"
-            aria-label={mobileMenuOpen ? "Zamknij menu" : "Otwórz menu"}
-            onClick={() => setMobileMenuOpen((open) => !open)}
-          >
-            {mobileMenuOpen ? "×" : "☰"}
-          </button>
-        </div>
-      </header>
+      <ParallaxEffect />
 
-      <div
-        id="mobile-menu"
-        className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ""}`}
-      >
-        <div className={styles.mobileMenuPanel}>
-          <a href="#top" onClick={closeMobileMenu}>
-            TORRA
-          </a>
-          <a href="#promocje" onClick={closeMobileMenu}>
-            PROMOCJE
-          </a>
-          <a href="#full-menu" onClick={closeMobileMenu}>
-            MENU
-          </a>
-          <a href="#eventy" onClick={closeMobileMenu}>
-            EVENTY
-          </a>
-          <a href="#kontakt" onClick={closeMobileMenu}>
-            KONTAKT
-          </a>
-        </div>
-      </div>
+      <MobileNavigation />
 
       <section id="top" className={styles.hero}>
         <div className={styles.heroGrid}>
@@ -318,7 +154,7 @@ export default function Page() {
               fetchPriority="high"
             />
             <div className={styles.heroIntro}>
-              <p className={styles.heroLabel}>Pizza • Caffè • Musica</p>
+              <p className={styles.heroLabel}>Pizza \u2022 Caff\u00e8 \u2022 Musica</p>
               <span className={styles.heroFlag} aria-hidden="true">
                 <span className={styles.heroFlagStripeGreen} />
                 <span className={styles.heroFlagStripeWhite} />
@@ -330,7 +166,7 @@ export default function Page() {
               <span>w Ostrołęce</span>
             </h1>
             <p className={styles.heroText}>
-              Chrupiące ciasto według włoskiej receptury, caffè i klimat TORRA
+              Chrupiące ciasto według włoskiej receptury, caff\u00e8 i klimat TORRA
               w Feniks Hala Targowa. Zamów telefonicznie albo wpadnij po włoski
               smak w samym sercu Ostrołęki.
             </p>
@@ -341,7 +177,7 @@ export default function Page() {
             </a>
 
             <div className={styles.heroInfoStrip} aria-label="Lokalizacja i godziny otwarcia TORRA">
-              <span>Ostrołęka • Feniks Hala Targowa</span>
+              <span>Ostrołęka \u2022 Feniks Hala Targowa</span>
               {heroHoursDisplay.map((item) => (
                 <span key={item}>{item}</span>
               ))}
@@ -369,20 +205,7 @@ export default function Page() {
           </div>
 
           <div className={styles.heroVisual}>
-            <div className={styles.heroMediaFrame}>
-              <video
-                className={styles.heroMedia}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="none"
-                poster="/pizzatorra/pizza-1.jpeg"
-              >
-                {heroVideoEnabled ? <source src={heroVideoSrc} type="video/mp4" /> : null}
-              </video>
-              <div className={styles.heroMediaOverlay} />
-            </div>
+            <HeroVideo src={heroVideoSrc} />
           </div>
         </div>
       </section>
@@ -395,113 +218,16 @@ export default function Page() {
                 key={action.label}
                 href={action.href}
                 className={styles.quickActionCard}
-                aria-label={`${action.label} — ${action.note}`}
+                aria-label={`${action.label} \u2014 ${action.note}`}
               >
                 <span className={styles.quickActionIcon}>{action.icon}</span>
                 <span className={styles.quickActionLabel}>{action.label}</span>
                 <span className={styles.quickActionNote}>{action.note}</span>
               </a>
             ))}
+
+            <MusicPlayer tracks={torraTracks} />
           </div>
-
-          <aside
-            className={`${styles.musicPlayer} ${styles.quickActionPlayer} ${
-              musicPlayerOpen ? styles.musicPlayerOpen : ""
-            }`}
-            aria-label="TORRA Musica"
-          >
-            <audio
-              ref={audioRef}
-              preload="none"
-              onEnded={() => skipTrack(1)}
-              onPause={() => setMusicPlaying(false)}
-              onPlay={() => setMusicPlaying(true)}
-            />
-
-            <div className={styles.musicFlag} aria-hidden="true" />
-
-            <button
-              type="button"
-              className={styles.musicToggle}
-              aria-expanded={musicPlayerOpen}
-              aria-label={musicPlayerOpen ? "Zwiń odtwarzacz TORRA Musica" : "Rozwiń odtwarzacz TORRA Musica"}
-              onClick={() => setMusicPlayerOpen((open) => !open)}
-            >
-              <span className={styles.musicDisc}>
-                <Image
-                  src="/musica/torra-musica.webp"
-                  alt=""
-                  width={96}
-                  height={96}
-                  className={styles.musicDiscImage}
-                  loading="lazy"
-                  fetchPriority="low"
-                />
-              </span>
-              <span className={styles.musicToggleText}>
-                <span>TORRA Musica</span>
-                <strong>{musicPlaying ? "Gra teraz" : "Sera Italiana"}</strong>
-              </span>
-              <span className={styles.musicToggleIcon}>{musicPlayerOpen ? "×" : "♪"}</span>
-            </button>
-
-            <div className={styles.musicPanel}>
-              <div className={styles.musicPanelHeader}>
-                <Image
-                  src="/musica/torra-musica.webp"
-                  alt="TORRA Musica Sera Italiana"
-                  width={160}
-                  height={160}
-                  className={styles.musicCover}
-                  loading="lazy"
-                  fetchPriority="low"
-                />
-                <div>
-                  <p>Playlist</p>
-                  <h2>TORRA Musica</h2>
-                  <span>Sera Italiana • 10 utworów</span>
-                </div>
-              </div>
-
-              <div className={styles.musicNow}>
-                <span>Teraz</span>
-                <strong>{currentTrack.title}</strong>
-              </div>
-
-              <div className={styles.musicControls} aria-label="Sterowanie muzyką">
-                <button type="button" onClick={() => skipTrack(-1)} aria-label="Poprzedni utwór">
-                  ‹
-                </button>
-                <button
-                  type="button"
-                  className={styles.musicPlayButton}
-                  onClick={toggleMusic}
-                  aria-label={musicPlaying ? "Pauza" : "Odtwórz"}
-                >
-                  {musicPlaying ? "Pauza" : "Play"}
-                </button>
-                <button type="button" onClick={() => skipTrack(1)} aria-label="Następny utwór">
-                  ›
-                </button>
-              </div>
-
-              <div className={styles.musicTrackList}>
-                {torraTracks.map((track, index) => (
-                  <button
-                    key={track.src}
-                    type="button"
-                    className={`${styles.musicTrackButton} ${
-                      index === currentTrackIndex ? styles.musicTrackButtonActive : ""
-                    }`}
-                    onClick={() => selectTrack(index)}
-                  >
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <strong>{track.title}</strong>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </aside>
         </div>
       </section>
 
@@ -528,13 +254,10 @@ export default function Page() {
         </div>
       </section>
 
-      <section
-        id="marka"
-        className={styles.whySection}
-      >
+      <section id="marka" className={styles.whySection}>
         <div className={styles.sectionIntro}>
           <p className={styles.sectionEyebrow}>Dlaczego TORRA</p>
-          <h2 className={styles.sectionTitle}>Dlaczego warto wybrać TORRA?</h2>
+          <h2 className={styles.sectionTitle}>Dlaczego warto wybra\u0107 TORRA?</h2>
         </div>
 
         <div className={styles.brandDescriptionBlock}>
@@ -545,7 +268,7 @@ export default function Page() {
           </p>
           <p>
             Wchodzisz, zamawiasz i po prostu jesz - bez pośpiechu, bez zbędnych
-            dodatków. Albo dzwonisz pod {phoneDisplay} i odbierasz pizzę wtedy,
+            dodatk\u00f3w. Albo dzwonisz pod {phoneDisplay} i odbierasz pizzę wtedy,
             kiedy masz ochotę.
           </p>
           <p>
@@ -553,13 +276,12 @@ export default function Page() {
             naturalnie.
           </p>
         </div>
-
       </section>
 
       <section id="full-menu" className={styles.menuSection}>
         <div className={styles.sectionIntro}>
           <p className={styles.sectionEyebrow}>Menu TORRA</p>
-          <h2 className={styles.sectionTitle}>Wybierz smak i zamów telefonicznie</h2>
+          <h2 className={styles.sectionTitle}>Wybierz smak i zamo\u0301w telefonicznie</h2>
           <p className={styles.sectionText}>
             Pizza 31,5 cm i 45 cm, pizza sycylijska, panuozzo, insalate,
             desery, kawa i napoje. Ceny widzisz od razu, więc decyzja ma być szybka.
@@ -584,17 +306,17 @@ export default function Page() {
           </div>
         </div>
 
-          <div className={styles.menuShell}>
+        <div className={styles.menuShell}>
           <div className={styles.menuBoard}>
             <div className={styles.menuBoardHeader}>
               <div className={styles.menuBoardBrand}>
                 <span className={styles.menuBoardAccent} aria-hidden="true" />
-                <p>Pizza • Caffè • Musica</p>
+                <p>Pizza \u2022 Caff\u00e8 \u2022 Musica</p>
                 <h3>TORRA</h3>
                 <span className={styles.menuBoardAccent} aria-hidden="true" />
               </div>
               <div className={styles.menuBoardDownload}>
-                <p>Pełna karta do pobrania</p>
+                <p>Pe\u0142na karta do pobrania</p>
                 <a href={menuDownload.href} target="_blank" rel="noreferrer" download>
                   {menuDownload.label}
                 </a>
@@ -666,9 +388,9 @@ export default function Page() {
           <p className={styles.sectionEyebrow}>Kontakt + mapa</p>
           <h2 className={styles.sectionTitle}>Kontakt i dojazd do TORRA</h2>
           <p className={styles.sectionText}>
-            TORRA pizza • caffè • musica działa w Ostrołęce przy Generała Ignacego
-            Prądzyńskiego 6 lokal B18, w Feniks Hala Targowa. Jeśli chcesz zamówić
-            włoską pizzę, sprawdzić dojazd albo zapytać o catering i event, zadzwoń
+            TORRA pizza \u2022 caff\u00e8 \u2022 musica dzia\u0142a w Ostro\u0142ęce przy Genera\u0142a Ignacego
+            Pr\u0105dzy\u0144skiego 6 lokal B18, w Feniks Hala Targowa. Jeśli chcesz zamówić
+            włoską pizzę, sprawdzić dojazd albo zapyta\u0107 o catering i event, zadzwoń
             pod {phoneDisplay} lub otwórz trasę w Google Maps.
           </p>
           <p className={styles.contactEmailLine}>
@@ -699,7 +421,7 @@ export default function Page() {
         <div className={styles.reviewContent}>
           <div className={styles.reviewCopy}>
             <p className={styles.sectionEyebrow}>Google Reviews</p>
-            <h2 className={styles.sectionTitle}>Opinie klientów TORRA</h2>
+            <h2 className={styles.sectionTitle}>Opinie klient\u00f3w TORRA</h2>
             <p className={styles.sectionText}>
               Sprawdź, co goście mówią o TORRA w Google. Byłeś u nas? Zostaw swoją
               opinię - to bardzo pomaga naszej pizzerii.
@@ -733,28 +455,27 @@ export default function Page() {
         <div className={styles.footerOverlay} aria-hidden="true" />
         <div className={styles.footerContent}>
           <p className={styles.footerWordmark}>TORRA</p>
-          <p className={styles.footerTagline}>pizza • caffè • musica</p>
+          <p className={styles.footerTagline}>pizza \u2022 caff\u00e8 \u2022 musica</p>
           <div className={styles.footerLinks}>
             <a href={phoneHref}>{phoneDisplay}</a>
             <a href={emailHref}>{emailDisplay}</a>
           </div>
-          <p className={styles.footerMeta}>© 2026 TORRA. Wszystkie prawa zastrzeżone.</p>
+          <p className={styles.footerMeta}>\u00A9 2026 TORRA. Wszystkie prawa zastrzeżone.</p>
           <p className={styles.footerCredit}>Realizacja strony: Mula Group</p>
         </div>
       </footer>
 
       <div className={styles.stickyMobileBar}>
         <a href={phoneHref} aria-label="Zadzwoń do TORRA">
-          ☎ Zadzwoń
+          \u260E Zadzwoń
         </a>
         <a href="#full-menu" aria-label="Przejdź do menu TORRA">
-          🍕 Menu
+          \uD83C\uDF55 Menu
         </a>
         <a href={googleMapsUrl} aria-label="Otwórz trasę do TORRA" target="_blank" rel="noreferrer">
-          📍 Trasa
+          \uD83D\uDCCD Trasa
         </a>
       </div>
     </main>
   );
 }
-
