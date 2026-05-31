@@ -2052,9 +2052,10 @@
   .hero {
     --hero-top-space: 28px;
     --hero-bottom-space: 228px;
-    height: 100dvh;
-    min-height: 100svh;
-    align-items: end;
+    min-height: 100dvh;
+    height: auto;
+    align-items: center;
+    overflow-y: auto;
   }
 
   .quickActionsSection {
@@ -2353,7 +2354,8 @@
 
 @media (max-width: 430px) {
   .hero {
-    --hero-bottom-space: 118px;
+    --hero-top-space: 20px;
+    --hero-bottom-space: 140px;
   }
 
   .heroCopy {
