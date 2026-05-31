@@ -2064,7 +2064,7 @@
   }
 
   .heroTitle {
-    max-width: 8.4ch;
+    max-width: 12ch;
     font-size: clamp(38px, 11.8vw, 58px);
     line-height: 0.92;
   }
@@ -2410,11 +2410,11 @@
 
   .sectionTitle,
   .eventCard h3 {
-    max-width: 9ch;
+    max-width: 100%;
   }
 
   .menuSection .sectionTitle {
-    max-width: 11ch;
+    max-width: 100%;
   }
 
   .menuCategoryHeading h3 {
@@ -2426,7 +2426,7 @@
   }
 
   .heroText {
-    max-width: 31ch;
+    max-width: 100%;
     font-size: 14px;
     line-height: 1.5;
   }
