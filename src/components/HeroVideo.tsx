@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import styles from "../app/page.module.css";
 
 type HeroVideoProps = {
@@ -8,35 +8,32 @@ type HeroVideoProps = {
 };
 
 export function HeroVideo({ src }: HeroVideoProps) {
-  const [heroVideoEnabled, setHeroVideoEnabled] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (prefersReducedMotion.matches) {
-      return;
+      const video = videoRef.current;
+      if (video) {
+        video.pause();
+        video.removeAttribute("autoplay");
+      }
     }
-
-    const isMobileViewport = window.matchMedia("(max-width: 700px)").matches;
-    const timeoutId = window.setTimeout(
-      () => setHeroVideoEnabled(true),
-      isMobileViewport ? 1800 : 900,
-    );
-
-    return () => window.clearTimeout(timeoutId);
   }, []);
 
   return (
     <div className={styles.heroMediaFrame}>
       <video
+        ref={videoRef}
         className={styles.heroMedia}
         autoPlay
         muted
         loop
         playsInline
-        preload="none"
+        preload="auto"
         poster="/pizzatorra/pizza-1.jpeg"
       >
-        {heroVideoEnabled ? <source src={src} type="video/mp4" /> : null}
+        <source src={src} type="video/mp4" />
       </video>
       <div className={styles.heroMediaOverlay} />
     </div>
