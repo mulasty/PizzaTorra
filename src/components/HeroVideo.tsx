@@ -31,7 +31,7 @@ export function HeroVideo({ src }: HeroVideoProps) {
         loop
         playsInline
         preload="auto"
-        poster="/pizzatorra/pizza-1.jpeg"
+        poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect fill='%23140e0a' width='1' height='1'/%3E%3C/svg%3E"
       >
         <source src={src} type="video/mp4" />
       </video>

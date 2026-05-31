@@ -101,7 +101,6 @@ export const metadata: Metadata = {
 
 const criticalAssets = [
   { rel: "preload", href: "/logo_2.png", as: "image", fetchpriority: "high" },
-  { rel: "preload", href: "/pizzatorra/pizza-1.jpeg", as: "image", fetchpriority: "high" },
   { rel: "preload", href: "/og-torra.jpg", as: "image" },
 ];
 
