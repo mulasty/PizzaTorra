@@ -11,13 +11,26 @@ export function HeroVideo({ src }: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (prefersReducedMotion.matches) {
-      const video = videoRef.current;
-      if (video) {
-        video.pause();
-        video.removeAttribute("autoplay");
-      }
+      video.pause();
+      video.removeAttribute("autoplay");
+      return;
+    }
+
+    // iOS Safari wymaga explicit .play() i muted jako właściwości JS
+    video.muted = true;
+    video.playsInline = true;
+    video.autoplay = true;
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Autoplay zablokowane — fallback na poster
+      });
     }
   }, []);
 
@@ -26,7 +39,6 @@ export function HeroVideo({ src }: HeroVideoProps) {
       <video
         ref={videoRef}
         className={styles.heroMedia}
-        autoPlay
         muted
         loop
         playsInline
