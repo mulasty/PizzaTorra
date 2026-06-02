@@ -910,6 +910,37 @@
   gap: 12px;
 }
 
+.pyszneCtaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 22px;
+  min-height: 46px;
+  border-radius: 999px;
+  background: #FF8000;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  border: none;
+}
+
+.pyszneCtaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 128, 0, 0.28);
+}
+
+.pyszneCtaLogo {
+  width: 72px;
+  height: 19px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
+}
+
 .menuBoard {
   position: relative;
   display: grid;

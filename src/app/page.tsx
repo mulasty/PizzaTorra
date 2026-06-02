@@ -478,6 +478,23 @@ export default function Page() {
               Zadzwoń i zamów
             </a>
             <a
+              href={siteConfig.pysznepl.url}
+              className={styles.pyszneCtaButton}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Zamów przez Pyszne.pl"
+            >
+              <img
+                src="https://brandlogovector.com/wp-content/uploads/2021/10/Pyszne.pl-Logo.png"
+                alt="Pyszne.pl"
+                width={72}
+                height={19}
+                className={styles.pyszneCtaLogo}
+                aria-hidden="true"
+                loading="lazy"
+              />
+            </a>
+            <a
               href={menuDownload.href}
               className={styles.secondaryButton}
               target="_blank"
