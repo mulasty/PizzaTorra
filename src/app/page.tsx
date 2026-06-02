@@ -768,7 +768,7 @@ export default function Page() {
           <p className={styles.footerCredit}>
             Wykonanie:{" "}
             <a
-              href="https://www.mulagroup.vercel.app"
+              href="https://mulagroup.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.footerCreditLink}
