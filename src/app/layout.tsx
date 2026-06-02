@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { siteConfig } from "@/content/site";
 import { CookieConsentBanner } from "./CookieConsentBanner";
 import "./globals.css";
@@ -116,6 +117,7 @@ export default function RootLayout({
       <body className={`${display.variable} ${body.variable}`}>
         {children}
         <CookieConsentBanner />
+        <SpeedInsights />
       </body>
     </html>
   );
