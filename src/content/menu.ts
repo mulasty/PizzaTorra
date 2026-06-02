@@ -257,13 +257,38 @@ export const orderingInfo = {
 };
 
 export const eventOffer = {
-  title: "Planujesz event? Zróbmy to razem",
+  title: "Zorganizuj event z TORRA",
   items: [
-    "spotkania integracyjne i rodzinne",
-    "lunch biznesowy",
-    "catering dopasowany do potrzeb, również opcja wege",
-    "przy rezerwacjach urodzinowych pizza niespodzianka od szefa kuchni",
-    "warsztaty kulinarne dla dzieci i młodzieży",
+    {
+      iconName: "users",
+      name: "Spotkania integracyjne i rodzinne",
+      description:
+        "Kameralne przyjęcia i większe imprezy — dopasujemy menu do Twoich gości.",
+    },
+    {
+      iconName: "briefcase",
+      name: "Lunch biznesowy",
+      description:
+        "Catering lunchowy z dostawą pod wskazany adres. Pizza, insalate i kawa w 60 minut.",
+    },
+    {
+      iconName: "coffee",
+      name: "Catering na każdą okazję",
+      description:
+        "Menu układamy indywidualnie. Opcja wegańska i bezglutenowa dostępna.",
+    },
+    {
+      iconName: "star",
+      name: "Przyjęcia urodzinowe",
+      description:
+        "Przy rezerwacji urodzinowej pizza niespodzianka od szefa kuchni dla solenizanta.",
+    },
+    {
+      iconName: "chef",
+      name: "Warsztaty kulinarne",
+      description:
+        "Pokaz robienia pizzy dla dzieci i młodzieży. Praktyczna nauka z włoskimi dodatkami.",
+    },
   ],
 };
 

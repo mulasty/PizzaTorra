@@ -787,7 +787,7 @@
 .hitBody h3,
 .menuItemCard h3,
 .promoCard h3,
-.eventCard h3,
+.eventCardTitle,
 .reasonCard h3,
 .contactCard h3,
 .menuPanelTitleBlock h3,
@@ -1397,8 +1397,28 @@
 .eventCard {
   position: relative;
   display: grid;
-  gap: 12px;
+  gap: 10px;
   padding: 24px;
+}
+
+.eventIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: rgba(31, 45, 31, 0.06);
+  color: var(--terracotta);
+  margin-bottom: 4px;
+}
+
+.eventCardTitle {
+  margin: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.15;
 }
 
 .promoEyebrow {
@@ -1499,13 +1519,6 @@
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-}
-
-.eventCard h3 {
-  margin: 0;
-  font-size: 26px;
-  font-weight: 500;
-  line-height: 1.1;
 }
 
 .contactIntro {
@@ -2192,9 +2205,27 @@
     letter-spacing: 0.08em;
   }
 
-  .sectionTitle,
-  .eventCard h3 {
+  .sectionTitle {
     font-size: clamp(32px, 9vw, 42px);
+  }
+
+  .eventIcon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+  }
+
+  .eventIcon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .eventCardTitle {
+    font-size: 22px;
+  }
+
+  .eventCard p {
+    font-size: 13px;
   }
 
   .quickActionLabel,
@@ -2453,8 +2484,7 @@
     margin-bottom: 28px;
   }
 
-  .sectionTitle,
-  .eventCard h3 {
+  .sectionTitle {
     max-width: 100%;
   }
 
@@ -2468,6 +2498,25 @@
 
   .menuItemLead h4 {
     font-size: 23px;
+  }
+
+  .eventCardTitle {
+    font-size: 20px;
+  }
+
+  .eventIcon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+
+  .eventIcon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .eventCard p {
+    font-size: 12px;
   }
 
   .heroText {

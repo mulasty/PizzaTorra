@@ -399,8 +399,44 @@ export default function Page() {
 
         <div className={styles.eventGrid}>
           {eventOffer.items.map((item) => (
-            <article key={item} className={styles.eventCard}>
-              <h3>{item}</h3>
+            <article key={item.name} className={styles.eventCard}>
+              <span className={styles.eventIcon} aria-hidden="true">
+                {item.iconName === "users" ? (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                ) : item.iconName === "briefcase" ? (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                  </svg>
+                ) : item.iconName === "coffee" ? (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                    <path d="M6 1v3"/>
+                    <path d="M10 1v3"/>
+                    <path d="M14 1v3"/>
+                  </svg>
+                ) : item.iconName === "star" ? (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2l1.5 5.5L19 9l-5.5 1.5L12 16l-1.5-5.5L5 9l5.5-1.5z"/>
+                    <path d="M9 15l-3 3"/>
+                    <path d="M15 15l3 3"/>
+                    <path d="M12 16v5"/>
+                  </svg>
+                ) : (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6z"/>
+                    <path d="M6 17h12"/>
+                  </svg>
+                )}
+              </span>
+              <h3 className={styles.eventCardTitle}>{item.name}</h3>
+              <p>{item.description}</p>
             </article>
           ))}
         </div>
