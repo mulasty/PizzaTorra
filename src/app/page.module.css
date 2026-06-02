@@ -1699,6 +1699,17 @@
   text-transform: uppercase;
 }
 
+.footerCreditLink {
+  color: rgba(255, 247, 237, 0.92);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 160ms ease;
+}
+
+.footerCreditLink:hover {
+  color: #fff;
+}
+
 .musicPlayer {
   position: relative;
   right: auto;
