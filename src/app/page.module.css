@@ -1590,6 +1590,55 @@
   border-radius: 22px;
 }
 
+.socialSection {
+  padding-inline: clamp(16px, 5vw, 72px);
+  padding-top: clamp(72px, 10vw, 112px);
+  padding-bottom: clamp(72px, 10vw, 112px);
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.48), rgba(255, 255, 255, 0.2));
+  position: relative;
+}
+
+.socialSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: clamp(16px, 5vw, 72px);
+  right: clamp(16px, 5vw, 72px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(31, 45, 31, 0.12), rgba(179, 107, 79, 0.16), transparent);
+}
+
+.socialSectionInner {
+  display: grid;
+  gap: 16px;
+  max-width: 72ch;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.socialButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: #1877F2;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  justify-self: center;
+}
+
+.socialButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(24, 119, 242, 0.28);
+}
+
 .footer {
   position: relative;
   padding-bottom: calc(110px + env(safe-area-inset-bottom));
@@ -2354,6 +2403,11 @@
   .pyszneLogo {
     width: 56px;
     height: 15px;
+  }
+
+  .socialButton {
+    padding: 10px 22px;
+    font-size: 13px;
   }
 
   .footer {

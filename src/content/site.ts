@@ -78,9 +78,9 @@ export const siteConfig = {
   },
   social: {
     instagram: null,
-    facebook: null,
+    facebook: "https://www.facebook.com/profile.php?id=61589641220109",
     tiktok: null,
-    status: "pending",
+    status: "active",
   },
   legal: {
     privacyPolicy: "pending",
