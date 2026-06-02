@@ -319,7 +319,7 @@ export default function Page() {
       <section id="full-menu" className={styles.menuSection}>
         <div className={styles.sectionIntro}>
           <p className={styles.sectionEyebrow}>Menu TORRA</p>
-          <h2 className={styles.sectionTitle}>Wybierz smak i zamo\u0301w telefonicznie</h2>
+          <h2 className={styles.sectionTitle}>Wybierz smak i zamów telefonicznie</h2>
           <p className={styles.sectionText}>
             Pizza 31,5 cm i 45 cm, pizza sycylijska, panuozzo, insalate,
             desery, kawa i napoje. Ceny widzisz od razu, więc decyzja ma być szybka.
