@@ -106,5 +106,5 @@ export const siteConfig = {
 } as const;
 
 export const mapLink = siteConfig.google.googleMapsUrl;
-export const mapEmbed = `https://www.google.com/maps/embed?q=${siteConfig.coordinates.latitude},${siteConfig.coordinates.longitude}&z=17`;
+export const mapEmbed = `https://www.google.com/maps?q=${siteConfig.mapQuery}&z=17&output=embed`;
 export { fullAddress };
