@@ -1054,15 +1054,19 @@
   display: inline-flex;
   width: fit-content;
   margin-top: 6px;
+  font-family: var(--font-body), "Segoe UI", sans-serif;
   color: #224e2d;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .menuCategoryDescription {
   max-width: 56ch;
+  font-family: var(--font-body), "Segoe UI", sans-serif;
   font-size: 15px;
+  color: #6b5b4f;
 }
 
 .menuCategoryBody,
@@ -1074,8 +1078,9 @@
 
 .menuSubsectionHeader h4 {
   margin: 0;
+  font-family: var(--font-body), "Segoe UI", sans-serif;
   color: #224e2d;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1090,28 +1095,32 @@
 .menuItemLead {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  align-items: baseline;
+  align-items: center;
   gap: 10px;
 }
 
 .menuItemLead h4 {
   margin: 0;
   font-family: var(--font-display), Georgia, serif;
-  font-size: 29px;
+  font-size: 26px;
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
 }
 
 .menuItemLead strong {
+  font-family: var(--font-body), "Segoe UI", sans-serif;
   color: #191310;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 700;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
 .menuItemDots {
   align-self: center;
-  border-bottom: 1px dotted rgba(114, 74, 54, 0.6);
+  border-bottom: 1px dotted rgba(114, 74, 54, 0.45);
 }
 
 .menuItemBadge {
@@ -1122,6 +1131,7 @@
   border-radius: 0;
   background: transparent;
   color: #224e2d;
+  font-family: var(--font-body), "Segoe UI", sans-serif;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -1129,8 +1139,10 @@
 }
 
 .menuItemCard p {
-  font-size: 15px;
-  font-style: italic;
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+  font-size: 14px;
+  color: #6b5b4f;
+  line-height: 1.6;
 }
 
 .menuPanelLabel {
