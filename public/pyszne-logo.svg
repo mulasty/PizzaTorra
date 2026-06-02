@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Pyszne.pl">
+  <rect x="2" y="2" width="28" height="28" rx="6" fill="#FF8000"/>
+  <path d="M10 10h12M16 10v8" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M10 20l2-3M22 20l-2-3" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+</svg>

@@ -391,32 +391,6 @@ export default function Page() {
         </div>
       </section>
 
-      <section className={styles.deliveryStrip}>
-        <div className={styles.deliveryStripInner}>
-          <div className={styles.deliveryStripText}>
-            <strong>Zamów teraz</strong>
-            <span>dowóz w Ostrołęce</span>
-          </div>
-          <div className={styles.deliveryStripActions}>
-            <a href={phoneHref} className={styles.deliveryPhoneButton}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-              {phoneDisplay}
-            </a>
-            <span className={styles.deliveryStripOr}>lub</span>
-            <a href={siteConfig.pysznepl.url} className={styles.deliveryPyszneButton} target="_blank" rel="noopener noreferrer">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <rect x="2" y="4" width="20" height="16" rx="3" fill="#DA291C"/>
-                <path d="M7 10h10M12 10v4" stroke="#fff" strokeWidth="2" strokeLinecap="round"/>
-                <path d="M8 17L10 14M16 17L14 14" stroke="#fff" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
-              Pyszne.pl
-            </a>
-          </div>
-        </div>
-      </section>
-
       <section className={styles.quickActionsSection}>
         <div className={styles.quickActionsWrap}>
           <div className={styles.quickActionsTrack}>
@@ -727,6 +701,17 @@ export default function Page() {
             <circle cx="12" cy="10" r="3"/>
           </svg>
           Trasa
+        </a>
+        <a href={siteConfig.pysznepl.url} aria-label="Zamów przez Pyszne.pl" target="_blank" rel="noopener noreferrer" className={styles.pyszneButton}>
+          <Image
+            src="/pyszne-logo.svg"
+            alt="Pyszne.pl"
+            width={20}
+            height={20}
+            className={styles.pyszneLogo}
+            aria-hidden="true"
+          />
+          Pyszne.pl
         </a>
       </div>
     </main>

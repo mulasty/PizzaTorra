@@ -440,90 +440,6 @@
     radial-gradient(circle at 24% 22%, rgba(255, 245, 235, 0.28), transparent 32%);
 }
 
-.deliveryStrip {
-  padding-inline: clamp(16px, 5vw, 72px);
-  padding-top: 32px;
-}
-
-.deliveryStripInner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 16px 24px;
-  border-radius: 20px;
-  background: linear-gradient(180deg, rgba(218, 41, 28, 0.06), rgba(218, 41, 28, 0.02));
-  border: 1px solid rgba(218, 41, 28, 0.12);
-}
-
-.deliveryStripText {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.deliveryStripText strong {
-  font-family: var(--font-display), Georgia, serif;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1;
-  color: #191310;
-}
-
-.deliveryStripText span {
-  font-size: 13px;
-  color: #6b5b4f;
-}
-
-.deliveryStripActions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.deliveryPhoneButton,
-.deliveryPyszneButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: transform 160ms ease, box-shadow 160ms ease;
-}
-
-.deliveryPhoneButton {
-  background: #191310;
-  color: #fff;
-}
-
-.deliveryPhoneButton:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(25, 19, 16, 0.18);
-}
-
-.deliveryPyszneButton {
-  background: #DA291C;
-  color: #fff;
-}
-
-.deliveryPyszneButton:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(218, 41, 28, 0.24);
-}
-
-.deliveryStripOr {
-  font-size: 12px;
-  color: #8c7b6c;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
 .quickActionsSection {
   margin-top: clamp(-112px, -8vw, -76px);
   padding-top: 0;
@@ -2005,8 +1921,8 @@
   bottom: calc(12px + env(safe-area-inset-bottom));
   z-index: 60;
   display: none;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
   padding: 10px;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -2031,6 +1947,17 @@
   font-weight: 900;
   letter-spacing: 0.04em;
   line-height: 1.1;
+}
+
+.pyszneButton {
+  background: #FF8000 !important;
+  color: #fff !important;
+}
+
+.pyszneLogo {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
 }
 
 .headerCallButton:hover,
@@ -2107,28 +2034,6 @@
 
   .musicPlayer {
     width: 100%;
-  }
-
-  .deliveryStrip {
-    padding-top: 24px;
-  }
-
-  .deliveryStripInner {
-    flex-direction: column;
-    text-align: center;
-    padding: 16px;
-    gap: 14px;
-  }
-
-  .deliveryStripActions {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .deliveryPhoneButton,
-  .deliveryPyszneButton {
-    padding: 10px 16px;
-    font-size: 12px;
   }
 }
 
@@ -2644,34 +2549,6 @@
     width: 100%;
   }
 
-  .deliveryStrip {
-    padding-top: 16px;
-  }
-
-  .deliveryStripInner {
-    padding: 14px;
-    gap: 12px;
-    border-radius: 16px;
-  }
-
-  .deliveryStripActions {
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .deliveryStripOr {
-    width: 100%;
-    text-align: center;
-  }
-
-  .deliveryPhoneButton,
-  .deliveryPyszneButton {
-    flex: 1;
-    justify-content: center;
-    min-width: 0;
-    padding: 10px 12px;
-    font-size: 11px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
