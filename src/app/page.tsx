@@ -283,7 +283,10 @@ const renderMenuSections = (category: MenuCategory) => {
 };
 
 const renderMenuCategory = (category: MenuCategory) => (
-  <section key={category.id} className={styles.menuCategoryCard}>
+  <section
+    key={category.id}
+    className={`${styles.menuCategoryCard} ${category.id === "dodatki" ? styles.menuCategoryExtras : ""}`}
+  >
     <div className={styles.menuCategoryHeading}>
       <div className={styles.menuCategoryHeadingLine} aria-hidden="true" />
       <div>

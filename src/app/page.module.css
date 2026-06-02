@@ -1076,6 +1076,54 @@
   gap: 14px;
 }
 
+.menuCategoryExtras {
+  gap: 10px;
+}
+
+.menuCategoryExtras .menuCategoryHeading h3 {
+  font-size: clamp(22px, 2.4vw, 32px);
+  color: #8c7b6f;
+}
+
+.menuCategoryExtras .menuCategoryDescription {
+  font-size: 13px;
+  color: #9e8f84;
+}
+
+.menuCategoryExtras .menuSubsection {
+  gap: 8px;
+}
+
+.menuCategoryExtras .menuSubsectionHeader h4 {
+  color: #b5a89c;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.menuCategoryExtras .menuItemCard {
+  gap: 4px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 16px;
+}
+
+.menuCategoryExtras .menuItemLead h4 {
+  font-size: 18px;
+  color: #6b5b4f;
+}
+
+.menuCategoryExtras .menuItemLead strong {
+  font-size: 13px;
+  color: #8c7b6f;
+}
+
+.menuCategoryExtras .menuItemCard p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #9e8f84;
+}
+
 .menuSubsectionHeader h4 {
   margin: 0;
   font-family: var(--font-body), "Segoe UI", sans-serif;
@@ -1595,10 +1643,10 @@
   padding-bottom: calc(110px + env(safe-area-inset-bottom));
   padding-top: clamp(72px, 10vw, 112px);
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
   background:
-    linear-gradient(180deg, rgba(15, 11, 8, 0.35), rgba(10, 7, 5, 0.75)),
-    linear-gradient(120deg, rgba(20, 15, 12, 0.5), rgba(25, 18, 14, 0.55)),
+    linear-gradient(180deg, rgba(60, 50, 42, 0.22), rgba(45, 38, 32, 0.42)),
+    linear-gradient(120deg, rgba(70, 58, 48, 0.18), rgba(55, 45, 38, 0.28)),
     url("/pizzatorra/footer-bg.jpg");
   background-size: cover;
   background-position: center;
@@ -1609,8 +1657,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(20, 15, 12, 0.08), rgba(20, 15, 12, 0.3)),
-    radial-gradient(circle at top right, rgba(179, 107, 79, 0.22), transparent 32%);
+    linear-gradient(180deg, rgba(255, 252, 248, 0.06), rgba(255, 247, 237, 0.12)),
+    radial-gradient(circle at top right, rgba(179, 107, 79, 0.14), transparent 38%);
   pointer-events: none;
 }
 
