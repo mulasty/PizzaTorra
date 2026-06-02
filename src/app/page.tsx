@@ -703,15 +703,15 @@ export default function Page() {
           Trasa
         </a>
         <a href={siteConfig.pysznepl.url} aria-label="Zamów przez Pyszne.pl" target="_blank" rel="noopener noreferrer" className={styles.pyszneButton}>
-          <Image
-            src="/pyszne-logo.svg"
+          <img
+            src="https://brandlogovector.com/wp-content/uploads/2021/10/Pyszne.pl-Logo.png"
             alt="Pyszne.pl"
-            width={20}
-            height={20}
+            width={72}
+            height={19}
             className={styles.pyszneLogo}
             aria-hidden="true"
+            loading="lazy"
           />
-          Pyszne.pl
         </a>
       </div>
     </main>
