@@ -90,9 +90,130 @@ const menuColumnIds = [
   ["insalate", "panuozzo", "zapiekanka", "dodatki", "napoje"],
 ];
 
+const gbpId = `https://www.google.com/maps?cid=${siteConfig.google.googleCid}`;
+
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "TORRA", item: siteConfig.url },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Menu",
+      item: `${siteConfig.url}#full-menu`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Promocje",
+      item: `${siteConfig.url}#promocje`,
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      name: "Eventy",
+      item: `${siteConfig.url}#eventy`,
+    },
+    {
+      "@type": "ListItem",
+      position: 5,
+      name: "Kontakt",
+      item: `${siteConfig.url}#kontakt`,
+    },
+  ],
+};
+
+const faqData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Gdzie znajduje się pizzeria TORRA w Ostrołęce?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "TORRA pizza • caffè • musica mieści się w Feniks Hala Targowa przy ul. Generała Ignacego Prądzyńskiego 6 lokal B18, 07-410 Ostrołęka.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Jaki jest numer telefonu do pizzerii TORRA?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Możesz zamówić pizzę telefonicznie pod numerem 788 779 853. Przyjmujemy zamówienia na wynos i dowóz.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Jakie rodzaje pizzy serwuje TORRA?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "TORRA oferuje pizzę włoską (31,5 cm i 45 cm), pizzę sycylijską, panuozzo, a także insalate, desery, kawę włoską i napoje. Ceny widoczne są bezpośrednio w menu.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Czy TORRA oferuje catering i obsługę eventów?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tak, organizujemy eventy, spotkania integracyjne, lunch biznesowy, catering dopasowany do potrzeb (również opcja wege), przyjęcia urodzinowe oraz warsztaty kulinarne dla dzieci i młodzieży.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Jakie są godziny otwarcia TORRA?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "TORRA jest otwarta od poniedziałku do piątku w godzinach 11:00-21:00, a w soboty i niedziele 12:00-24:00.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Czy jest promocja na pizzę w TORRA?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tak, w każdy poniedziałek obowiązuje promocja TORRA: druga duża pizza -50%. Szczegóły dostępne w lokalu lub telefonicznie.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Czy TORRA dowozi pizzę do domu?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tak, realizujemy dowóz pizzy w Ostrołęce. Zamówienia składane są telefonicznie pod numerem 788 779 853.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Jakie dodatki można dodać do pizzy w TORRA?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "W TORRA dostępne są dodatki takie jak pepperoni, szynka parmeńska, salami Napoli, pieczarki, papryka jalapeño, cebula, pomidory, oliwki, rukola, grana padano, gorgonzola, ser typu feta i wiele innych.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Czy w TORRA można zorganizować przyjęcie urodzinowe?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tak, przy rezerwacji urodzinowej pizza niespodzianka od szefa kuchni dla solenizanta. Zachęcamy do kontaktu telefonicznego w celu rezerwacji.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Czy TORRA posiada miejsca siedzące w lokalu?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "TORRA znajduje się w Feniks Hala Targowa w Ostrołęce, gdzie można zjeść na miejscu, zamówić na wynos lub skorzystać z dowozu.",
+      },
+    },
+  ],
+};
+
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "Restaurant",
+  "@type": ["Restaurant", "FoodEstablishment", "LocalBusiness"],
   "@id": siteConfig.url,
   name: siteConfig.name,
   alternateName: siteConfig.legalName,
@@ -107,14 +228,28 @@ const structuredData = {
   menu: `${siteConfig.url}#full-menu`,
   hasMenu: `${siteConfig.url}#full-menu`,
   hasMap: mapLink,
-  sameAs: [googleMapsUrl],
+  sameAs: [gbpId, googleMapsUrl],
   openingHours: siteConfig.openingHours.value.map((item) => item.schema),
   address: {
     "@type": "PostalAddress",
+    "@id": `${siteConfig.url}#address`,
     streetAddress: siteConfig.address.streetAddress,
     addressLocality: siteConfig.address.addressLocality,
     postalCode: siteConfig.address.postalCode,
     addressCountry: siteConfig.address.addressCountry,
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: siteConfig.coordinates.latitude,
+    longitude: siteConfig.coordinates.longitude,
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    bestRating: "5",
+    worstRating: "1",
+    ratingCount: "87",
+    url: gbpId,
   },
 };
 
@@ -174,6 +309,14 @@ export default function Page() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
       />
       <ParallaxEffect />
 
