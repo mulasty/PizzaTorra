@@ -765,17 +765,7 @@ export default function Page() {
             <a href={emailHref}>{emailDisplay}</a>
           </div>
           <p className={styles.footerMeta}>© 2026 TORRA. Wszystkie prawa zastrzeżone.</p>
-          <p className={styles.footerCredit}>
-            Wykonanie:{" "}
-            <a
-              href="https://mulagroup.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.footerCreditLink}
-            >
-              Mula Group Web
-            </a>
-          </p>
+          <p className={styles.footerCredit}>Wykonanie: Mula Group Web</p>
         </div>
       </footer>
 
