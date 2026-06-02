@@ -69,6 +69,10 @@ export const siteConfig = {
     googleReviewsUrl,
     googleReviewUrl,
   },
+  pysznepl: {
+    status: "active",
+    url: "https://www.pyszne.pl/menu/torra-pizzeria-ostroleka",
+  },
   analytics: {
     googleAnalyticsId: "G-7PHN5DFMHN",
   },
