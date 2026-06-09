@@ -569,6 +569,10 @@
   padding-top: clamp(72px, 10vw, 112px);
 }
 
+.whySection {
+  background: var(--bg);
+}
+
 .whyGrid,
 .reasonsGrid,
 .eventGrid,
