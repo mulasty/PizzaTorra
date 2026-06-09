@@ -72,18 +72,22 @@ export const siteConfig = {
   analytics: {
     googleAnalyticsId: "G-7PHN5DFMHN",
   },
+  pysznepl: {
+    status: "active",
+    url: "https://www.pyszne.pl/menu/torra-pizzeria-ostroleka",
+  },
   social: {
-    instagram: null,
-    facebook: null,
+    instagram: "https://www.instagram.com/torra.pizzeria/",
+    facebook: "https://www.facebook.com/profile.php?id=61589641220109",
     tiktok: null,
-    status: "pending",
+    status: "active",
   },
   legal: {
     privacyPolicy: "pending",
   },
   coordinates: {
-    latitude: "",
-    longitude: "",
+    latitude: "53.0812",
+    longitude: "21.5740",
   },
   mapQuery: mapsSearchQuery,
   ogImage: "/og-torra.jpg",

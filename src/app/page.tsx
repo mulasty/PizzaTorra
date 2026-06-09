@@ -27,10 +27,48 @@ const googleReviewUrl = siteConfig.google.googleReviewUrl;
 const heroHoursDisplay = siteConfig.openingHours.value.map((item) => item.label);
 
 const quickActions = [
-  { icon: "☎", label: phoneDisplay, note: "Zadzwoń i zamów", href: phoneHref },
-  { icon: "🍕", label: "Menu", note: "Pizza 31,5 / 45 cm", href: "#full-menu" },
-  { icon: "📍", label: "Trasa", note: "Feniks Hala Targowa", href: googleMapsUrl },
-  { icon: "⏱", label: "Godziny", note: "pn-pt 11-21 • sob-nd 12-24", href: "#kontakt" },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+    ),
+    label: phoneDisplay,
+    note: "Zadzwoń i zamów",
+    href: phoneHref,
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+    ),
+    label: "Menu",
+    note: "Pizza 31,5 / 45 cm",
+    href: "#full-menu",
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </svg>
+    ),
+    label: "Trasa",
+    note: "Feniks Hala Targowa",
+    href: googleMapsUrl,
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    ),
+    label: "Godziny",
+    note: "pn-pt 11-21 • sob-nd 12-24",
+    href: "#kontakt",
+  },
 ];
 
 const promotionBanner = {
@@ -314,7 +352,7 @@ export default function Page() {
               width={220}
               height={220}
               className={styles.heroLogo}
-              preload
+              priority
             />
             <div className={styles.heroIntro}>
               <p className={styles.heroLabel}>Pizza • Caffè • Musica</p>
@@ -733,6 +771,34 @@ export default function Page() {
         <div className={styles.footerContent}>
           <p className={styles.footerWordmark}>TORRA</p>
           <p className={styles.footerTagline}>pizza • caffè • musica</p>
+          <div className={styles.footerSocials}>
+            {siteConfig.social.facebook ? (
+              <a
+                href={siteConfig.social.facebook}
+                className={styles.footerSocialLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Odwiedź profil TORRA na Facebooku"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+            ) : null}
+            <a
+              href="https://www.instagram.com/torra.pizzeria/"
+              className={styles.footerSocialLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Odwiedź profil TORRA na Instagramie"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </div>
           <div className={styles.footerLinks}>
             <a href={phoneHref}>{phoneDisplay}</a>
             <a href={emailHref}>{emailDisplay}</a>
@@ -747,19 +813,50 @@ export default function Page() {
             <Image src="/pyszne-logo.png" alt="Pyszne.pl" width={120} height={30} loading="lazy" fetchPriority="low" />
           </a>
           <p className={styles.footerMeta}>© 2026 TORRA. Wszystkie prawa zastrzeżone.</p>
-          <p className={styles.footerCredit}>Realizacja strony: Mula Group</p>
+          <p className={styles.footerCredit}>
+            Wykonanie:{" "}
+            <a
+              href="https://www.mulagroup.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.footerCreditLink}
+            >
+              Mula Group Web
+            </a>
+          </p>
         </div>
       </footer>
 
       <div className={styles.stickyMobileBar}>
         <a href={phoneHref} aria-label="Zadzwoń do TORRA">
-          ☎ Zadzwoń
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          Zadzwoń
         </a>
         <a href="#full-menu" aria-label="Przejdź do menu TORRA">
-          🍕 Menu
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          Menu
         </a>
         <a href={googleMapsUrl} aria-label="Otwórz trasę do TORRA" target="_blank" rel="noreferrer">
-          📍 Trasa
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          Trasa
+        </a>
+        <a href={siteConfig.pysznepl.url} aria-label="Zamów przez Pyszne.pl" target="_blank" rel="noopener noreferrer" className={styles.pyszneButton}>
+          <img
+            src="https://brandlogovector.com/wp-content/uploads/2021/10/Pyszne.pl-Logo.png"
+            alt="Pyszne.pl"
+            width={72}
+            height={19}
+            className={styles.pyszneLogo}
+            aria-hidden="true"
+            loading="lazy"
+          />
         </a>
       </div>
     </main>

@@ -1661,6 +1661,63 @@
   transform: translateY(-1px);
 }
 
+.footerSocials {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerSocialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 247, 237, 0.84);
+  text-decoration: none;
+  transition: background 180ms ease, transform 180ms ease, color 180ms ease;
+}
+
+.footerSocialLink:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.footerSocialLink svg {
+  display: block;
+}
+
+.footerCreditLink {
+  color: rgba(255, 247, 237, 0.84);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 247, 237, 0.24);
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.footerCreditLink:hover {
+  color: #fff;
+  text-decoration-color: rgba(255, 247, 237, 0.6);
+}
+
+.pyszneButton {
+  background: #FF8000 !important;
+  color: #fff !important;
+}
+
+.pyszneLogo {
+  width: 72px;
+  height: 19px;
+  flex-shrink: 0;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
 .musicPlayer {
   position: relative;
   right: auto;
@@ -1912,8 +1969,8 @@
   bottom: calc(12px + env(safe-area-inset-bottom));
   z-index: 60;
   display: none;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
   padding: 10px;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.3);
