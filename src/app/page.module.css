@@ -1819,13 +1819,29 @@
 }
 
 .footerMeta,
-.footerCredit {
+.footerCredit,
+.footerLegal {
   margin: 0;
   color: rgba(255, 247, 237, 0.72);
   font-size: 12px;
   letter-spacing: 0.12em;
   line-height: 1.7;
   text-transform: uppercase;
+}
+
+.footerLegal {
+  margin-top: 4px;
+}
+
+.footerLegal a {
+  color: rgba(255, 247, 237, 0.72);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 160ms ease;
+}
+
+.footerLegal a:hover {
+  color: #fff;
 }
 
 .footerCreditLink {

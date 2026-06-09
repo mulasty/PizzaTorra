@@ -83,7 +83,7 @@ export const siteConfig = {
     status: "active",
   },
   legal: {
-    privacyPolicy: "pending",
+    privacyPolicy: `${website}/polityka-prywatnosci`,
   },
   coordinates: {
     latitude: "53.0812",
