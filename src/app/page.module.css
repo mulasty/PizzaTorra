@@ -541,12 +541,12 @@
 }
 
 .galleryBackground {
-  background-image: url("/pizzatorra/location-bg.jpg");
+  background-image: url("/pizzatorra/location-bg.webp");
   background-position: center;
 }
 
 .contactBackground {
-  background-image: url("/pizzatorra/contacts-bg.jpg");
+  background-image: url("/pizzatorra/contacts-bg.webp");
   background-position: right top;
 }
 
@@ -592,7 +592,7 @@
   border-radius: 30px;
   background:
     linear-gradient(135deg, rgba(255, 252, 248, 0.28), rgba(248, 243, 235, 0.22)),
-    url("/pizzatorra/ingredienti-bg.jpg");
+    url("/pizzatorra/ingredienti-bg.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1678,7 +1678,7 @@
   background:
     linear-gradient(180deg, rgba(60, 50, 42, 0.22), rgba(45, 38, 32, 0.42)),
     linear-gradient(120deg, rgba(70, 58, 48, 0.18), rgba(55, 45, 38, 0.28)),
-    url("/pizzatorra/footer-bg.jpg");
+    url("/pizzatorra/footer-bg.webp");
   background-size: cover;
   background-position: center;
   color: #fff7ed;
