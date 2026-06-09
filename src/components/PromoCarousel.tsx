@@ -20,8 +20,20 @@ const slides = [
     alt: "Malownicze wybrzeże Sycylii z widokiem na morze",
   },
   {
-    src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=85",
-    alt: "Włoska restauracja z pizzą i winem",
+    src: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&q=85",
+    alt: "Świeżo upieczona pizza na stole",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=1200&q=85",
+    alt: "Pizza z pomidorami i mozzarellą",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1628840045526-8f2813c3b9b0?w=1200&q=85",
+    alt: "Pizza margherita z bazylią",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1574126154517-d1e0d689ef05?w=1200&q=85",
+    alt: "Przygotowanie pizzy w piecu opalanym drewnem",
   },
   {
     src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=85",
