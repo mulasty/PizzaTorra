@@ -609,7 +609,7 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(255, 252, 248, 0.55), rgba(248, 243, 235, 0.45));
+    linear-gradient(180deg, rgba(255, 252, 248, 0), rgba(248, 243, 235, 0));
   pointer-events: none;
 }
 
