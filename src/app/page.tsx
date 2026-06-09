@@ -407,14 +407,6 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="galeria" className={styles.promoSection}>
-        <div className={styles.sectionIntro}>
-          <p className={styles.sectionEyebrow}>Galeria</p>
-        </div>
-
-        <PromoCarousel />
-      </section>
-
       <section id="marka" className={styles.whySection}>
         <div className={styles.sectionIntro}>
           <p className={styles.sectionEyebrow}>Dlaczego TORRA</p>
@@ -437,6 +429,14 @@ export default function Page() {
             naturalnie.
           </p>
         </div>
+      </section>
+
+      <section id="galeria" className={styles.promoSection}>
+        <div className={styles.sectionIntro}>
+          <p className={styles.sectionEyebrow}>Galeria</p>
+        </div>
+
+        <PromoCarousel />
       </section>
 
       <section id="full-menu" className={styles.menuSection}>
