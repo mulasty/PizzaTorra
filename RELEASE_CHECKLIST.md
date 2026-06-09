@@ -1,4 +1,4 @@
-﻿# RELEASE CHECKLIST — TORRA
+# RELEASE CHECKLIST — TORRA
 
 Data sprawdzenia: 2026-04-27  
 Tryb: final production check przed publikacją dla realnego klienta

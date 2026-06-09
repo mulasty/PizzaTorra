@@ -1,4 +1,4 @@
-﻿import type { Metadata, Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { siteConfig } from "@/content/site";
 import { CookieConsentBanner } from "./CookieConsentBanner";

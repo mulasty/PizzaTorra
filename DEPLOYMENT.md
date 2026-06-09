@@ -1,4 +1,4 @@
-﻿# DEPLOYMENT — TORRA
+# DEPLOYMENT — TORRA
 
 Ten dokument przygotowuje projekt do wdrożenia na Vercel.  
 Nie uruchamia automatycznego publishu — pokazuje bezpieczny proces krok po kroku.

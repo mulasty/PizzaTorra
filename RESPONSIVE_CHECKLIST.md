@@ -1,4 +1,4 @@
-﻿# Responsive Checklist — TORRA
+# Responsive Checklist — TORRA
 
 ## Viewport checklist
 

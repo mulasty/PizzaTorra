@@ -1,4 +1,4 @@
-﻿# Mobile Audit — TORRA
+# Mobile Audit — TORRA
 
 Data audytu: 27.04.2026  
 Zakres testów: `320px`, `360px`, `390px`, `414px`, `430px`, `768px`

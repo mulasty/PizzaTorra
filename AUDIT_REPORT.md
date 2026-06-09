@@ -1,4 +1,4 @@
-﻿# AUDIT REPORT — TORRA
+# AUDIT REPORT — TORRA
 
 Data audytu: 2026-04-27  
 Projekt: `torra3-standalone`  

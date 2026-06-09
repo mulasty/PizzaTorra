@@ -1,4 +1,4 @@
-﻿const phone = "788779853";
+const phone = "788779853";
 const website = "https://www.pizzatorra.pl";
 const googleCid = "04361763573940380613";
 const street = "Generała Ignacego Prądzyńskiego 6 lokal B18";

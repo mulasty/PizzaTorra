@@ -1,4 +1,4 @@
-﻿# SEO CHECKLIST — TORRA
+# SEO CHECKLIST — TORRA
 
 ## Metadata
 

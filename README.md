@@ -1,4 +1,4 @@
-﻿# TORRA — strona www
+# TORRA — strona www
 
 Strona marki gastronomicznej **TORRA** przygotowana w Next.js pod:
 - prezentację klientowi

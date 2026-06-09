@@ -1,4 +1,4 @@
-﻿export type MenuItem = {
+export type MenuItem = {
   name: string;
   details?: string;
   price: string;

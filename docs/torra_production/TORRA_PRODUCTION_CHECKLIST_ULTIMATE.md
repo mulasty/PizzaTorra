@@ -1,4 +1,4 @@
-﻿# TORRA — ULTIMATE PRODUCTION CHECKLIST
+# TORRA — ULTIMATE PRODUCTION CHECKLIST
 
 ## Dane biznesowe
 - [ ] finalne godziny otwarcia
