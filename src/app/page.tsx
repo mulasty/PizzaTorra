@@ -2,7 +2,6 @@
 import {
   eventOffer,
   menuCategories,
-  menuDownload,
 } from "@/content/menu";
 import type { MenuItem, MenuCategory } from "@/content/menu";
 import { mapEmbed, mapLink, siteConfig } from "@/content/site";
@@ -259,8 +258,7 @@ const renderMenuItems = (items: MenuItem[]) =>
       {item.badge ? <span className={styles.menuItemBadge}>{item.badge}</span> : null}
       <div className={styles.menuItemLead}>
         <h4>{item.name}</h4>
-        <span className={styles.menuItemDots} aria-hidden="true" />
-        <strong>{item.price}</strong>
+        {item.details ? <span className={styles.menuItemSep} aria-hidden="true" /> : null}
       </div>
       {item.details ? <p>{item.details}</p> : null}
     </article>
@@ -466,7 +464,7 @@ export default function Page() {
           <h2 className={styles.sectionTitle}>Wybierz smak i zamów telefonicznie</h2>
           <p className={styles.sectionText}>
             Pizza 31,5 cm i 45 cm, pizza sycylijska, panuozzo, insalate,
-            desery, kawa i napoje. Ceny widzisz od razu, więc decyzja ma być szybka.
+            desery, kawa i napoje. Aktualne ceny sprawdzisz w serwisie partnerskim.
           </p>
           <p className={styles.contactEmailLine}>
             Zamówienia grupowe i pytania: <a href={emailHref}>{emailDisplay}</a>
@@ -492,15 +490,7 @@ export default function Page() {
                 loading="lazy"
               />
             </a>
-            <a
-              href={menuDownload.href}
-              className={styles.secondaryButton}
-              target="_blank"
-              rel="noreferrer"
-              download
-            >
-              {menuDownload.label}
-            </a>
+
           </div>
         </div>
 
@@ -514,10 +504,7 @@ export default function Page() {
                 <span className={styles.menuBoardAccent} aria-hidden="true" />
               </div>
               <div className={styles.menuBoardDownload}>
-                <p>Pełna karta do pobrania</p>
-                <a href={menuDownload.href} target="_blank" rel="noreferrer" download>
-                  {menuDownload.label}
-                </a>
+                <p>Pełna karta menu</p>
               </div>
             </div>
 
@@ -532,17 +519,8 @@ export default function Page() {
         </div>
 
         <div className={styles.pdfRow}>
-          <a
-            href={menuDownload.href}
-            className={styles.pdfButton}
-            target="_blank"
-            rel="noreferrer"
-            download
-          >
-            {menuDownload.label}
-          </a>
           <span className={styles.pdfHint}>
-            Menu jest dostępne bezpośrednio na stronie i jako plik PDF do pobrania.
+            Menu jest dostępne bezpośrednio na stronie. Aktualne ceny w serwisie partnerskim.
           </span>
         </div>
       </section>
