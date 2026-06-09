@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 import { siteConfig } from "@/content/site";
 import { CookieConsentBanner } from "./CookieConsentBanner";
 import "./globals.css";
@@ -100,6 +102,9 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
   themeColor: "#140e0a",
 };
 
@@ -110,9 +115,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
+      <head>
+        {/* Google tag (gtag.js) - Google Ads AW-11452429976 */}
+        <Script
+          strategy="beforeInteractive"
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-11452429976"
+        />
+        <Script
+          strategy="beforeInteractive"
+          id="google-ads-gtag"
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-11452429976');`,
+          }}
+        />
+      </head>
       <body className={`${display.variable} ${body.variable}`}>
         {children}
         <CookieConsentBanner />
+        <SpeedInsights />
       </body>
     </html>
   );

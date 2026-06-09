@@ -1,32 +1,41 @@
-# TORRA — strona www
+# TORRA pizza • caffè • musica
 
-Strona marki gastronomicznej **TORRA** przygotowana w Next.js pod:
-- prezentację klientowi
-- wdrożenie produkcyjne na Vercel
-- lokalne SEO i Google Business Profile
-- przyszłą rozbudowę o menu online, promocje i zamówienia
+[![Live](https://img.shields.io/badge/www-pizzatorra.pl-blue)](https://www.pizzatorra.pl)
+[![Stack](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org)
+
+Strona internetowa pizzerii **TORRA** w Ostrołęce — włoska pizza, caffè i musica.
+
+**Live:** [www.pizzatorra.pl](https://www.pizzatorra.pl)
+
+---
 
 ## Stack
 
-- Next.js 16 App Router
-- React 19
-- TypeScript
-- CSS Modules
-- Vercel
+- **Next.js 16** (App Router)
+- **React 19** + TypeScript
+- **CSS Modules**
+- **Vercel** (hosting + deploy)
 
-## Najważniejsze pliki
+## Struktura katalogów
 
-- `src/app/page.tsx` — główna strona
-- `src/app/layout.tsx` — metadata, OG, favicony
-- `src/content/site.ts` — wspólne dane marki i SEO
-- `src/app/robots.ts` — robots.txt
-- `src/app/sitemap.ts` — sitemap.xml
-- `src/app/manifest.ts` — web app manifest
-- `middleware.ts` — noindex dla domen `vercel.app`
-- `AUDIT_REPORT.md` — audyt i priorytety
-- `TODO_PRODUCTION.md` — dane do uzupełnienia przed publikacją
-- `SEO_CHECKLIST.md` — checklista SEO/local SEO
-- `DEPLOYMENT.md` — instrukcja wdrożenia
+```
+src/
+├── app/
+│   ├── page.tsx          — główna strona
+│   ├── layout.tsx        — metadata, OG, favicony
+│   ├── globals.css       — style globalne
+│   ├── page.module.css   — style strony głównej
+│   ├── robots.ts         — robots.txt
+│   ├── sitemap.ts        — sitemap.xml
+│   ├── manifest.ts       — PWA manifest
+│   └── CookieConsentBanner.tsx
+├── content/
+│   ├── site.ts           — dane marki, SEO, social media
+│   └── menu.ts           — menu, ceny, eventy
+docs/                     — dokumentacja, audyty, checklisty
+public/                   — obrazy, ikony, muzyka, video
+```
 
 ## Uruchomienie lokalne
 
@@ -35,49 +44,34 @@ npm install
 npm run dev
 ```
 
-Domyślny adres lokalny:
-
-`http://localhost:3000`
+http://localhost:3000
 
 ## Komendy
 
-```bash
-npm run dev
-npm run lint
-npm run typecheck
-npm run build
-npm run preview
-```
+| Komenda | Opis |
+|---------|------|
+| `npm run dev` | Serwer deweloperski |
+| `npm run build` | Build produkcyjny |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | TypeScript check |
+| `npm run preview` | Podgląd builda |
 
-`preview` uruchamia produkcyjny serwer Next po zbudowaniu aplikacji.
+## Wdrożone funkcje
 
-## Status projektu
+- Własny odtwarzacz muzyki (TORRA Musica, 10 utworów)
+- Full menu online z kategoriami i cenami
+- Integracja z Google Maps i Google Reviews
+- Sticky mobile bar (telefon, menu, trasa, Pyszne.pl)
+- Linki social media (Facebook, Instagram)
+- Schema.org Restaurant (JSON-LD)
+- Promocja poniedziałkowa
+- Sekcja eventowa i catering
+- PWA (manifest, ikony)
+- SEO: Open Graph, Twitter Cards, canonical, sitemap, robots
 
-Projekt jest technicznie gotowy do dalszego wdrożenia i build przechodzi poprawnie, ale przed finalną publikacją trzeba jeszcze uzupełnić dane właścicielskie:
+## Rozwój
 
-- finalne ceny
-- finalne godziny otwarcia
-- linki social media
-- politykę prywatności
-- realny link do Google Business Profile
-
-## SEO i produkcja
-
-W projekcie wdrożono:
-- canonical
-- Open Graph
-- Twitter/X cards
-- favicon pack
-- `robots.txt`
-- `sitemap.xml`
-- `schema.org` dla lokalu gastronomicznego
-- noindex dla domen `*.vercel.app`
-
-## Dalszy rozwój
-
-Rekomendowane kolejne etapy:
-- wydzielenie sekcji do komponentów
-- przeniesienie treści menu do osobnego źródła danych
-- CMS / panel zarządzania treścią
-- moduł promocji i wydarzeń
-- zamówienia online
+Kolejne etapy:
+- Zamówienia online
+- Panel zarządzania treścią / CMS
+- Moduł promocji i wydarzeń

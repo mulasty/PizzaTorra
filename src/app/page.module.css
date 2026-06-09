@@ -1,4 +1,4 @@
-.page {
+﻿.page {
   --sticky-mobile-bar-height: 76px;
   --bg: #f7efe6;
   --surface: rgba(255, 255, 255, 0.84);
@@ -31,7 +31,7 @@
   align-items: center;
   padding: 14px clamp(16px, 3vw, 44px);
   background: transparent;
-  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   box-shadow: none;
 }
 
@@ -102,7 +102,7 @@
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
   font-size: 24px;
-  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .mobileMenu {
@@ -201,6 +201,7 @@
   --hero-top-space: clamp(28px, 4vw, 56px);
   --hero-bottom-space: clamp(212px, 24vh, 268px);
   position: relative;
+  height: 100vh;
   height: 100dvh;
   min-height: 100svh;
   display: grid;
@@ -354,7 +355,7 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   white-space: normal;
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   text-shadow: 0 3px 14px rgba(0, 0, 0, 0.28);
 }
 
@@ -402,7 +403,7 @@
   background: rgba(18, 13, 10, 0.18);
   border-color: rgba(255, 255, 255, 0.28);
   color: #fff;
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .heroVisual {
@@ -476,7 +477,7 @@
   color: var(--text);
   text-decoration: none;
   box-shadow: 0 16px 34px rgba(16, 12, 8, 0.16);
-  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .quickActionIcon {
@@ -719,7 +720,7 @@
   position: relative;
   overflow: hidden;
   padding: 26px;
-  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .whyGrid .featureCard:nth-child(1) {
@@ -786,7 +787,7 @@
 .hitBody h3,
 .menuItemCard h3,
 .promoCard h3,
-.eventCard h3,
+.eventCardTitle,
 .reasonCard h3,
 .contactCard h3,
 .menuPanelTitleBlock h3,
@@ -907,6 +908,37 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.pyszneCtaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 22px;
+  min-height: 46px;
+  border-radius: 999px;
+  background: #FF8000;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  border: none;
+}
+
+.pyszneCtaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 128, 0, 0.28);
+}
+
+.pyszneCtaLogo {
+  width: 72px;
+  height: 19px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
 }
 
 .menuBoard {
@@ -1053,15 +1085,19 @@
   display: inline-flex;
   width: fit-content;
   margin-top: 6px;
+  font-family: var(--font-body), "Segoe UI", sans-serif;
   color: #224e2d;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .menuCategoryDescription {
   max-width: 56ch;
+  font-family: var(--font-body), "Segoe UI", sans-serif;
   font-size: 15px;
+  color: #6b5b4f;
 }
 
 .menuCategoryBody,
@@ -1071,10 +1107,59 @@
   gap: 14px;
 }
 
+.menuCategoryExtras {
+  gap: 10px;
+}
+
+.menuCategoryExtras .menuCategoryHeading h3 {
+  font-size: clamp(22px, 2.4vw, 32px);
+  color: #8c7b6f;
+}
+
+.menuCategoryExtras .menuCategoryDescription {
+  font-size: 13px;
+  color: #9e8f84;
+}
+
+.menuCategoryExtras .menuSubsection {
+  gap: 8px;
+}
+
+.menuCategoryExtras .menuSubsectionHeader h4 {
+  color: #b5a89c;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.menuCategoryExtras .menuItemCard {
+  gap: 4px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 16px;
+}
+
+.menuCategoryExtras .menuItemLead h4 {
+  font-size: 18px;
+  color: #6b5b4f;
+}
+
+.menuCategoryExtras .menuItemLead strong {
+  font-size: 13px;
+  color: #8c7b6f;
+}
+
+.menuCategoryExtras .menuItemCard p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #9e8f84;
+}
+
 .menuSubsectionHeader h4 {
   margin: 0;
+  font-family: var(--font-body), "Segoe UI", sans-serif;
   color: #224e2d;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1089,28 +1174,32 @@
 .menuItemLead {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  align-items: baseline;
+  align-items: center;
   gap: 10px;
 }
 
 .menuItemLead h4 {
   margin: 0;
   font-family: var(--font-display), Georgia, serif;
-  font-size: 29px;
+  font-size: 26px;
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
 }
 
 .menuItemLead strong {
+  font-family: var(--font-body), "Segoe UI", sans-serif;
   color: #191310;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 700;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
 .menuItemDots {
   align-self: center;
-  border-bottom: 1px dotted rgba(114, 74, 54, 0.6);
+  border-bottom: 1px dotted rgba(114, 74, 54, 0.45);
 }
 
 .menuItemBadge {
@@ -1121,6 +1210,7 @@
   border-radius: 0;
   background: transparent;
   color: #224e2d;
+  font-family: var(--font-body), "Segoe UI", sans-serif;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -1128,8 +1218,10 @@
 }
 
 .menuItemCard p {
-  font-size: 15px;
-  font-style: italic;
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+  font-size: 14px;
+  color: #6b5b4f;
+  line-height: 1.6;
 }
 
 .menuPanelLabel {
@@ -1328,7 +1420,7 @@
   border: 1px solid rgba(31, 45, 31, 0.08);
   background: rgba(255, 255, 255, 0.74);
   box-shadow: 0 18px 36px rgba(16, 12, 8, 0.08);
-  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .promoSliderButton {
@@ -1384,8 +1476,28 @@
 .eventCard {
   position: relative;
   display: grid;
-  gap: 12px;
+  gap: 10px;
   padding: 24px;
+}
+
+.eventIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: rgba(31, 45, 31, 0.06);
+  color: var(--terracotta);
+  margin-bottom: 4px;
+}
+
+.eventCardTitle {
+  margin: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.15;
 }
 
 .promoEyebrow {
@@ -1488,13 +1600,6 @@
   text-transform: uppercase;
 }
 
-.eventCard h3 {
-  margin: 0;
-  font-size: 26px;
-  font-weight: 500;
-  line-height: 1.1;
-}
-
 .contactIntro {
   max-width: 78ch;
 }
@@ -1569,10 +1674,10 @@
   padding-bottom: calc(110px + env(safe-area-inset-bottom));
   padding-top: clamp(72px, 10vw, 112px);
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
   background:
-    linear-gradient(180deg, rgba(7, 5, 4, 0.2), rgba(7, 5, 4, 0.92)),
-    linear-gradient(120deg, rgba(13, 10, 9, 0.82), rgba(28, 18, 13, 0.76)),
+    linear-gradient(180deg, rgba(60, 50, 42, 0.22), rgba(45, 38, 32, 0.42)),
+    linear-gradient(120deg, rgba(70, 58, 48, 0.18), rgba(55, 45, 38, 0.28)),
     url("/pizzatorra/footer-bg.jpg");
   background-size: cover;
   background-position: center;
@@ -1583,8 +1688,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(9, 7, 6, 0.12), rgba(9, 7, 6, 0.56)),
-    radial-gradient(circle at top right, rgba(179, 107, 79, 0.16), transparent 28%);
+    linear-gradient(180deg, rgba(255, 252, 248, 0.06), rgba(255, 247, 237, 0.12)),
+    radial-gradient(circle at top right, rgba(179, 107, 79, 0.14), transparent 38%);
   pointer-events: none;
 }
 
@@ -1597,6 +1702,85 @@
   width: min(100%, 760px);
   margin: 0 auto;
   text-align: center;
+}
+
+.footerSocials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.footerSocialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #fff;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.footerSocialLink:hover {
+  transform: translateY(-3px);
+}
+
+.footerSocialLink svg {
+  flex-shrink: 0;
+}
+
+.footerSocialFacebook {
+  background: #1877F2;
+}
+
+.footerSocialFacebook:hover {
+  box-shadow: 0 6px 18px rgba(24, 119, 242, 0.35);
+}
+
+.footerSocialInstagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.footerSocialInstagram:hover {
+  box-shadow: 0 6px 18px rgba(220, 39, 67, 0.35);
+}
+
+.footerSocialGoogle {
+  background: #fff;
+  color: #4285F4;
+}
+
+.footerSocialGoogle:hover {
+  box-shadow: 0 6px 18px rgba(66, 133, 244, 0.25);
+}
+
+.footerSocialPyszne {
+  background: #FF8000;
+  width: auto;
+  padding: 0 14px;
+  border-radius: 22px;
+}
+
+.footerSocialPyszne:hover {
+  box-shadow: 0 6px 18px rgba(255, 128, 0, 0.35);
+}
+
+.footerSocialPinterest {
+  background: #E60023;
+}
+
+.footerSocialPinterest:hover {
+  box-shadow: 0 6px 18px rgba(230, 0, 35, 0.35);
+}
+
+.footerPyszneLogo {
+  width: 56px;
+  height: 15px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
 }
 
 .footerLinks {
@@ -1644,78 +1828,15 @@
   text-transform: uppercase;
 }
 
-.footerDeliveryLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 18px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.08);
-  transition: background 180ms ease, transform 180ms ease;
-  text-decoration: none;
-}
-
-.footerDeliveryLink:hover {
-  background: rgba(255, 255, 255, 0.16);
-  transform: translateY(-1px);
-}
-
-.footerSocials {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-}
-
-.footerSocialLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(255, 247, 237, 0.84);
-  text-decoration: none;
-  transition: background 180ms ease, transform 180ms ease, color 180ms ease;
-}
-
-.footerSocialLink:hover {
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-.footerSocialLink svg {
-  display: block;
-}
-
 .footerCreditLink {
-  color: rgba(255, 247, 237, 0.84);
+  color: rgba(255, 247, 237, 0.92);
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: rgba(255, 247, 237, 0.24);
-  transition: color 180ms ease, text-decoration-color 180ms ease;
+  transition: color 160ms ease;
 }
 
 .footerCreditLink:hover {
   color: #fff;
-  text-decoration-color: rgba(255, 247, 237, 0.6);
-}
-
-.pyszneButton {
-  background: #FF8000 !important;
-  color: #fff !important;
-}
-
-.pyszneLogo {
-  width: 72px;
-  height: 19px;
-  flex-shrink: 0;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
 }
 
 .musicPlayer {
@@ -1730,7 +1851,7 @@
   background: rgba(18, 12, 9, 0.94);
   color: #fff;
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
-  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 .quickActionPlayer {
@@ -1975,7 +2096,7 @@
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(16, 11, 8, 0.94);
-  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   box-shadow: 0 24px 50px rgba(16, 12, 8, 0.24);
 }
 
@@ -1989,11 +2110,25 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   text-align: center;
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.04em;
   line-height: 1.1;
+}
+
+.pyszneButton {
+  background: #FF8000 !important;
+  color: #fff !important;
+}
+
+.pyszneLogo {
+  width: 72px;
+  height: 19px;
+  flex-shrink: 0;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
 .headerCallButton:hover,
@@ -2089,6 +2224,7 @@
 
   .quickActionsTrack {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, 1fr);
   }
 
   .quickActionsSection {
@@ -2097,6 +2233,13 @@
 
   .quickActionCard {
     min-width: 0;
+    border-radius: 28px;
+    padding: 18px 20px;
+  }
+
+  .musicPlayer {
+    grid-column: 1 / -1;
+    border-radius: 24px;
   }
 
   .galleryAside {
@@ -2126,9 +2269,26 @@
   .hero {
     --hero-top-space: 28px;
     --hero-bottom-space: 228px;
-    height: 100dvh;
-    min-height: 100svh;
-    align-items: end;
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: auto;
+    align-items: center;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mapCard,
+  .mapEmbed {
+    min-height: 320px;
+    border-radius: 22px;
+  }
+
+  .promoSliderViewport {
+    border-radius: 22px;
+  }
+
+  .promoSlide {
+    border-radius: 18px;
   }
 
   .quickActionsSection {
@@ -2136,7 +2296,7 @@
   }
 
   .heroTitle {
-    max-width: 8.4ch;
+    max-width: 12ch;
     font-size: clamp(38px, 11.8vw, 58px);
     line-height: 0.92;
   }
@@ -2146,11 +2306,14 @@
     max-width: calc(100vw - 32px);
     min-width: 0;
     width: calc(100vw - 32px);
+    text-align: center;
+    justify-items: center;
   }
 
   .heroLogo {
     width: clamp(132px, 34vw, 184px);
     margin-bottom: 0;
+    justify-self: center;
   }
 
   .heroLabel {
@@ -2173,6 +2336,8 @@
     gap: 4px;
     padding: 12px 16px;
     border-radius: 24px;
+    text-align: center;
+    justify-items: center;
   }
 
   .heroPhoneLink strong {
@@ -2182,6 +2347,7 @@
   .heroInfoStrip {
     gap: 6px;
     max-width: 100%;
+    justify-content: center;
   }
 
   .heroInfoStrip span {
@@ -2221,9 +2387,27 @@
     letter-spacing: 0.08em;
   }
 
-  .sectionTitle,
-  .eventCard h3 {
+  .sectionTitle {
     font-size: clamp(32px, 9vw, 42px);
+  }
+
+  .eventIcon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+  }
+
+  .eventIcon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .eventCardTitle {
+    font-size: 22px;
+  }
+
+  .eventCard p {
+    font-size: 13px;
   }
 
   .quickActionLabel,
@@ -2327,6 +2511,18 @@
     min-height: 46px;
     padding-inline: 10px;
     font-size: 11px;
+    gap: 6px;
+  }
+
+  .stickyMobileBar a svg {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+  }
+
+  .pyszneLogo {
+    width: 56px;
+    height: 15px;
   }
 
   .footer {
@@ -2427,7 +2623,8 @@
 
 @media (max-width: 430px) {
   .hero {
-    --hero-bottom-space: 118px;
+    --hero-top-space: 20px;
+    --hero-bottom-space: 140px;
   }
 
   .heroCopy {
@@ -2439,12 +2636,20 @@
   }
 
   .quickActionsTrack {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
     gap: 10px;
   }
 
   .quickActionCard {
-    padding: 16px;
+    padding: 14px 18px;
     column-gap: 12px;
+    border-radius: 24px;
+  }
+
+  .musicPlayer {
+    grid-column: auto;
+    border-radius: 22px;
   }
 
   .quickActionIcon {
@@ -2466,13 +2671,12 @@
     margin-bottom: 28px;
   }
 
-  .sectionTitle,
-  .eventCard h3 {
-    max-width: 9ch;
+  .sectionTitle {
+    max-width: 100%;
   }
 
   .menuSection .sectionTitle {
-    max-width: 11ch;
+    max-width: 100%;
   }
 
   .menuCategoryHeading h3 {
@@ -2483,8 +2687,27 @@
     font-size: 23px;
   }
 
+  .eventCardTitle {
+    font-size: 20px;
+  }
+
+  .eventIcon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+
+  .eventIcon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .eventCard p {
+    font-size: 12px;
+  }
+
   .heroText {
-    max-width: 31ch;
+    max-width: 100%;
     font-size: 14px;
     line-height: 1.5;
   }
@@ -2501,6 +2724,7 @@
   .contactButtons a {
     width: 100%;
   }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2530,3 +2754,6 @@
     transition: none;
   }
 }
+
+
+

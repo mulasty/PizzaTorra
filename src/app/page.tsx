@@ -1,20 +1,16 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+﻿import Image from "next/image";
 import {
   eventOffer,
   menuCategories,
   menuDownload,
 } from "@/content/menu";
-import type { MenuCategory, MenuItem } from "@/content/menu";
+import type { MenuItem, MenuCategory } from "@/content/menu";
 import { mapEmbed, mapLink, siteConfig } from "@/content/site";
+import { MobileNavigation } from "@/components/MobileNavigation";
+import { HeroVideo } from "@/components/HeroVideo";
+import { MusicPlayer } from "@/components/MusicPlayer";
+import { ParallaxEffect } from "@/components/ParallaxEffect";
 import styles from "./page.module.css";
-
-type MusicTrack = {
-  title: string;
-  src: string;
-};
 
 const phoneDisplay = siteConfig.phoneDisplay;
 const phoneHref = siteConfig.phoneHref;
@@ -76,7 +72,7 @@ const promotionBanner = {
   alt: "Promocja TORRA: każdy poniedziałek druga duża pizza -50%",
 };
 
-const torraTracks: MusicTrack[] = [
+const torraTracks = [
   { title: "Benvenuti da TORRA", src: "/musica/track-01.mp3" },
   { title: "Pizza al Sole", src: "/musica/track-02.mp3" },
   { title: "Caffè di Ostrołęka", src: "/musica/track-03.mp3" },
@@ -94,9 +90,130 @@ const menuColumnIds = [
   ["insalate", "panuozzo", "zapiekanka", "dodatki", "napoje"],
 ];
 
+const gbpId = `https://www.google.com/maps?cid=${siteConfig.google.googleCid}`;
+
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "TORRA", item: siteConfig.url },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Menu",
+      item: `${siteConfig.url}#full-menu`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Promocje",
+      item: `${siteConfig.url}#promocje`,
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      name: "Eventy",
+      item: `${siteConfig.url}#eventy`,
+    },
+    {
+      "@type": "ListItem",
+      position: 5,
+      name: "Kontakt",
+      item: `${siteConfig.url}#kontakt`,
+    },
+  ],
+};
+
+const faqData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Gdzie znajduje się pizzeria TORRA w Ostrołęce?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "TORRA pizza • caffè • musica mieści się w Feniks Hala Targowa przy ul. Generała Ignacego Prądzyńskiego 6 lokal B18, 07-410 Ostrołęka.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Jaki jest numer telefonu do pizzerii TORRA?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Możesz zamówić pizzę telefonicznie pod numerem 788 779 853. Przyjmujemy zamówienia na wynos i dowóz.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Jakie rodzaje pizzy serwuje TORRA?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "TORRA oferuje pizzę włoską (31,5 cm i 45 cm), pizzę sycylijską, panuozzo, a także insalate, desery, kawę włoską i napoje. Ceny widoczne są bezpośrednio w menu.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Czy TORRA oferuje catering i obsługę eventów?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tak, organizujemy eventy, spotkania integracyjne, lunch biznesowy, catering dopasowany do potrzeb (również opcja wege), przyjęcia urodzinowe oraz warsztaty kulinarne dla dzieci i młodzieży.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Jakie są godziny otwarcia TORRA?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "TORRA jest otwarta od poniedziałku do piątku w godzinach 11:00-21:00, a w soboty i niedziele 12:00-24:00.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Czy jest promocja na pizzę w TORRA?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tak, w każdy poniedziałek obowiązuje promocja TORRA: druga duża pizza -50%. Szczegóły dostępne w lokalu lub telefonicznie.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Czy TORRA dowozi pizzę do domu?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tak, realizujemy dowóz pizzy w Ostrołęce. Zamówienia składane są telefonicznie pod numerem 788 779 853.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Jakie dodatki można dodać do pizzy w TORRA?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "W TORRA dostępne są dodatki takie jak pepperoni, szynka parmeńska, salami Napoli, pieczarki, papryka jalapeño, cebula, pomidory, oliwki, rukola, grana padano, gorgonzola, ser typu feta i wiele innych.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Czy w TORRA można zorganizować przyjęcie urodzinowe?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tak, przy rezerwacji urodzinowej pizza niespodzianka od szefa kuchni dla solenizanta. Zachęcamy do kontaktu telefonicznego w celu rezerwacji.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Czy TORRA posiada miejsca siedzące w lokalu?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "TORRA znajduje się w Feniks Hala Targowa w Ostrołęce, gdzie można zjeść na miejscu, zamówić na wynos lub skorzystać z dowozu.",
+      },
+    },
+  ],
+};
+
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "Restaurant",
+  "@type": ["Restaurant", "FoodEstablishment", "LocalBusiness"],
   "@id": siteConfig.url,
   name: siteConfig.name,
   alternateName: siteConfig.legalName,
@@ -111,237 +228,102 @@ const structuredData = {
   menu: `${siteConfig.url}#full-menu`,
   hasMenu: `${siteConfig.url}#full-menu`,
   hasMap: mapLink,
-  sameAs: [googleMapsUrl],
+  sameAs: [gbpId, googleMapsUrl],
   openingHours: siteConfig.openingHours.value.map((item) => item.schema),
   address: {
     "@type": "PostalAddress",
+    "@id": `${siteConfig.url}#address`,
     streetAddress: siteConfig.address.streetAddress,
     addressLocality: siteConfig.address.addressLocality,
     postalCode: siteConfig.address.postalCode,
     addressCountry: siteConfig.address.addressCountry,
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: siteConfig.coordinates.latitude,
+    longitude: siteConfig.coordinates.longitude,
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    bestRating: "5",
+    worstRating: "1",
+    ratingCount: "87",
+    url: gbpId,
+  },
 };
 
-export default function Page() {
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [musicPlayerOpen, setMusicPlayerOpen] = useState(false);
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-  const [musicPlaying, setMusicPlaying] = useState(false);
-  const [heroVideoEnabled, setHeroVideoEnabled] = useState(false);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (prefersReducedMotion.matches) {
-      return;
-    }
-
-    const sections = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-parallax-section]"),
-    );
-
-    if (!sections.length) {
-      return;
-    }
-
-    let frame = 0;
-
-    const updateParallax = () => {
-      const viewportHeight = window.innerHeight;
-
-      for (const section of sections) {
-        const rect = section.getBoundingClientRect();
-        const speed = Number(section.dataset.parallaxSpeed ?? 0.18);
-        const distanceFromCenter = rect.top + rect.height / 2 - viewportHeight / 2;
-        const shift = Math.max(-88, Math.min(88, distanceFromCenter * -speed));
-        section.style.setProperty("--parallax-shift", `${shift.toFixed(2)}px`);
-      }
-
-      frame = 0;
-    };
-
-    const requestUpdate = () => {
-      if (!frame) {
-        frame = window.requestAnimationFrame(updateParallax);
-      }
-    };
-
-    updateParallax();
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate);
-
-    return () => {
-      if (frame) {
-        window.cancelAnimationFrame(frame);
-      }
-      window.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
-    };
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [mobileMenuOpen]);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (prefersReducedMotion.matches) {
-      return;
-    }
-
-    const isMobileViewport = window.matchMedia("(max-width: 700px)").matches;
-    const timeoutId = window.setTimeout(
-      () => setHeroVideoEnabled(true),
-      isMobileViewport ? 1800 : 900,
-    );
-
-    return () => window.clearTimeout(timeoutId);
-  }, []);
-
-  const menuColumns = menuColumnIds.map((column) =>
-    column
-      .map((id) => menuCategories.find((category) => category.id === id))
-      .filter((category): category is MenuCategory => Boolean(category)),
-  );
-
-  const renderMenuItems = (items: MenuItem[]) =>
-    items.map((item) => (
-      <article key={item.name} className={styles.menuItemCard}>
-        {item.badge ? <span className={styles.menuItemBadge}>{item.badge}</span> : null}
-        <div className={styles.menuItemLead}>
-          <h4>{item.name}</h4>
-          <span className={styles.menuItemDots} aria-hidden="true" />
-          <strong>{item.price}</strong>
-        </div>
-        {item.details ? <p>{item.details}</p> : null}
-      </article>
-    ));
-
-  const renderMenuSections = (category: MenuCategory) => {
-    if (category.sections) {
-      return category.sections.map((section) => (
-        <section key={section.title} className={styles.menuSubsection}>
-          <div className={styles.menuSubsectionHeader}>
-            <h4>{section.title}</h4>
-            {section.description ? <p>{section.description}</p> : null}
-          </div>
-          <div className={styles.menuSubsectionList}>{renderMenuItems(section.items)}</div>
-        </section>
-      ));
-    }
-
-    return <div className={styles.menuSubsectionList}>{renderMenuItems(category.items ?? [])}</div>;
-  };
-
-  const renderMenuCategory = (category: MenuCategory) => (
-    <section key={category.id} className={styles.menuCategoryCard}>
-      <div className={styles.menuCategoryHeading}>
-        <div className={styles.menuCategoryHeadingLine} aria-hidden="true" />
-        <div>
-          <h3>{category.title}</h3>
-          {category.badge ? <span className={styles.menuCategoryBadge}>{category.badge}</span> : null}
-        </div>
-        <div className={styles.menuCategoryHeadingLine} aria-hidden="true" />
+const renderMenuItems = (items: MenuItem[]) =>
+  items.map((item) => (
+    <article key={item.name} className={styles.menuItemCard}>
+      {item.badge ? <span className={styles.menuItemBadge}>{item.badge}</span> : null}
+      <div className={styles.menuItemLead}>
+        <h4>{item.name}</h4>
+        <span className={styles.menuItemDots} aria-hidden="true" />
+        <strong>{item.price}</strong>
       </div>
-      <p className={styles.menuCategoryDescription}>{category.description}</p>
-      <div className={styles.menuCategoryBody}>{renderMenuSections(category)}</div>
-    </section>
-  );
+      {item.details ? <p>{item.details}</p> : null}
+    </article>
+  ));
 
-  const closeMobileMenu = () => setMobileMenuOpen(false);
-  const currentTrack = torraTracks[currentTrackIndex];
+const renderMenuSections = (category: MenuCategory) => {
+  if (category.sections) {
+    return category.sections.map((section) => (
+      <section key={section.title} className={styles.menuSubsection}>
+        <div className={styles.menuSubsectionHeader}>
+          <h4>{section.title}</h4>
+          {section.description ? <p>{section.description}</p> : null}
+        </div>
+        <div className={styles.menuSubsectionList}>{renderMenuItems(section.items)}</div>
+      </section>
+    ));
+  }
 
-  const playTrack = async (trackIndex = currentTrackIndex) => {
-    const audio = audioRef.current;
-    if (!audio) {
-      return;
-    }
+  return <div className={styles.menuSubsectionList}>{renderMenuItems(category.items ?? [])}</div>;
+};
 
-    setCurrentTrackIndex(trackIndex);
+const renderMenuCategory = (category: MenuCategory) => (
+  <section
+    key={category.id}
+    className={`${styles.menuCategoryCard} ${["dodatki", "kawa", "napoje"].includes(category.id) ? styles.menuCategoryExtras : ""}`}
+  >
+    <div className={styles.menuCategoryHeading}>
+      <div className={styles.menuCategoryHeadingLine} aria-hidden="true" />
+      <div>
+        <h3>{category.title}</h3>
+        {category.badge ? <span className={styles.menuCategoryBadge}>{category.badge}</span> : null}
+      </div>
+      <div className={styles.menuCategoryHeadingLine} aria-hidden="true" />
+    </div>
+    <p className={styles.menuCategoryDescription}>{category.description}</p>
+    <div className={styles.menuCategoryBody}>{renderMenuSections(category)}</div>
+  </section>
+);
 
-    if (audio.src !== new URL(torraTracks[trackIndex].src, window.location.href).href) {
-      audio.src = torraTracks[trackIndex].src;
-    }
+const menuColumns = menuColumnIds.map((column) =>
+  column
+    .map((id) => menuCategories.find((category) => category.id === id))
+    .filter((category): category is MenuCategory => Boolean(category)),
+);
 
-    try {
-      await audio.play();
-      setMusicPlaying(true);
-    } catch {
-      setMusicPlaying(false);
-    }
-  };
-
-  const toggleMusic = async () => {
-    const audio = audioRef.current;
-    if (!audio) {
-      return;
-    }
-
-    if (musicPlaying) {
-      audio.pause();
-      setMusicPlaying(false);
-      return;
-    }
-
-    await playTrack();
-  };
-
-  const selectTrack = async (trackIndex: number) => {
-    await playTrack(trackIndex);
-  };
-
-  const skipTrack = async (direction: 1 | -1) => {
-    const nextTrackIndex =
-      (currentTrackIndex + direction + torraTracks.length) % torraTracks.length;
-    await playTrack(nextTrackIndex);
-  };
-
+export default function Page() {
   return (
     <main className={styles.page}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <header className={styles.header}>
-        <div className={styles.headerActions}>
-          <button
-            type="button"
-            className={styles.mobileMenuButton}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-menu"
-            aria-label={mobileMenuOpen ? "Zamknij menu" : "Otwórz menu"}
-            onClick={() => setMobileMenuOpen((open) => !open)}
-          >
-            {mobileMenuOpen ? "×" : "☰"}
-          </button>
-        </div>
-      </header>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
+      />
+      <ParallaxEffect />
 
-      <div
-        id="mobile-menu"
-        className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ""}`}
-      >
-        <div className={styles.mobileMenuPanel}>
-          <a href="#top" onClick={closeMobileMenu}>
-            TORRA
-          </a>
-          <a href="#promocje" onClick={closeMobileMenu}>
-            PROMOCJE
-          </a>
-          <a href="#full-menu" onClick={closeMobileMenu}>
-            MENU
-          </a>
-          <a href="#eventy" onClick={closeMobileMenu}>
-            EVENTY
-          </a>
-          <a href="#kontakt" onClick={closeMobileMenu}>
-            KONTAKT
-          </a>
-        </div>
-      </div>
+      <MobileNavigation />
 
       <section id="top" className={styles.hero}>
         <div className={styles.heroGrid}>
@@ -353,6 +335,7 @@ export default function Page() {
               height={220}
               className={styles.heroLogo}
               priority
+              fetchPriority="high"
             />
             <div className={styles.heroIntro}>
               <p className={styles.heroLabel}>Pizza • Caffè • Musica</p>
@@ -406,20 +389,7 @@ export default function Page() {
           </div>
 
           <div className={styles.heroVisual}>
-            <div className={styles.heroMediaFrame}>
-              <video
-                className={styles.heroMedia}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="none"
-                poster="/pizzatorra/pizza-1.jpeg"
-              >
-                {heroVideoEnabled ? <source src={heroVideoSrc} type="video/mp4" /> : null}
-              </video>
-              <div className={styles.heroMediaOverlay} />
-            </div>
+            <HeroVideo src={heroVideoSrc} />
           </div>
         </div>
       </section>
@@ -439,106 +409,9 @@ export default function Page() {
                 <span className={styles.quickActionNote}>{action.note}</span>
               </a>
             ))}
+
+            <MusicPlayer tracks={torraTracks} />
           </div>
-
-          <aside
-            className={`${styles.musicPlayer} ${styles.quickActionPlayer} ${
-              musicPlayerOpen ? styles.musicPlayerOpen : ""
-            }`}
-            aria-label="TORRA Musica"
-          >
-            <audio
-              ref={audioRef}
-              preload="none"
-              onEnded={() => skipTrack(1)}
-              onPause={() => setMusicPlaying(false)}
-              onPlay={() => setMusicPlaying(true)}
-            />
-
-            <div className={styles.musicFlag} aria-hidden="true" />
-
-            <button
-              type="button"
-              className={styles.musicToggle}
-              aria-expanded={musicPlayerOpen}
-              aria-label={musicPlayerOpen ? "Zwiń odtwarzacz TORRA Musica" : "Rozwiń odtwarzacz TORRA Musica"}
-              onClick={() => setMusicPlayerOpen((open) => !open)}
-            >
-              <span className={styles.musicDisc}>
-                <Image
-                  src="/musica/torra-musica.webp"
-                  alt=""
-                  width={96}
-                  height={96}
-                  className={styles.musicDiscImage}
-                  loading="lazy"
-                  fetchPriority="low"
-                />
-              </span>
-              <span className={styles.musicToggleText}>
-                <span>TORRA Musica</span>
-                <strong>{musicPlaying ? "Gra teraz" : "Sera Italiana"}</strong>
-              </span>
-              <span className={styles.musicToggleIcon}>{musicPlayerOpen ? "×" : "♪"}</span>
-            </button>
-
-            <div className={styles.musicPanel}>
-              <div className={styles.musicPanelHeader}>
-                <Image
-                  src="/musica/torra-musica.webp"
-                  alt="TORRA Musica Sera Italiana"
-                  width={160}
-                  height={160}
-                  className={styles.musicCover}
-                  loading="lazy"
-                  fetchPriority="low"
-                />
-                <div>
-                  <p>Playlist</p>
-                  <h2>TORRA Musica</h2>
-                  <span>Sera Italiana • 10 utworów</span>
-                </div>
-              </div>
-
-              <div className={styles.musicNow}>
-                <span>Teraz</span>
-                <strong>{currentTrack.title}</strong>
-              </div>
-
-              <div className={styles.musicControls} aria-label="Sterowanie muzyką">
-                <button type="button" onClick={() => skipTrack(-1)} aria-label="Poprzedni utwór">
-                  ‹
-                </button>
-                <button
-                  type="button"
-                  className={styles.musicPlayButton}
-                  onClick={toggleMusic}
-                  aria-label={musicPlaying ? "Pauza" : "Odtwórz"}
-                >
-                  {musicPlaying ? "Pauza" : "Play"}
-                </button>
-                <button type="button" onClick={() => skipTrack(1)} aria-label="Następny utwór">
-                  ›
-                </button>
-              </div>
-
-              <div className={styles.musicTrackList}>
-                {torraTracks.map((track, index) => (
-                  <button
-                    key={track.src}
-                    type="button"
-                    className={`${styles.musicTrackButton} ${
-                      index === currentTrackIndex ? styles.musicTrackButtonActive : ""
-                    }`}
-                    onClick={() => selectTrack(index)}
-                  >
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <strong>{track.title}</strong>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </aside>
         </div>
       </section>
 
@@ -565,10 +438,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section
-        id="marka"
-        className={styles.whySection}
-      >
+      <section id="marka" className={styles.whySection}>
         <div className={styles.sectionIntro}>
           <p className={styles.sectionEyebrow}>Dlaczego TORRA</p>
           <h2 className={styles.sectionTitle}>Dlaczego warto wybrać TORRA?</h2>
@@ -590,7 +460,6 @@ export default function Page() {
             naturalnie.
           </p>
         </div>
-
       </section>
 
       <section id="full-menu" className={styles.menuSection}>
@@ -609,6 +478,23 @@ export default function Page() {
               Zadzwoń i zamów
             </a>
             <a
+              href={siteConfig.pysznepl.url}
+              className={styles.pyszneCtaButton}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Zamów przez Pyszne.pl"
+            >
+              <img
+                src="https://brandlogovector.com/wp-content/uploads/2021/10/Pyszne.pl-Logo.png"
+                alt="Pyszne.pl"
+                width={72}
+                height={19}
+                className={styles.pyszneCtaLogo}
+                aria-hidden="true"
+                loading="lazy"
+              />
+            </a>
+            <a
               href={menuDownload.href}
               className={styles.secondaryButton}
               target="_blank"
@@ -621,7 +507,7 @@ export default function Page() {
           </div>
         </div>
 
-          <div className={styles.menuShell}>
+        <div className={styles.menuShell}>
           <div className={styles.menuBoard}>
             <div className={styles.menuBoardHeader}>
               <div className={styles.menuBoardBrand}>
@@ -676,8 +562,44 @@ export default function Page() {
 
         <div className={styles.eventGrid}>
           {eventOffer.items.map((item) => (
-            <article key={item} className={styles.eventCard}>
-              <h3>{item}</h3>
+            <article key={item.name} className={styles.eventCard}>
+              <span className={styles.eventIcon} aria-hidden="true">
+                {item.iconName === "users" ? (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                ) : item.iconName === "briefcase" ? (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                  </svg>
+                ) : item.iconName === "coffee" ? (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                    <path d="M6 1v3"/>
+                    <path d="M10 1v3"/>
+                    <path d="M14 1v3"/>
+                  </svg>
+                ) : item.iconName === "star" ? (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2l1.5 5.5L19 9l-5.5 1.5L12 16l-1.5-5.5L5 9l5.5-1.5z"/>
+                    <path d="M9 15l-3 3"/>
+                    <path d="M15 15l3 3"/>
+                    <path d="M12 16v5"/>
+                  </svg>
+                ) : (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6z"/>
+                    <path d="M6 17h12"/>
+                  </svg>
+                )}
+              </span>
+              <h3 className={styles.eventCardTitle}>{item.name}</h3>
+              <p>{item.description}</p>
             </article>
           ))}
         </div>
@@ -772,30 +694,69 @@ export default function Page() {
           <p className={styles.footerWordmark}>TORRA</p>
           <p className={styles.footerTagline}>pizza • caffè • musica</p>
           <div className={styles.footerSocials}>
-            {siteConfig.social.facebook ? (
-              <a
-                href={siteConfig.social.facebook}
-                className={styles.footerSocialLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Odwiedź profil TORRA na Facebooku"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-              </a>
-            ) : null}
+            <a
+              href={siteConfig.social.facebook}
+              className={`${styles.footerSocialLink} ${styles.footerSocialFacebook}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Odwiedź profil TORRA na Facebooku"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
             <a
               href="https://www.instagram.com/torra.pizzeria/"
-              className={styles.footerSocialLink}
+              className={`${styles.footerSocialLink} ${styles.footerSocialInstagram}`}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Odwiedź profil TORRA na Instagramie"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="6" ry="6"/>
+                <circle cx="12" cy="12" r="5"/>
+                <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            <a
+              href={siteConfig.pysznepl.url}
+              className={`${styles.footerSocialLink} ${styles.footerSocialPyszne}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Zamów przez Pyszne.pl"
+            >
+              <img
+                src="https://brandlogovector.com/wp-content/uploads/2021/10/Pyszne.pl-Logo.png"
+                alt="Pyszne.pl"
+                width={56}
+                height={15}
+                className={styles.footerPyszneLogo}
+                loading="lazy"
+              />
+            </a>
+            <a
+              href={googleMapsUrl}
+              className={`${styles.footerSocialLink} ${styles.footerSocialGoogle}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Otwórz TORRA w Google Maps"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+            </a>
+            <a
+              href="https://pl.pinterest.com/"
+              className={`${styles.footerSocialLink} ${styles.footerSocialPinterest}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Odwiedź profil TORRA na Pinterest"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.096.117.111.219.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.361-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 11.987 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12.013-12z"/>
               </svg>
             </a>
           </div>
@@ -803,27 +764,8 @@ export default function Page() {
             <a href={phoneHref}>{phoneDisplay}</a>
             <a href={emailHref}>{emailDisplay}</a>
           </div>
-          <a
-            href="https://www.pyszne.pl"
-            target="_blank"
-            rel="noreferrer"
-            className={styles.footerDeliveryLink}
-            aria-label="Zamów przez Pyszne.pl"
-          >
-            <Image src="/pyszne-logo.png" alt="Pyszne.pl" width={120} height={30} loading="lazy" fetchPriority="low" />
-          </a>
           <p className={styles.footerMeta}>© 2026 TORRA. Wszystkie prawa zastrzeżone.</p>
-          <p className={styles.footerCredit}>
-            Wykonanie:{" "}
-            <a
-              href="https://www.mulagroup.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.footerCreditLink}
-            >
-              Mula Group Web
-            </a>
-          </p>
+          <p className={styles.footerCredit}>Wykonanie: Mula Group Web</p>
         </div>
       </footer>
 
@@ -862,4 +804,3 @@ export default function Page() {
     </main>
   );
 }
-
