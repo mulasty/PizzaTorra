@@ -85,7 +85,7 @@ export function MusicPlayer({ tracks }: MusicPlayerProps) {
         type="button"
         className={styles.musicToggle}
         aria-expanded={musicPlayerOpen}
-        aria-label={musicPlayerOpen ? "Zwiń odtwarzacz TORRA Musica" : "Rozwiń odtwarzacz TORRA Musica"}
+        aria-label={musicPlayerOpen ? "TORRA Musica — Zwiń" : "TORRA Musica — Rozwiń"}
         onClick={() => setMusicPlayerOpen((open) => !open)}
       >
         <span className={styles.musicDisc}>
@@ -137,7 +137,7 @@ export function MusicPlayer({ tracks }: MusicPlayerProps) {
             type="button"
             className={styles.musicPlayButton}
             onClick={toggleMusic}
-            aria-label={musicPlaying ? "Pauza" : "Odtwórz"}
+            aria-label={musicPlaying ? "Pauza" : "Play"}
           >
             {musicPlaying ? "Pauza" : "Play"}
           </button>

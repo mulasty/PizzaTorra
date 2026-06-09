@@ -355,7 +355,7 @@ export default function Page() {
               smak w samym sercu Ostrołęki.
             </p>
 
-            <a href={phoneHref} className={styles.heroPhoneLink} aria-label={`Zadzwoń do TORRA: ${phoneDisplay}`}>
+            <a href={phoneHref} className={styles.heroPhoneLink}>
               <span>Zadzwoń i zamów</span>
               <strong>{phoneDisplay}</strong>
             </a>
@@ -368,16 +368,15 @@ export default function Page() {
             </div>
 
             <div className={styles.heroActions}>
-              <a href={phoneHref} className={styles.primaryButton} aria-label="Zadzwoń do TORRA i złóż zamówienie">
+              <a href={phoneHref} className={styles.primaryButton}>
                 Zadzwoń teraz
               </a>
-              <a href="#full-menu" className={styles.secondaryButton} aria-label="Zobacz menu TORRA">
+              <a href="#full-menu" className={styles.secondaryButton}>
                 Zobacz menu
               </a>
               <a
                 href={mapLink}
                 className={styles.ghostButton}
-                aria-label="Otwórz dojazd do TORRA w Google Maps"
               >
                 Wyznacz trasę
               </a>
@@ -402,7 +401,6 @@ export default function Page() {
                 key={action.label}
                 href={action.href}
                 className={styles.quickActionCard}
-                aria-label={`${action.label} — ${action.note}`}
               >
                 <span className={styles.quickActionIcon}>{action.icon}</span>
                 <span className={styles.quickActionLabel}>{action.label}</span>
@@ -474,7 +472,7 @@ export default function Page() {
             Zamówienia grupowe i pytania: <a href={emailHref}>{emailDisplay}</a>
           </p>
           <div className={styles.menuSalesActions}>
-            <a href={phoneHref} className={styles.primaryButton} aria-label="Zadzwoń do TORRA i złóż zamówienie">
+            <a href={phoneHref} className={styles.primaryButton}>
               Zadzwoń i zamów
             </a>
             <a
@@ -500,7 +498,6 @@ export default function Page() {
               target="_blank"
               rel="noreferrer"
               download
-              aria-label="Pobierz pełne menu TORRA w PDF"
             >
               {menuDownload.label}
             </a>
