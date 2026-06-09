@@ -8,10 +8,6 @@ import styles from "./PromoCarousel.module.css";
 
 const slides = [
   {
-    src: "/promo-monday-light.webp",
-    alt: "Promocja TORRA: każdy poniedziałek druga duża pizza -50%",
-  },
-  {
     src: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&q=85",
     alt: "Włoska pizza na stole w restauracji",
   },

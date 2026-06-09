@@ -1,0 +1,15 @@
+﻿Deployment ID: dpl_GVL5tYWXnCEUgbsLS61bDb5wuM2o
+Project: torra3-standalone
+Team: Mula Group 's projects (mula-group-s-projects)
+Created: 2026-06-02 04:44:24 UTC (timestamp: 1780393464318)
+Commit SHA: 2737f586c1ef4328d997225cb7fa8ad50fdfff86
+Branch: new-app-mula-group
+Repo: mulasty/PizzaTorra
+Commit msg: Professional footer credit with Mula Group Web link to mulagroup.vercel.app
+Author: mulasty (35350211+mulasty@users.noreply.github.com)
+Framework: Next.js (turboPack)
+Node: 24.x
+Status: READY (PRODUCTION)
+URLs: www.pizzatorra.pl, pizzatorra.pl, torra3-standalone.vercel.app
+Source: Retrieved from GitHub at the above commit SHA (Vercel file tree API returned "not_found")
+Files saved to: .old-deployment/
