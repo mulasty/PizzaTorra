@@ -101,8 +101,8 @@ const breadcrumbData = {
     {
       "@type": "ListItem",
       position: 3,
-      name: "Promocje",
-      item: `${siteConfig.url}#promocje`,
+      name: "Galeria",
+      item: `${siteConfig.url}#galeria`,
     },
     {
       "@type": "ListItem",
@@ -407,9 +407,9 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="promocje" className={styles.promoSection}>
+      <section id="galeria" className={styles.promoSection}>
         <div className={styles.sectionIntro}>
-          <p className={styles.sectionEyebrow}>Promocje</p>
+          <p className={styles.sectionEyebrow}>Galeria</p>
         </div>
 
         <PromoCarousel />

@@ -39,7 +39,7 @@ export function MobileNavigation() {
       >
         <div className={styles.mobileMenuPanel}>
           <a href="#top" onClick={closeMobileMenu} tabIndex={mobileMenuOpen ? 0 : -1}>TORRA</a>
-          <a href="#promocje" onClick={closeMobileMenu} tabIndex={mobileMenuOpen ? 0 : -1}>PROMOCJE</a>
+          <a href="#galeria" onClick={closeMobileMenu} tabIndex={mobileMenuOpen ? 0 : -1}>GALERIA</a>
           <a href="#full-menu" onClick={closeMobileMenu} tabIndex={mobileMenuOpen ? 0 : -1}>MENU</a>
           <a href="#eventy" onClick={closeMobileMenu} tabIndex={mobileMenuOpen ? 0 : -1}>EVENTY</a>
           <a href="#kontakt" onClick={closeMobileMenu} tabIndex={mobileMenuOpen ? 0 : -1}>KONTAKT</a>

@@ -8,20 +8,24 @@ import styles from "./PromoCarousel.module.css";
 
 const slides = [
   {
-    src: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&q=85",
-    alt: "Włoska pizza na stole w restauracji",
+    src: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=1200&q=85",
+    alt: "Pizza neapolitańska z pieca opalanego drewnem",
   },
   {
-    src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=85",
-    alt: "Pięknie podane danie kuchni włoskiej",
+    src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&q=85",
+    alt: "Kawa espresso w sycylijskiej kawiarni",
   },
   {
-    src: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=85",
-    alt: "Pizza z rukolą i parmezanem",
+    src: "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1200&q=85",
+    alt: "Malownicze wybrzeże Sycylii z widokiem na morze",
   },
   {
-    src: "https://images.unsplash.com/photo-1579751626657-72bc17010498?w=1200&q=85",
-    alt: "Kawa espresso w filiżance",
+    src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=85",
+    alt: "Włoska restauracja z pizzą i winem",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=85",
+    alt: "Słoneczne wzgórza i krajobrazy Włoch",
   },
 ];
 
