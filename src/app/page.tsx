@@ -9,6 +9,7 @@ import { MobileNavigation } from "@/components/MobileNavigation";
 import { HeroVideo } from "@/components/HeroVideo";
 import { MusicPlayer } from "@/components/MusicPlayer";
 import { ParallaxEffect } from "@/components/ParallaxEffect";
+import { PromoCarousel } from "@/components/PromoCarousel";
 import styles from "./page.module.css";
 
 const phoneDisplay = siteConfig.phoneDisplay;
@@ -65,11 +66,6 @@ const quickActions = [
     href: "#kontakt",
   },
 ];
-
-const promotionBanner = {
-  src: "/promo-monday-light.webp",
-  alt: "Promocja TORRA: każdy poniedziałek druga duża pizza -50%",
-};
 
 const torraTracks = [
   { title: "Benvenuti da TORRA", src: "/musica/track-01.mp3" },
@@ -416,22 +412,7 @@ export default function Page() {
           <p className={styles.sectionEyebrow}>Promocje</p>
         </div>
 
-        <div className={styles.promoSlider}>
-          <div className={styles.promoSliderViewport}>
-            <figure className={`${styles.promoSlide} ${styles.promoSlideActive}`}>
-              <Image
-                src={promotionBanner.src}
-                alt={promotionBanner.alt}
-                width={1536}
-                height={1024}
-                sizes="(max-width: 700px) calc(100vw - 56px), (max-width: 1180px) 92vw, 1200px"
-                className={styles.promoVisualImage}
-                loading="lazy"
-                fetchPriority="low"
-              />
-            </figure>
-          </div>
-        </div>
+        <PromoCarousel />
       </section>
 
       <section id="marka" className={styles.whySection}>
