@@ -762,6 +762,9 @@ export default function Page() {
             <a href={emailHref}>{emailDisplay}</a>
           </div>
           <p className={styles.footerMeta}>© 2026 TORRA. Wszystkie prawa zastrzeżone.</p>
+          <p className={styles.footerLegal}>
+            <a href="/polityka-prywatnosci">Polityka prywatności</a>
+          </p>
           <p className={styles.footerCredit}>Wykonanie: Mula Group Web</p>
         </div>
       </footer>

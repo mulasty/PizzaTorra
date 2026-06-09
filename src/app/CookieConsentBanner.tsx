@@ -130,8 +130,9 @@ export function CookieConsentBanner() {
               Analityka włączy się dopiero po Twojej zgodzie.
             </p>
             <p className={styles.privacy}>
-              Polityka prywatności i cookies jest w przygotowaniu. Do tego czasu możesz
-              zaakceptować lub odrzucić analitykę.
+              <a href="/polityka-prywatnosci" target="_blank" rel="noopener noreferrer">
+                Polityka prywatności i cookies
+              </a>
             </p>
 
             {settingsVisible ? (
