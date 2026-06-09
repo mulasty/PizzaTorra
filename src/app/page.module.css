@@ -1644,6 +1644,23 @@
   text-transform: uppercase;
 }
 
+.footerDeliveryLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  transition: background 180ms ease, transform 180ms ease;
+  text-decoration: none;
+}
+
+.footerDeliveryLink:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+}
+
 .musicPlayer {
   position: relative;
   right: auto;

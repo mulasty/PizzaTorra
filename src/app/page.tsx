@@ -1,4 +1,4 @@
-﻿﻿"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -737,6 +737,15 @@ export default function Page() {
             <a href={phoneHref}>{phoneDisplay}</a>
             <a href={emailHref}>{emailDisplay}</a>
           </div>
+          <a
+            href="https://www.pyszne.pl"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.footerDeliveryLink}
+            aria-label="Zamów przez Pyszne.pl"
+          >
+            <Image src="/pyszne-logo.png" alt="Pyszne.pl" width={120} height={30} loading="lazy" fetchPriority="low" />
+          </a>
           <p className={styles.footerMeta}>© 2026 TORRA. Wszystkie prawa zastrzeżone.</p>
           <p className={styles.footerCredit}>Realizacja strony: Mula Group</p>
         </div>
