@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import { siteConfig } from "@/content/site";
 import { CookieConsentBanner } from "./CookieConsentBanner";
+import { MaintenanceModal } from "@/components/MaintenanceModal";
 import "./globals.css";
 
 const display = Cormorant_Garamond({
@@ -135,6 +136,7 @@ gtag('config', 'AW-11452429976');`,
       </head>
       <body className={`${display.variable} ${body.variable}`}>
         {children}
+        <MaintenanceModal />
         <CookieConsentBanner />
         <SpeedInsights />
       </body>
