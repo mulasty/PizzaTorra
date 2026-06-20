@@ -393,6 +393,24 @@
   gap: 12px;
 }
 
+@media (min-width: 1024px) {
+  .heroActions {
+    flex-wrap: nowrap;
+    gap: 16px;
+  }
+
+  .heroActions a {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroActions a {
+    flex: 1 1 calc(50% - 5px);
+    min-width: 140px;
+  }
+}
+
 .hero .secondaryButton {
   background: rgba(255, 255, 255, 0.9);
   border-color: rgba(255, 255, 255, 0.24);
@@ -2773,6 +2791,7 @@
     transition: none;
   }
 }
+
 
 
 

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
@@ -9,7 +9,7 @@ import styles from "./PromoCarousel.module.css";
 const slides = [
   {
     src: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=1200&q=85",
-    alt: "Pizza neapolitańska z pieca opalanego drewnem",
+    alt: "Pizza neapolitaĹ„ska z pieca opalanego drewnem",
   },
   {
     src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&q=85",
@@ -17,27 +17,19 @@ const slides = [
   },
   {
     src: "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1200&q=85",
-    alt: "Malownicze wybrzeże Sycylii z widokiem na morze",
+    alt: "Malownicze wybrzeĹĽe Sycylii z widokiem na morze",
   },
   {
     src: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&q=85",
-    alt: "Świeżo upieczona pizza na stole",
+    alt: "ĹšwieĹĽo upieczona pizza na stole",
   },
   {
     src: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=1200&q=85",
-    alt: "Pizza z pomidorami i mozzarellą",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1628840045526-8f2813c3b9b0?w=1200&q=85",
-    alt: "Pizza margherita z bazylią",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1574126154517-d1e0d689ef05?w=1200&q=85",
-    alt: "Przygotowanie pizzy w piecu opalanym drewnem",
+    alt: "Pizza z pomidorami i mozzarellÄ…",
   },
   {
     src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=85",
-    alt: "Słoneczne wzgórza i krajobrazy Włoch",
+    alt: "SĹ‚oneczne wzgĂłrza i krajobrazy WĹ‚och",
   },
 ];
 
@@ -99,7 +91,7 @@ export function PromoCarousel() {
             onClick={scrollPrev}
             aria-label="Poprzednie"
           >
-            ‹
+            â€ą
           </button>
 
           <div className={styles.dots}>
@@ -109,7 +101,7 @@ export function PromoCarousel() {
                 type="button"
                 className={`${styles.dot} ${i === selectedIndex ? styles.dotActive : ""}`}
                 onClick={() => scrollTo(i)}
-                aria-label={`Przejdź do slajdu ${i + 1}`}
+                aria-label={`PrzejdĹş do slajdu ${i + 1}`}
               />
             ))}
           </div>
@@ -118,9 +110,9 @@ export function PromoCarousel() {
             type="button"
             className={styles.button}
             onClick={scrollNext}
-            aria-label="Następne"
+            aria-label="NastÄ™pne"
           >
-            ›
+            â€ş
           </button>
         </div>
       </div>
