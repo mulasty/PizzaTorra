@@ -6,30 +6,60 @@ import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import styles from "./PromoCarousel.module.css";
 
-const slides = [
+type Slide =
+  | { type: "image"; src: string; alt: string }
+  | { type: "video"; src: string; alt: string };
+
+const slides: Slide[] = [
   {
-    src: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=1200&q=85",
-    alt: "Pizza neapolitaĹ„ska z pieca opalanego drewnem",
+    type: "image",
+    src: "/images/gallery/pizza-crust-olives.webp",
+    alt: "Chrupiąca krawędź pizzy z oliwkami",
   },
   {
-    src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&q=85",
-    alt: "Kawa espresso w sycylijskiej kawiarni",
+    type: "image",
+    src: "/images/gallery/pizza-pepperoni-basil.webp",
+    alt: "Pizza pepperoni ze świeżą bazylią",
   },
   {
-    src: "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1200&q=85",
-    alt: "Malownicze wybrzeĹĽe Sycylii z widokiem na morze",
+    type: "image",
+    src: "/images/gallery/panino-salami-ricotta.webp",
+    alt: "Włoska kanapka z salami i rukolą",
   },
   {
-    src: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&q=85",
-    alt: "ĹšwieĹĽo upieczona pizza na stole",
+    type: "image",
+    src: "/images/gallery/pizza-interior-street-view.webp",
+    alt: "Pizza w przytulnym wnętrzu Torra",
   },
   {
-    src: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=1200&q=85",
-    alt: "Pizza z pomidorami i mozzarellÄ…",
+    type: "image",
+    src: "/images/gallery/promo-sandwich-subscription.webp",
+    alt: "Włoska kanapka na abonament",
   },
   {
-    src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=85",
-    alt: "SĹ‚oneczne wzgĂłrza i krajobrazy WĹ‚och",
+    type: "image",
+    src: "/images/gallery/panino-plate-interior.webp",
+    alt: "Kanapka podana w lokalu",
+  },
+  {
+    type: "image",
+    src: "/images/gallery/panini-board-assortment.webp",
+    alt: "Asortyment świeżych kanapek",
+  },
+  {
+    type: "image",
+    src: "/images/gallery/loaded-fries-bowl.webp",
+    alt: "Frytki z sosem i posypką",
+  },
+  {
+    type: "video",
+    src: "/videos/gallery/pizza-pepperoni-spin.mp4",
+    alt: "Pizza pepperoni z bliska",
+  },
+  {
+    type: "video",
+    src: "/videos/gallery/pizza-pepperoni-slice-basil.mp4",
+    alt: "Krojenie pizzy pepperoni",
   },
 ];
 
@@ -68,16 +98,29 @@ export function PromoCarousel() {
         <div className={styles.container}>
           {slides.map((slide, i) => (
             <div className={styles.slide} key={i}>
-              <Image
-                src={slide.src}
-                alt={slide.alt}
-                width={1200}
-                height={800}
-                sizes="(max-width: 700px) calc(100vw - 56px), (max-width: 1180px) 92vw, 1200px"
-                className={styles.image}
-                priority={i === 0}
-                loading={i === 0 ? undefined : "lazy"}
-              />
+              {slide.type === "video" ? (
+                <video
+                  src={slide.src}
+                  aria-label={slide.alt}
+                  className={styles.video}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                />
+              ) : (
+                <Image
+                  src={slide.src}
+                  alt={slide.alt}
+                  width={1200}
+                  height={900}
+                  sizes="(max-width: 700px) calc(100vw - 56px), (max-width: 1180px) 92vw, 1200px"
+                  className={styles.image}
+                  priority={i === 0}
+                  loading={i === 0 ? undefined : "lazy"}
+                />
+              )}
             </div>
           ))}
         </div>
