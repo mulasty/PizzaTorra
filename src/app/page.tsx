@@ -591,9 +591,16 @@ export default function Page() {
           </p>
           <div className={styles.contactButtons}>
             <a href={phoneHref} className={styles.primaryButton}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
               Zadzwoń
             </a>
             <a href={mapLink} className={styles.ghostButtonLight} target="_blank" rel="noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
               Otwórz trasę
             </a>
           </div>
@@ -621,9 +628,16 @@ export default function Page() {
             </p>
             <div className={styles.reviewActions}>
               <a href={googleReviewsUrl} className={styles.primaryButton} target="_blank" rel="noreferrer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M21.35 11.1h-9.18v2.92h5.24c-.23 1.38-1.63 4.04-5.24 4.04-3.15 0-5.71-2.6-5.71-5.8s2.56-5.8 5.71-5.8c1.8 0 3 .77 3.69 1.43l2.51-2.42C16.56 4.01 14.66 3 12.17 3 6.98 3 2.77 7.08 2.77 12.26s4.21 9.26 9.4 9.26c5.45 0 9.05-3.83 9.05-9.23 0-.62-.07-1.09-.19-1.19z"/>
+                </svg>
                 Zobacz opinie
               </a>
               <a href={googleReviewUrl} className={styles.secondaryButton} target="_blank" rel="noreferrer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M12 20h9"/>
+                  <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
+                </svg>
                 Dodaj opinię
               </a>
             </div>
@@ -724,7 +738,17 @@ export default function Page() {
           <p className={styles.footerLegal}>
             <a href="/polityka-prywatnosci">Polityka prywatności</a>
           </p>
-          <p className={styles.footerCredit}>Wykonanie: Mula Group Web</p>
+          <p className={styles.footerCredit}>
+            Wykonanie:{" "}
+            <a
+              href="https://mulagroup.eu"
+              className={styles.footerCreditLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Mula Group Web
+            </a>
+          </p>
         </div>
       </footer>
 

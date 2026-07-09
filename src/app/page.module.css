@@ -56,6 +56,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   text-decoration: none;
   font-size: 13px;
   font-weight: 800;
@@ -1874,6 +1875,17 @@
 
 .footerCreditLink:hover {
   color: #fff;
+}
+
+.headerCallButton svg,
+.primaryButton svg,
+.secondaryButton svg,
+.ghostButton svg,
+.secondaryButtonLight svg,
+.ghostButtonLight svg,
+.pdfButton svg,
+.sectionAction a svg {
+  flex-shrink: 0;
 }
 
 .musicPlayer {

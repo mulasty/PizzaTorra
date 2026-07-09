@@ -131,7 +131,7 @@ export function MusicPlayer({ tracks }: MusicPlayerProps) {
 
         <div className={styles.musicControls} aria-label="Sterowanie muzyką">
           <button type="button" onClick={() => skipTrack(-1)} aria-label="Poprzedni utwór">
-            \u2039
+            ‹
           </button>
           <button
             type="button"
@@ -142,7 +142,7 @@ export function MusicPlayer({ tracks }: MusicPlayerProps) {
             {musicPlaying ? "Pauza" : "Play"}
           </button>
           <button type="button" onClick={() => skipTrack(1)} aria-label="Następny utwór">
-            \u203A
+            ›
           </button>
         </div>
 

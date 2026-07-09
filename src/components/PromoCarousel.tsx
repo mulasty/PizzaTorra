@@ -134,7 +134,7 @@ export function PromoCarousel() {
             onClick={scrollPrev}
             aria-label="Poprzednie"
           >
-            â€ą
+            ‹
           </button>
 
           <div className={styles.dots}>
@@ -144,7 +144,7 @@ export function PromoCarousel() {
                 type="button"
                 className={`${styles.dot} ${i === selectedIndex ? styles.dotActive : ""}`}
                 onClick={() => scrollTo(i)}
-                aria-label={`PrzejdĹş do slajdu ${i + 1}`}
+                aria-label={`Przejdź do slajdu ${i + 1}`}
               />
             ))}
           </div>
@@ -153,9 +153,9 @@ export function PromoCarousel() {
             type="button"
             className={styles.button}
             onClick={scrollNext}
-            aria-label="NastÄ™pne"
+            aria-label="Następne"
           >
-            â€ş
+            ›
           </button>
         </div>
       </div>
