@@ -432,7 +432,8 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="galeria" className={styles.promoSection}>
+      <section id="galeria" className={`${styles.promoSection} ${styles.parallaxSection}`} data-parallax-section data-parallax-speed="0.08">
+        <div className={`${styles.parallaxBackground} ${styles.galleryBackgroundLux}`} aria-hidden="true" />
         <div className={styles.sectionIntro}>
           <p className={styles.sectionEyebrow}>Galeria</p>
         </div>
@@ -510,9 +511,8 @@ export default function Page() {
       <CinematicLoop
         eyebrow="Video story"
         title="Pizza w ruchu, nie tylko na talerzu"
-        text="Pierwszy loop pojawia się niżej niż menu, żeby nie rozpraszać od zamówień. Daje mocny, filmowy akcent i buduje apetyt bez ciężkiej sekcji galerii video."
         src="/videos/gallery/pizza-pepperoni-spin.mp4"
-        chips={["Loop", "Muted", "Atmosfera"]}
+        chips={["Loop", "Muted", "01"]}
       />
 
       <section id="eventy" className={styles.eventSection}>
@@ -582,10 +582,9 @@ export default function Page() {
       <CinematicLoop
         eyebrow="Kitchen motion"
         title="Drugi loop jako detal, nie dominanta"
-        text="Drugi film żyje dalej na stronie i pokazuje moment krojenia oraz świeżość składników. To bardziej marka i klimat niż zwykła reklama video."
         src="/videos/gallery/pizza-pepperoni-slice-basil.mp4"
         reverse
-        chips={["Detail", "Fresh cut", "Premium"]}
+        chips={["Detail", "Fresh cut", "02"]}
       />
 
       <section
