@@ -21,6 +21,7 @@ body {
   min-height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
+  overflow-y: auto !important;
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-body), "Segoe UI", sans-serif;
@@ -59,4 +60,8 @@ iframe:focus-visible,
 [tabindex]:focus-visible {
   outline: 2px solid #b36b4f;
   outline-offset: 3px;
+}
+
+[class*="MaintenanceModal-module__"] {
+  display: none !important;
 }

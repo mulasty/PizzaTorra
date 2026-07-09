@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import { siteConfig } from "@/content/site";
+import { MaintenanceModalBlocker } from "./MaintenanceModalBlocker";
 import { CookieConsentBanner } from "./CookieConsentBanner";
 import "./globals.css";
 
@@ -135,6 +136,7 @@ gtag('config', 'AW-11452429976');`,
       </head>
       <body className={`${display.variable} ${body.variable}`}>
         {children}
+        <MaintenanceModalBlocker />
         <CookieConsentBanner />
         <SpeedInsights />
       </body>
