@@ -104,7 +104,6 @@ export function PromoCarousel() {
                 sizes="(max-width: 1024px) 45vw, 220px"
               />
               <span className={styles.thumbCopy}>
-                <strong>{slide.title}</strong>
                 <small>{String(index + 1).padStart(2, "0")}</small>
               </span>
             </button>
