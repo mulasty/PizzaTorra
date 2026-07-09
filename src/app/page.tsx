@@ -7,6 +7,7 @@ import type { MenuItem, MenuCategory } from "@/content/menu";
 import { mapEmbed, mapLink, siteConfig } from "@/content/site";
 import { MobileNavigation } from "@/components/MobileNavigation";
 import { HeroVideo } from "@/components/HeroVideo";
+import { CinematicLoop } from "@/components/CinematicLoop";
 import { MusicPlayer } from "@/components/MusicPlayer";
 import { ParallaxEffect } from "@/components/ParallaxEffect";
 import { PromoCarousel } from "@/components/PromoCarousel";
@@ -506,6 +507,14 @@ export default function Page() {
         </div>
       </section>
 
+      <CinematicLoop
+        eyebrow="Video story"
+        title="Pizza w ruchu, nie tylko na talerzu"
+        text="Pierwszy loop pojawia się niżej niż menu, żeby nie rozpraszać od zamówień. Daje mocny, filmowy akcent i buduje apetyt bez ciężkiej sekcji galerii video."
+        src="/videos/gallery/pizza-pepperoni-spin.mp4"
+        chips={["Loop", "Muted", "Atmosfera"]}
+      />
+
       <section id="eventy" className={styles.eventSection}>
         <div className={styles.sectionIntro}>
           <p className={styles.sectionEyebrow}>Oferta eventowa</p>
@@ -569,6 +578,15 @@ export default function Page() {
           </a>
         </div>
       </section>
+
+      <CinematicLoop
+        eyebrow="Kitchen motion"
+        title="Drugi loop jako detal, nie dominanta"
+        text="Drugi film żyje dalej na stronie i pokazuje moment krojenia oraz świeżość składników. To bardziej marka i klimat niż zwykła reklama video."
+        src="/videos/gallery/pizza-pepperoni-slice-basil.mp4"
+        reverse
+        chips={["Detail", "Fresh cut", "Premium"]}
+      />
 
       <section
         id="kontakt"
